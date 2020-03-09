@@ -69,6 +69,7 @@ namespace Microsoft.Bot.Builder.ComposerBot.Json
 
             // manage all bot resources
             var resourceExplorer = new ResourceExplorer().AddFolder(botFile);
+            resourceExplorer.RegisterType<HttpRecognizer>(HttpRecognizer.DeclarativeType);
 
             var credentials = new MicrosoftAppCredentials(this.Configuration["MicrosoftAppId"], this.Configuration["MicrosoftAppPassword"]);
 

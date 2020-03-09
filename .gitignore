@@ -12,3 +12,4 @@ bin/
 obj/
 /.vs
 __pycache__
+*_log.txt
