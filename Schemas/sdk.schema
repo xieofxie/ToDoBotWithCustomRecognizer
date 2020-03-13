@@ -86,6 +86,11 @@
             "$ref": "#/definitions/Microsoft.CurrencyEntityRecognizer"
         },
         {
+            "title": "Microsoft.HttpRecognizer",
+            "description": "Recognizer hosts on HTTP endpoint",
+            "$ref": "#/definitions/Microsoft.HttpRecognizer"
+        },
+        {
             "title": "Microsoft.DateTimeEntityRecognizer",
             "description": "Recognizer which recognizes dates and time fragments.",
             "$ref": "#/definitions/Microsoft.DateTimeEntityRecognizer"
@@ -9607,6 +9612,11 @@
                     "title": "Microsoft.AdaptiveCardRecognizer",
                     "description": "Recognizer for detecting the value response from an Adaptive Card.",
                     "$ref": "#/definitions/Microsoft.AdaptiveCardRecognizer"
+                },
+                {
+                    "title": "Microsoft.HttpRecognizer",
+                    "description": "Recognizer hosts on HTTP endpoint.",
+                    "$ref": "#/definitions/Microsoft.HttpRecognizer"
                 },
                 {
                     "title": "Microsoft.CrossTrainedRecognizerSet",
