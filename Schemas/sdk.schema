@@ -2441,6 +2441,83 @@
                 }
             ]
         },
+        "Microsoft.HttpRecognizer": {
+            "$role": "implements(Microsoft.Recognizer)",
+            "title": "Http Recognizer",
+            "description": "Recognizer hosts on remote endpoint.",
+            "type": "object",
+            "properties": {
+                "$kind": {
+                    "title": "$kind",
+                    "description": "Defines the valid properties for the component you are configuring (from a dialog .schema file)",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-zA-Z0-9.]*$",
+                    "const": "Microsoft.CurrencyEntityRecognizer"
+                },
+                "$copy": {
+                    "title": "$copy",
+                    "description": "Copy the definition by id from a .dialog file.",
+                    "type": "string",
+                    "pattern": "^(([a-zA-Z][a-zA-Z0-9.]*)?(#[a-zA-Z][a-zA-Z0-9.]*)?)$"
+                },
+                "$id": {
+                    "title": "$id",
+                    "description": "Inline id for reuse of an inline definition",
+                    "type": "string",
+                    "pattern": "^([a-zA-Z][a-zA-Z0-9.]*)$"
+                },
+                "$designer": {
+                    "title": "$designer",
+                    "type": "object",
+                    "description": "Extra information for the Bot Framework Designer."
+                },
+                "method": {
+                    "type": "string",
+                    "title": "HTTP method",
+                    "description": "HTTP method to use.",
+                    "enum": [
+                        "GET",
+                        "POST",
+                        "PATCH",
+                        "PUT",
+                        "DELETE"
+                    ],
+                    "examples": [
+                        "GET",
+                        "POST"
+                    ]
+                },
+                "url": {
+                    "$role": "expression",
+                    "type": "string",
+                    "title": "Url",
+                    "description": "URL to call (supports data binding).",
+                    "examples": [
+                        "https://luis.ai"
+                    ]
+                },
+            },
+            "additionalProperties": false,
+            "patternProperties": {
+                "^\\$": {
+                    "type": "string"
+                }
+            },
+            "anyOf": [
+                {
+                    "title": "Reference",
+                    "required": [
+                        "$copy"
+                    ]
+                },
+                {
+                    "title": "Type",
+                    "required": [
+                        "$kind"
+                    ]
+                }
+            ]
+        },
         "Microsoft.DateTimeEntityRecognizer": {
             "$role": "union(Microsoft.EntityRecognizers)",
             "title": "DateTime Entity Recognizer",
