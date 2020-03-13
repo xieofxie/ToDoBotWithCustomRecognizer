@@ -3,7 +3,6 @@
   "$designer": {
     "$designer": {
       "name": "ToDoBotWithLuisSample-1",
-      "description": "",
       "id": "691980"
     }
   },
@@ -192,6 +191,7 @@
               "prompt": "${bfdprompt-781953()}",
               "maxTurnCount": 3,
               "property": "dialog.listType",
+              "value": "=@listType",
               "alwaysPrompt": false,
               "allowInterruptions": "turn.recognized.score > 0.7 && !#AddItem && !@listType",
               "outputFormat": "value",
@@ -217,8 +217,7 @@
               },
               "recognizerOptions": {
                 "noValue": false
-              },
-              "value": "=@listType"
+              }
             }
           ]
         },
@@ -414,10 +413,10 @@
               "prompt": "${bfdprompt-059540()}",
               "maxTurnCount": 3,
               "property": "dialog.listType",
+              "value": "=@listType",
               "alwaysPrompt": false,
               "allowInterruptions": "turn.recognized.score > 0.7 && !#ViewCollection && !@listType",
               "outputFormat": "value",
-              "value": "=@listType",
               "choices": [
                 {
                   "value": "Todo"

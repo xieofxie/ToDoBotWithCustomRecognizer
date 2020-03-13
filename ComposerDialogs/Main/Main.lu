@@ -1,193 +1,290 @@
 > !# @enableSections = true
 
 > Entity definitions 
-$ itemTitle : simple
-
-> Add a Phrase List with todo variations. Mark them as interchangeable.
-$ todoItem : PhraseList interchangeable
-   - todo
-   - todos
-   - to dos
-   - todo list
-   - todos list
-   - item list
-   - items collection
-   - collection
-   - list
+@ ml itemTitle
+@ ml containsAll
 
 > Add a list entity to detect list tye
-$ listType : todo = 
-- to do
-- todos
-- laundry 
-
-$ listType : shopping = 
-- shopping 
-- shop
-- shoppers
-
-$ listType : grocery = 
-- groceries
-- fruits
-- vegetables
-- household items
-- house hold items
-
-> Sample for nested section
-# CheckTodo
-## CheckUnreadTodo
-- check my unread todo
-- show my unread todos
-
-@ simple todoTitle
-
-## CheckDeletedTodo
-- check my deleted todo
-- show my deleted todos
-
-@ simple todoSubject
+@ list listType roleListType =
+    - todo:
+        - to do
+        - todo
+        - to-do
+        - to dos
+        - todos
+        - to-dos
+        - to - do
+    - shopping:
+        - shopping 
+        - shop
+        - shoppers
+    - grocery:
+        - grocery
+        - groceries
+        - grocer
 
 > Help intent and related utterances.
 # Help
-- What can I say? 
-- Who are you?
-- I need help
-- Not sure what I can do
-- What do you want me to say?
-- What can you do?
-- What can you help with?
-- help please
-- What are my options?
-- well, I do not know what my todo's title is
-- I do not know
-- can you please help?
+- any help
+- can you help
+- can you help me
+- do me a favor
+- give me a favor
+- give me some help
+- help
+- how can i get it
+- how to do it
+- i don't understand
+- i need help
+- i need some assistance
+- i need some help
+- is there any help
+- open help
+- please help
+- some help
+- what should i do
+- who can help me
 
 > Greeting intent and related utterances
 # Greeting
-- hi
-- hello
-- hiya
-- how are you? 
-- how do you do?
+- Hey my dude
+- Hello
+- hello bot
+- Hello my friend
+- Hello there
+- Hey caring bot
+- Hey friendly bot
+- Ahoy
+- Hey it's you!
+- Hail!
+- Hey pal
+- Hey professional bot
+- Hey there
+- Hey there bot
+- Hey there buddy
+- Hey there pal
+- Hey homie
+- Greetings and salutations
+- Ahoy there
+- Aloha
+- Aloha bot
+- Bonjour
+- G'day
+- Good day
+- Hailing the bot
+- Greetings
+- Hailing Bot
+- Greetings bot
+- Greetings caring bot
+- Greetings friend
+- Greetings friendly bot
+- Greetings professional bot
+- Greetings witty bot
+- Heya
+- Good tidings
+- Well hello
+- Hey witty bot
+- Oh, hello
+- Open a channel
+- Open a hailing channel
+- Open a hailing frequency
+- Salutations
+- Oh hey, it's you
+- Shalom
+- Oh hey there
+- Well hey there
+- Well hi
+- Well hi there
+- Well howdy
+- Yo
+- Yo dude
+- Yo man
+- Salutations!
+- Hi witty bot
+- Yo my dude
+- Hey-hey
+- Hi
+- Hi bot
+- Hi caring bot
+- Hi friendly bot
+- Oh howdy there
+- Hi there!
+- Hey you
+- Hiya
+- Hi-ya
+- Howdy 
+- Howdy partner
+- Oh hello
+- Oh hello there
+- Oh hey amigo
+- Hi professional bot
 
 > Cancel intent and related utterances
 # Cancel
 - cancel
-- cancel all
-- stop that
-- do not do it
-- abort
-- please stop what you are doing
-- I changed my mind
-- cancel add todo
+- cancel app
+- cancel cancel
+- cancel it
+- cancel never mind
 - cancel that
-- I do not want to add a todo
-- No todo for me
-- Cancel this
-- cancel delete todo
-- Let's just leave it as is
-- I do not wish to delete my todo anymore
-- Keep my todos as is
-- No todo for me
+- cancel that one
+- canceled
+- cancelled
+- do nothing
+- don't do that
+- don't do that anymore
+- forget about it
+- go away
+- just cancel
+- just cancel it
+- never mind
+- never mind cancel
+- never mind cancel that
+- no cancel
+- no cancel cancel
+- no cancel it
+- no cancel that
+- no never mind
+- no no cancel
+- no no cancel it
+- nothing never mind
+- nothing please
+- oh cancel
+- please do nothing
+- quit
+- sorry, don't do it
 
 > Add item
 # AddItem
-- Add todo
-- add a to do item
-- Please remind me to {itemTitle=buy milk}
-- Please remember that I need to {itemTitle=buy milk}
-- I need you to remember that {itemTitle=my wife's birthday is Jan 9th}
-- Add a todo named {itemTitle=send report over this weekend}
-- Add {itemTitle=get a new car} to the todo list
-- Add {itemTitle=write a spec} to the list
-- Add {itemTitle=finish this demo} to my todo list
-- add a todo item {itemTitle=vacuuming by october 3rd}
-- add {itemTitle=call my mother} to my todo list
-- add {itemTitle=due date august to peanut butter jelly bread milk} on todos list
-- add {itemTitle=go running} to my todos
-- add to my todos list {itemTitle=mail the insurance forms out by saturday}
-- can i add {itemTitle=shirts} on the todos list
-- could i add {itemTitle=medicine} to the todos list
-- would you add {itemTitle=heavy cream} to the todos list
-- add {itemTitle} to my todo list
-- add a to do that {itemTitle=purchase a nice sweater}
-- add a to do to {itemTitle=buy shoes}
-- add an task of {itemTitle=chores to do around the house}
-- add {itemTitle=go to whole foods} in my to do list
-- add {itemTitle=reading} to my to do list
-- add this thing in to do list
-- add to my to do list {itemTitle=pick up clothes}
-- add to my to do list {itemTitle=print papers for 10 copies this afternoon}
-- create to do
-- create to do that {itemTitle=read a book tonight}
+- add {itemTitle=schedule car maintenance} to my {listType: roleListType=to do} list
+- add {itemTitle=get a perm} to my {listType: roleListType=to do} list
+- add a few items to the {listType: roleListType=grocery} list
+- add a {listType: roleListType=grocery} item to {itemTitle=buy fish}
+- add a {listType: roleListType=grocery} item to {itemTitle=buy fruit and vegetables}
+- add a {listType: roleListType=grocery} item to {itemTitle=buy vegetables}
+- add a new {listType: roleListType=shopping} list
+- add a {listType: roleListType=shopping} item to {itemTitle=buy dancing dresses}
+- add a {listType: roleListType=shopping} item to {itemTitle=buy orange juice}
+- add a task for {itemTitle=anna west to bring my swimsuit for my vacation}
+- add a task for {itemTitle=jimmy to play xbox games with me after work}
+- add a task for {itemTitle=li lei to bring my coat from home}
+- add a task for {itemTitle=raghu to bring my chocolates from germany}
+- add a task to {itemTitle=purchase fruit and vegetables}
+- add a task to {itemTitle=finish driving test this week}
+- add a task to {itemTitle=pick mary up after work}
+- add a task to {itemTitle=shop at gnc after work}
+- add a {listType: roleListType=to do} to {itemTitle=purchase a nice sweater}
+- add a {listType: roleListType=to do} to {itemTitle=buy shoes}
+- add a {listType: roleListType=todo} item {itemTitle=to vacuum by october 3rd}
+- add action item for {itemTitle=khalifa to pack my school supplies} in my list
+- add an item to {itemTitle=buy some snacks}
+- add a task of {itemTitle=chores to do around the house}
+- add {itemTitle=bronwnies} to the {listType: roleListType=grocery} list
+- add {itemTitle=buy gum}
+- add {itemTitle=buy milk} to my {listType: roleListType=shopping} list
+- add {itemTitle=call my mother} to my {listType: roleListType=todo} list
+- add {itemTitle=go running} to my {listType: roleListType=to dos}
+- add {itemTitle=go to whole foods} in my {listType: roleListType=to do} list
+- add {listType: roleListType=grocery} add {itemTitle=spinach} my {listType: roleListType=groceries} list
+- add {listType: roleListType=grocery} items {itemTitle=cream cheese and raisin} to the list
+- add {listType: roleListType=grocery} items {itemTitle=dinners and storage bag} to the {listType: roleListType=shopping} list
+- add {itemTitle=have a haircut} to my tasks
+- add items as i speak
+- add {itemTitle=juicer} {listType: roleListType=groceries} list
+- add {itemTitle=melon and sugars and brown sugar} to {listType: roleListType=shopping} list
+- add more to {listType: roleListType=grocery} list
+- add {itemTitle=peanuts} the {listType: roleListType=grocery} list
+- add {itemTitle=purchase a cinema ticket} to my list
+- add {itemTitle=purchasing food and drinks} to my {listType: roleListType=shopping} list
+- add {itemTitle=reading} to my {listType: roleListType=to do} list
+- add {itemTitle=shoes} to the {listType: roleListType=shopping} lists
+- add some items to that {listType: roleListType=shopping} notes
+- add some items to the {listType: roleListType=grocery} list
+- add some {itemTitle=jeans} on our {listType: roleListType=shopping} lists
+- add something in this {listType: roleListType=grocery} list
+- add something to my list
+- add {itemTitle=tapioca starch} on my {listType: roleListType=shopping} list
+- add {itemTitle=tapioca starch} on our {listType: roleListType=shopping} list
+- add task to {itemTitle=buy a coat}
+- add task to {itemTitle=set up dining room table}
+- add this on our {listType: roleListType=shopping} list
+- add this stuff on my {listType: roleListType=shopping} list
+- add this thing in {listType: roleListType=to do} list
+- add to my {listType: roleListType=grocery} list
+- add to my {listType: roleListType=to do} list {itemTitle=pick up clothes}
+- add to my {listType: roleListType=to do} list {itemTitle=print papers for 10 copies this afternoon}
+- add to my {listType: roleListType=todos} list {itemTitle=mail the insurance forms out by saturday}
+- add to note {listType: roleListType=shopping} list
+- add to {listType: roleListType=shopping} list
+- add to the {listType: roleListType=grocery} note {itemTitle=buy milk}
+- append a {itemTitle=summer reading} in my list
+- append an task of {itemTitle=guest to invite at the party}
+- append this item onto my notes
+- ask a task for {itemTitle=kim to bring my coat from home}
+- can i add {itemTitle=shirts} on the {listType: roleListType=todos} list
+- can i put on {itemTitle=caramel cheese popcorn} on my {listType: roleListType=grocery} list
+- could i add {itemTitle=medicine} to the {listType: roleListType=todos} list
+- create a task to {itemTitle=meet my friends}
+- create task to {itemTitle=go to the mall}
+- create task to {itemTitle=meet john after 5:00 p.m.}
+- create task to {itemTitle=cyber shop on nov. 11}
+- create to do read {itemTitle=a book tonight}
 - create to do to {itemTitle=go running in the park}
-- put {itemTitle=hikes} on my to do list
-- remind me to {itemTitle = pick up dry cleaning}
-- new to do
-- add another one
-- add
-> Add patterns
-- Please remember [to] {itemTitle}
-- I need you to remember [that] {itemTitle}
-- Add a todo named {itemTitle}
-- Add {itemTitle} to the list
-- [Please] add {itemTitle} to the todo list
-- Add {itemTitle} to my todo
-- add {itemTitle} to my to do list
-- add {itemTitle} to my to dos
-- add a to do that buy {itemTitle}
-- add a to do that purchase {itemTitle}
-- add a to do that shop {itemTitle}
-- add a to do to {itemTitle}
-- add to do that {itemTitle}
-- add to do to {itemTitle}
-- create a to do to {itemTitle}
-- create to do to {itemTitle}
-- remind me to {itemTitle}
+- {itemTitle=need go to library this week}, add this {listType: roleListType=todo} item
+- put {itemTitle=cheese} on list
+- put {itemTitle=ham} on my {listType: roleListType=shopping} list
+- put {itemTitle=hikes} on my {listType: roleListType=to do} list
+- put {itemTitle=ice cream} on the {listType: roleListType=groceries} list
+- put {itemTitle=milk} on my {listType: roleListType=grocery} list
+- put {itemTitle=on caramel cheese popcorn} on my {listType: roleListType=grocery shopping} list
+- remind me to {itemTitle=attend the meeting tomorrow}
+- remind me to {itemTitle=buy first aid creams and berries}
+- remind me to {itemTitle=buy milk}
+- remind me to {itemTitle=meet my teacher}
+- remind me to shop for {itemTitle=a new carpet}
+- to {listType: roleListType=grocery} list add {itemTitle=milk}
+- to my {listType: roleListType=shopping} list add {itemTitle=paper towels}
+- to my vacation {listType: roleListType=to do} list add {itemTitle=buy sunblock}
+- would you add {itemTitle=heavy cream} to the {listType: roleListType=todos} list
+- would you please add {listType: roleListType=todo} item of {itemTitle=all hands meeting next monday}
 
 # DeleteItem
-- Remove todo
-- Mark {itemTitle = buy milk} as complete
-- Flag {itemTitle = first one} as done
-- Remove {itemTitle = finish this demo} from the todo list
-- remove another one
-- remove
-- clear my todo named {itemTitle = get a new car}
-- I'm done with the first todo
-- I finished the las todo
-- Remove the first todo
-- Delete todo
-- Clear my todos
-- Delete all my todos
-- Remove all my todo
-- Forget the list
-- Purge the todo list
 - can you delete {itemTitle=todo1}
-- can you delete {itemTitle=xxx} item
+- can you delete {itemTitle=abc} item
+- can you help to remove {containsAll=all} tasks
+- cancel {itemTitle=apples} from {listType: roleListType=shopping} list
+- clear my {listType: roleListType=todo} list
+- delete {containsAll=all} from my {listType: roleListType=grocery} list
 - delete {itemTitle=eggs} from list
-- delete off {itemTitle=pancake mix} on the shopping list
-- delete {itemTitle=shampoo} from shopping list
+- delete off {itemTitle=pancake mix} on the {listType: roleListType=shopping} list
+- delete {itemTitle=shampoo} from {listType: roleListType=shopping} list
 - delete {itemTitle=shirts} from list
 - delete task {itemTitle=go fishing}
 - delete task {itemTitle=go to cinema tonight}
-- delete the item {itemTitle=buy socks} from my todo list
-- delete the second task in my shopping list
+- delete the item {itemTitle=buy socks} from my {listType: roleListType=to-do} list
+- delete the second task in my {listType: roleListType=shopping} list
 - delete the task {itemTitle=house cleanup this weekend}
-- delete the task that {itemTitle=hit the gym every morning}
+- delete the task {itemTitle=hit the gym every morning}
 - delete the to do {itemTitle=meet my friends tomorrow}
-- delete the to do that {itemTitle=daily practice piano}
-- delete the to do that {itemTitle=meet john when he come here the next friday}
+- delete the to do {itemTitle=daily practice piano}
+- delete the to do {itemTitle=meet john when he comes here the next friday}
 - delete to do {itemTitle=buy milk}
 - delete to do {itemTitle=go shopping}
 - delete to do that {itemTitle=go hiking tomorrow}
-- erase {itemTitle=bananas} from shopping list
-- erase {itemTitle=peanuts} on the shopping list
-- remove {itemTitle=asprin} from shopping list
-- remove {itemTitle=black shoes} from shopping list
-- remove {itemTitle=class} from todo list
-- remove {itemTitle=salad vegetables} from grocery list
+- erase {itemTitle=bananas} from {listType: roleListType=shopping} list
+- erase {itemTitle=peanuts} on the {listType: roleListType=shopping} list
+- no need to {itemTitle=buy milk} in {listType: roleListType=grocery} list
+- omit the {itemTitle=milk} in the {listType: roleListType=grocery} list
+- remove {containsAll=all}
+- remove {containsAll=all} tasks
+- remove {containsAll=all} todo items tomorrow
+- remove {itemTitle=asprin} from {listType: roleListType=shopping} list
+- remove {itemTitle=black shoes} from {listType: roleListType=shopping} list
+- remove {itemTitle=class} from {listType: roleListType=todo} list
+- remove {itemTitle=salad vegetables} from {listType: roleListType=grocery} list
 - remove task {itemTitle=buy dog food}
 - remove task {itemTitle=go shopping}
+- remove task {itemTitle=go {listType: roleListType=shopping} with john this saturday}
 - remove task that {itemTitle=go hiking this weekend}
 - remove task that {itemTitle=lawn mowing}
 - remove the item {itemTitle=paris} from my list
@@ -196,29 +293,81 @@ $ listType : grocery =
 - remove the to do that {itemTitle=pick tom up at six p.m.}
 - remove to do {itemTitle=go to the gym}
 - remove to do that {itemTitle=go to the dentist tomorrow morning}
-> Add patterns
-- I did {itemTitle}
-- I completed {itemTitle}
-- Delete {itemTitle}
-- Mark {itemTitle} as complete
-- Remove {itemTitle} from my [todo] list
-- [Please] delete {itemTitle} from the list
+- {listType: roleListType=shopping} list delete {itemTitle=a}
+- {listType: roleListType=shopping} list delete {itemTitle=dog food}
+- {listType: roleListType=shopping} list delete {itemTitle=eggs}
+- {listType: roleListType=shopping} list delete {itemTitle=milk}
+- take {itemTitle=coffee} off my {listType: roleListType=groceries} list
+- take {itemTitle=lemons and onions} off my {listType: roleListType=shopping} list
+- take {itemTitle=milk} off {listType: roleListType=grocery} list
+- take {itemTitle=socks and shoes} off my {listType: roleListType=shopping} list
+- {listType: roleListType=todo} list delete {itemTitle=paris vacation}
 
 # ViewCollection
-- show my todo
-- can you please show my todos?
-- please show my todo list
-- todo list please
-- I need to see my todo list
-- can you show me the list?
-- please show the list
-- what do i have on my todo?
-- what is on my list?
-- do i have anything left on my todo list?
-- I hope I do not have any todo left
-- do i have any tasks left?
-- hit me up with more items
-- view my todos
-- can you show my todo
-- see todo
-- I would like to see my todos list
+- access my {listType: roleListType=shopping} list
+- access my {listType: roleListType=to do} list
+- access the {listType: roleListType=groceries} list
+- {containsAll=all} {listType: roleListType=shopping} list
+- bring up {containsAll=everything} on my {listType: roleListType=shopping} list
+- bring up {listType: roleListType=grocery} notes
+- bring up {listType: roleListType=shopping} note
+- browse my {listType: roleListType=groceries}
+- can you show my {listType: roleListType=to do} list
+- check my task list
+- check my {listType: roleListType=to do} list
+- display {containsAll=all} notes from last month
+- display {listType: roleListType=groceries} list
+- display notes with {listType: roleListType=groceries}
+- display {listType: roleListType=shopping} list
+- display tasks note
+- display {listType: roleListType=todo} list
+- do i have a list called {listType: roleListType=grocery} list
+- do i have any lists
+- find list about {listType: roleListType=shopping}
+- find my {listType: roleListType=grocery} items i saved on saturday
+- find my {listType: roleListType=shopping} list
+- find note labeled {listType: roleListType=grocery}
+- find notes called {listType: roleListType=grocery}
+- find notes for {listType: roleListType=grocery} {listType: roleListType=shopping}
+- find notes with {listType: roleListType=groceries}
+- find {listType: roleListType=shopping}
+- find task list on {listType: roleListType=shopping}
+- find the list i create for {listType: roleListType=shopping}
+- find the {listType: roleListType=to do list} for me
+- get work items on my {listType: roleListType=todo} list
+- help access my personal list
+- help show my {listType: roleListType=to do} list
+- i have to see my tasks
+- i have to see the {listType: roleListType=grocery} list i created today
+- i want to check my {listType: roleListType=shopping} list
+- i want to see {listType: roleListType=grocery} list
+- is there anything on my {listType: roleListType=to do} list
+- list {listType: roleListType=grocery} notes
+- look at my {listType: roleListType=grocery} list
+- pull {listType: roleListType=grocery} list
+- pull up {listType: roleListType=grocery} list
+- pull up my {listType: roleListType=grocery} list
+- pull up my notes
+- pull up {listType: roleListType=to do} list
+- read aloud my {listType: roleListType=grocery} list
+- read out my tasks
+- review {listType: roleListType=grocery} list
+- {listType: roleListType=shopping} list
+- show {containsAll=all} my {listType: roleListType=shopping} list
+- show me {containsAll=all} tasks
+- show my {listType: roleListType=to do} list
+- show my {listType: roleListType=to dos}
+- show my {listType: roleListType=todos}
+- take me to my {listType: roleListType=shopping} list
+- view my {listType: roleListType=grocery} list
+- view {listType: roleListType=shopping} list
+- what about {listType: roleListType=grocery} list
+- what am i going to do next
+- what are my notes for the {listType: roleListType=grocery} store
+- what are my tasks for {listType: roleListType=todo}
+- what do i have to buy on the {listType: roleListType=shopping} list
+- what do i need to buy in the {listType: roleListType=shopping} list
+- what is on my {listType: roleListType=shopping} list
+- what is the last task on my {listType: roleListType=to do} list for tomorow
+- where is the {listType: roleListType=grocery} {listType: roleListType=shopping} notes i worked on last night
+- would you bring up my new {listType: roleListType=grocery} notes
