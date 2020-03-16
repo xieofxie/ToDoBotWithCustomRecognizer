@@ -284,7 +284,7 @@
 - remove {itemTitle=salad vegetables} from {listType: roleListType=grocery} list
 - remove task {itemTitle=buy dog food}
 - remove task {itemTitle=go shopping}
-- remove task {itemTitle=go {listType: roleListType=shopping} with john this saturday}
+- remove task {itemTitle=go shopping with john this saturday}
 - remove task that {itemTitle=go hiking this weekend}
 - remove task that {itemTitle=lawn mowing}
 - remove the item {itemTitle=paris} from my list

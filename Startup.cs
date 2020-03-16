@@ -51,7 +51,7 @@ namespace Microsoft.Bot.Builder.ComposerBot.Json
             IStorage storage = null;
 
             // Configure storage for deployment
-            if (!string.IsNullOrEmpty(settings.CosmosDb.AuthKey))
+            if (!string.IsNullOrEmpty(settings?.CosmosDb?.AuthKey))
             {
                 storage = new CosmosDbStorage(settings.CosmosDb);
             }
@@ -82,7 +82,7 @@ namespace Microsoft.Bot.Builder.ComposerBot.Json
                   .UseStorage(storage)
                   .UseState(userState, conversationState);               
 
-                if (!string.IsNullOrEmpty(settings.BlobStorage.ConnectionString) && !string.IsNullOrEmpty(settings.BlobStorage.Container))
+                if (!string.IsNullOrEmpty(settings?.BlobStorage?.ConnectionString) && !string.IsNullOrEmpty(settings?.BlobStorage?.Container))
                 {
                     adapter.Use(new TranscriptLoggerMiddleware(new AzureBlobTranscriptStore(settings.BlobStorage.ConnectionString, settings.BlobStorage.Container)));
                 }

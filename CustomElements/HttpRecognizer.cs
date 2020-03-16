@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AdaptiveExpressions;
+using AdaptiveExpressions.Properties;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Adaptive.Actions;
 using Microsoft.Bot.Builder.Dialogs.Adaptive.Templates;
@@ -53,7 +54,7 @@ namespace Microsoft.Bot.Builder.ComposerBot.Json
         [JsonProperty("entities")]
         public string Entities { get; set; }
 
-        public override async Task<RecognizerResult> RecognizeAsync(DialogContext dialogContext, Activity activity, CancellationToken cancellationToken)
+        public override async Task<RecognizerResult> RecognizeAsync(DialogContext dialogContext, Activity activity, CancellationToken cancellationToken, Dictionary<string, string> telemetryProperties = null, Dictionary<string, double> telemetryMetrics = null)
         {
             // Identify matched intents
             var utterance = activity.Text ?? string.Empty;
@@ -232,7 +233,7 @@ namespace Microsoft.Bot.Builder.ComposerBot.Json
                         if (text.StartsWith("{") && text.EndsWith("}"))
                         {
                             text = text.Trim('{', '}');
-                            var (val, error) = new ExpressionEngine().Parse(text).TryEvaluate(data);
+                            var (val, error) = new ValueExpression(text).TryGetValue(data);
                             token.Replace(new JValue(val));
                         }
                         else

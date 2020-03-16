@@ -170,9 +170,9 @@
           "prompt": "${bfdprompt-069270()}",
           "maxTurnCount": 3,
           "property": "dialog.item",
+          "value": "=@itemTitle",
           "alwaysPrompt": false,
-          "allowInterruptions": "turn.recognized.score > 0.7 && !#AddItem && !@itemTitle",
-          "value": "=@itemTitle"
+          "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@itemTitle"
         },
         {
           "$type": "Microsoft.IfCondition",
@@ -193,7 +193,7 @@
               "property": "dialog.listType",
               "value": "=@listType",
               "alwaysPrompt": false,
-              "allowInterruptions": "turn.recognized.score > 0.7 && !#AddItem && !@listType",
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@listType",
               "outputFormat": "value",
               "choices": [
                 {
@@ -282,7 +282,7 @@
               "maxTurnCount": 3,
               "property": "dialog.listType",
               "alwaysPrompt": false,
-              "allowInterruptions": "turn.recognized.score > 0.7 && !#DeleteItem && !@listType",
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#DeleteToDo && !@listType",
               "outputFormat": "value",
               "value": "=@listType",
               "choices": [
@@ -337,7 +337,7 @@
               "maxTurnCount": 3,
               "property": "dialog.item",
               "alwaysPrompt": false,
-              "allowInterruptions": "turn.recognized.score > 0.7 && !#DeleteItem && !@itemTitle",
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#DeleteToDo && !@itemTitle",
               "value": "=@itemTitle"
             },
             {
@@ -415,7 +415,7 @@
               "property": "dialog.listType",
               "value": "=@listType",
               "alwaysPrompt": false,
-              "allowInterruptions": "turn.recognized.score > 0.7 && !#ViewCollection && !@listType",
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#ShowToDo && !@listType",
               "outputFormat": "value",
               "choices": [
                 {
