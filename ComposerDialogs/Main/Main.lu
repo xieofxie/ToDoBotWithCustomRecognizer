@@ -155,7 +155,7 @@
 - sorry, don't do it
 
 > Add item
-# AddItem
+# AddToDo
 - add {itemTitle=schedule car maintenance} to my {listType: roleListType=to do} list
 - add {itemTitle=get a perm} to my {listType: roleListType=to do} list
 - add a few items to the {listType: roleListType=grocery} list
@@ -248,7 +248,7 @@
 - would you add {itemTitle=heavy cream} to the {listType: roleListType=todos} list
 - would you please add {listType: roleListType=todo} item of {itemTitle=all hands meeting next monday}
 
-# DeleteItem
+# DeleteToDo
 - can you delete {itemTitle=todo1}
 - can you delete {itemTitle=abc} item
 - can you help to remove {containsAll=all} tasks
@@ -303,7 +303,7 @@
 - take {itemTitle=socks and shoes} off my {listType: roleListType=shopping} list
 - {listType: roleListType=todo} list delete {itemTitle=paris vacation}
 
-# ViewCollection
+# ShowToDo
 - access my {listType: roleListType=shopping} list
 - access my {listType: roleListType=to do} list
 - access the {listType: roleListType=groceries} list

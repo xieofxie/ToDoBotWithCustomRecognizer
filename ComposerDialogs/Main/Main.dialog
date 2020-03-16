@@ -256,7 +256,7 @@
           "property": "dialog.listType"
         }
       ],
-      "intent": "AddItem"
+      "intent": "AddToDo"
     },
     {
       "$type": "Microsoft.OnIntent",
@@ -388,7 +388,7 @@
           "property": "dialog.listType"
         }
       ],
-      "intent": "DeleteItem"
+      "intent": "DeleteToDo"
     },
     {
       "$type": "Microsoft.OnIntent",
@@ -466,7 +466,7 @@
           "property": "dialog.listType"
         }
       ],
-      "intent": "ViewCollection"
+      "intent": "ShowToDo"
     }
   ],
   "$schema": "https://raw.githubusercontent.com/microsoft/BotFramework-Composer/stable/Composer/packages/server/schemas/sdk.schema",
