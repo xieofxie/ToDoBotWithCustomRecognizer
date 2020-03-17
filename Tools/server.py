@@ -33,7 +33,6 @@ def update_app(id):
     id_models[id] = (nlp_c, nlp_e)
     return id
 
-@app.route('/query_app/<id>/<query>')
 def query_app(id, query):
     if not id in id_models:
         app_dir = common.get_app_dir(id)
@@ -55,6 +54,14 @@ def query_app(id, query):
         "cats": doc_category.cats,
         "ents": [(ent.label_, ent.text) for ent in doc_entity.ents],
     }
+
+@app.route('/query_app/<id>/<query>', methods=['GET'])
+def query_app_get(id, query):
+    return query_app(id, query)
+
+@app.route('/query_app/<id>', methods=['POST'])
+def query_app_post(id):
+    return query_app(id, str(request.get_json()['query']))
 
 if __name__ == '__main__':
     app.run()

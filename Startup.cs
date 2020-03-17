@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using BotProject.CustomElements;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -82,6 +83,7 @@ namespace Microsoft.Bot.Builder.ComposerBot.Json
             // manage all bot resources
             var resourceExplorer = new ResourceExplorer().AddFolder(botFile);
             resourceExplorer.RegisterType<HttpRecognizer>(HttpRecognizer.DeclarativeType);
+            resourceExplorer.RegisterType<SpacyRecognizer>(SpacyRecognizer.DeclarativeType);
 
             services.AddSingleton(userState);
             services.AddSingleton(conversationState);
