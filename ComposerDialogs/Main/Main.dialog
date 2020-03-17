@@ -2,8 +2,9 @@
   "$type": "Microsoft.AdaptiveDialog",
   "$designer": {
     "$designer": {
-      "name": "ToDoBotWithLuisSample-1",
-      "id": "691980"
+      "name": "ToDoBotWithLuisSample-0",
+      "description": "",
+      "id": "715432"
     }
   },
   "autoEndDialog": true,
@@ -322,7 +323,7 @@
             {
               "$type": "Microsoft.SendActivity",
               "$designer": {
-                "id": "684852",
+                "id": "212971",
                 "name": "Send a response"
               },
               "activity": "${bfdactivity-212971()}"
@@ -330,7 +331,7 @@
             {
               "$type": "Microsoft.TextInput",
               "$designer": {
-                "id": "038757",
+                "id": "879447",
                 "name": "Text input"
               },
               "prompt": "${bfdprompt-879447()}",
@@ -354,7 +355,7 @@
             {
               "$type": "Microsoft.SendActivity",
               "$designer": {
-                "id": "593087",
+                "id": "056974",
                 "name": "Send a response"
               },
               "activity": "${bfdactivity-056974()}"
@@ -364,7 +365,7 @@
             {
               "$type": "Microsoft.SendActivity",
               "$designer": {
-                "id": "253146",
+                "id": "084161",
                 "name": "Send a response"
               },
               "activity": "${bfdactivity-084161()}"
