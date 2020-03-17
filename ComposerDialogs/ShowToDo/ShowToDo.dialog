@@ -1,0 +1,92 @@
+{
+  "$type": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "107562",
+    "name": "ShowToDo",
+    "description": ""
+  },
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$type": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "180122"
+      },
+      "actions": [
+        {
+          "$type": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "209420",
+            "name": "Branch: If/Else"
+          },
+          "condition": "dialog.listType == null",
+          "actions": [
+            {
+              "$type": "Microsoft.ChoiceInput",
+              "$designer": {
+                "id": "234956",
+                "name": "Multiple choice"
+              },
+              "prompt": "${bfdprompt-234956()}",
+              "maxTurnCount": 3,
+              "property": "dialog.listType",
+              "value": "=@listType",
+              "alwaysPrompt": false,
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#ShowToDo && !@listType",
+              "outputFormat": "value",
+              "choices": [
+                {
+                  "value": "Todo"
+                },
+                {
+                  "value": "Shopping"
+                },
+                {
+                  "value": "Grocery"
+                },
+                {
+                  "value": "All"
+                },
+                {
+                  "value": "Cancel"
+                }
+              ],
+              "appendChoices": "true",
+              "defaultLocale": "en-us",
+              "style": "Auto",
+              "choiceOptions": {
+                "inlineSeparator": ", ",
+                "inlineOr": " or ",
+                "inlineOrMore": ", or ",
+                "includeNumbers": true
+              },
+              "recognizerOptions": {
+                "noValue": false
+              }
+            }
+          ]
+        },
+        {
+          "$type": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "285295",
+            "name": "Send a response"
+          },
+          "activity": "${bfdactivity-285295()}"
+        },
+        {
+          "$type": "Microsoft.DeleteProperty",
+          "$designer": {
+            "id": "760969",
+            "name": "Delete a Property"
+          },
+          "property": "dialog.listType"
+        }
+      ]
+    }
+  ],
+  "generator": "ShowToDo.lg"
+}

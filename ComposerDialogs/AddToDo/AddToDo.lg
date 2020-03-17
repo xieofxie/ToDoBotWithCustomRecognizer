@@ -1,0 +1,16 @@
+[import](common.lg)
+
+# bfdprompt-662396()
+[Activity
+    Text = Ok, what would you like to add?
+    SuggestedActions = Help | Cancel
+]
+
+# bfdprompt-690824()
+- Which list should I add **${dialog.item}** to?
+
+# bfdactivity-056548()
+[Activity
+    Text = ${Add-Todo-Text()}
+    ${Welcome-Actions()}
+]

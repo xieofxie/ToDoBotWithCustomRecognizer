@@ -1,0 +1,25 @@
+[import](common.lg)
+
+# bfdprompt-133430()
+- Which list do you want to remove an item from?
+
+# bfdactivity-012019()
+- ${List-readback(user.taskLists, dialog.listType)}
+
+# bfdprompt-841583()
+[Activity
+    Text = Ok, give me the exact title of the todo you would like to delete..
+    SuggestedActions = Help | Cancel
+]
+
+# bfdactivity-809470()
+[Activity
+    Text = ${Delete-Items-readback()}
+    ${Welcome-Actions()}
+]
+
+# bfdactivity-689712()
+[Activity
+    Text = ${Items-readback()}
+    ${Welcome-Actions()}
+]

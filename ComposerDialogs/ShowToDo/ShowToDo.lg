@@ -1,0 +1,10 @@
+[import](common.lg)
+
+# bfdprompt-234956()
+- What list would you like to see?
+
+# bfdactivity-285295()
+[Activity
+    Text = ${Items-readback()}
+    ${Welcome-Actions()}
+]

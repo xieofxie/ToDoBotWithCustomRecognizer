@@ -1,0 +1,117 @@
+{
+  "$type": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "950825",
+    "name": "AddToDo",
+    "description": ""
+  },
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$type": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "692581"
+      },
+      "actions": [
+        {
+          "$type": "Microsoft.TextInput",
+          "$designer": {
+            "id": "662396",
+            "name": "Text input"
+          },
+          "prompt": "${bfdprompt-662396()}",
+          "maxTurnCount": 3,
+          "property": "dialog.item",
+          "value": "=@itemTitle",
+          "alwaysPrompt": false,
+          "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@itemTitle"
+        },
+        {
+          "$type": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "413742",
+            "name": "Branch: If/Else"
+          },
+          "condition": "dialog.listType == null",
+          "actions": [
+            {
+              "$type": "Microsoft.ChoiceInput",
+              "$designer": {
+                "id": "690824",
+                "name": "Multiple choice"
+              },
+              "prompt": "${bfdprompt-690824()}",
+              "maxTurnCount": 3,
+              "property": "dialog.listType",
+              "value": "=@listType",
+              "alwaysPrompt": false,
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@listType",
+              "outputFormat": "value",
+              "choices": [
+                {
+                  "value": "Shopping"
+                },
+                {
+                  "value": "Todo"
+                },
+                {
+                  "value": "Grocery"
+                }
+              ],
+              "appendChoices": "true",
+              "defaultLocale": "en-us",
+              "style": "Auto",
+              "choiceOptions": {
+                "inlineSeparator": ", ",
+                "inlineOr": " or ",
+                "inlineOrMore": ", or ",
+                "includeNumbers": true
+              },
+              "recognizerOptions": {
+                "noValue": false
+              }
+            }
+          ]
+        },
+        {
+          "$type": "Microsoft.EditArray",
+          "$designer": {
+            "id": "533164",
+            "name": "Edit an Array Property"
+          },
+          "changeType": "Push",
+          "itemsProperty": "user.taskLists[dialog.listType]",
+          "value": "=dialog.item"
+        },
+        {
+          "$type": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "056548",
+            "name": "Send a response"
+          },
+          "activity": "${bfdactivity-056548()}"
+        },
+        {
+          "$type": "Microsoft.DeleteProperty",
+          "$designer": {
+            "id": "777450",
+            "name": "Delete a Property"
+          },
+          "property": "dialog.item"
+        },
+        {
+          "$type": "Microsoft.DeleteProperty",
+          "$designer": {
+            "id": "891304",
+            "name": "Delete a Property"
+          },
+          "property": "dialog.listType"
+        }
+      ]
+    }
+  ],
+  "generator": "AddToDo.lg"
+}
