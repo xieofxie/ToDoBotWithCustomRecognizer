@@ -33,9 +33,13 @@ def update_app(id, data, files, is_create, is_force):
         else:
             return response_404(id)
     json_data = common.load_json(data, files, app_dir)
+    if not is_force and common.compare_json(json_data, app_dir):
+        return id
+    common.remove_json(app_dir)
     nlp_c = train_textcat.main(json_data, output_dir=common.get_category_dir(app_dir))
     nlp_e = train_new_entity_type.main(json_data, output_dir=common.get_entity_dir(app_dir))
     id_models[id] = (nlp_c, nlp_e)
+    common.save_json(json_data, app_dir)
     return id
 
 def update_app_async(id, data, files, is_create, is_force):

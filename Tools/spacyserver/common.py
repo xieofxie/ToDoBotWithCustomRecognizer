@@ -42,3 +42,23 @@ def load_json(lu_data, files, output_dir):
 
     with open(JsonFile) as f:
         return json.load(f)
+
+def save_json(obj, output_dir):
+    JsonFile = os.path.join(output_dir, "last.json")
+    with open(JsonFile, 'w') as f:
+        json.dump(obj, f)
+
+def remove_json(output_dir):
+    JsonFile = os.path.join(output_dir, "last.json")
+    if os.path.exists(JsonFile):
+        os.remove(JsonFile)
+
+def compare_json(obj, output_dir):
+    JsonFile = os.path.join(output_dir, "last.json")
+    if not os.path.exists(JsonFile):
+        return False
+
+    with open(JsonFile) as f:
+        last = json.load(f)
+
+    return json.dumps(obj, sort_keys=True) == json.dumps(last, sort_keys=True)
