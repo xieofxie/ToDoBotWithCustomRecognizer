@@ -1,10 +1,13 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request, current_app
 import spacy
 import os
 import uuid
 import pathlib
 from spacyserver import common, train_new_entity_type, train_textcat
+from datetime import datetime
+import threading
+import time
+import uuid
 
 app = Flask(__name__)
 id_models = dict()
@@ -22,16 +25,33 @@ def create_app():
     pathlib.Path(app_dir).mkdir(parents=True, exist_ok=True)
     return id
 
-@app.route('/update_app/<id>', methods=['POST'])
-def update_app(id):
+def update_app(id, data, files, is_create, is_force):
     app_dir = common.get_app_dir(id)
     if not os.path.exists(app_dir):
-        return response_404(id)
-    json_data = common.load_json(request.data, app_dir)
+        if is_create:
+            pathlib.Path(app_dir).mkdir(parents=True, exist_ok=True)
+        else:
+            return response_404(id)
+    json_data = common.load_json(data, files, app_dir)
     nlp_c = train_textcat.main(json_data, output_dir=common.get_category_dir(app_dir))
     nlp_e = train_new_entity_type.main(json_data, output_dir=common.get_entity_dir(app_dir))
     id_models[id] = (nlp_c, nlp_e)
     return id
+
+def update_app_async(id, data, files, is_create, is_force):
+    return update_app(id, data, files, is_create, is_force)
+
+@app.route('/update_app/<id>', methods=['POST'])
+def update_app_post(id):
+    is_create = bool(request.args.get('create', False))
+    is_async = bool(request.args.get('async', False))
+    is_force = bool(request.args.get('force', False))
+    print(is_create, is_async, is_force)
+
+    if is_async:
+        return update_app_async(id, request.data, request.files, is_create, is_force)
+    else:
+        return update_app(id, request.data, request.files, is_create, is_force)
 
 def query_app(id, query):
     if not id in id_models:

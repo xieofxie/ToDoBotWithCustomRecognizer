@@ -3,6 +3,7 @@
 
 import os
 import json
+from werkzeug.utils import secure_filename
 
 Root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 OutputDir = os.path.join(Root, "output-apps")
@@ -16,14 +17,26 @@ def get_category_dir(app_dir):
 def get_entity_dir(app_dir):
     return os.path.join(app_dir, "entity")
 
-def load_json(lu_data, output_dir):
+def load_json(lu_data, files, output_dir):
     JsonFile = os.path.join(output_dir, "temp.json")
     if os.path.exists(JsonFile):
         os.remove(JsonFile)
 
-    LuFile = os.path.join(output_dir, "temp.lu")
-    with open(LuFile, 'wb') as f:
-        f.write(lu_data)
+    if not files:
+        LuFile = os.path.join(output_dir, "temp.lu")
+        with open(LuFile, 'wb') as f:
+            f.write(lu_data)
+    else:
+        entry = files.get('entry')
+        if entry:
+            LuFile = os.path.join(output_dir, secure_filename(entry.filename))
+
+        for file in files.items(True):
+            fileName = os.path.join(output_dir, secure_filename(file[1].filename))
+            file[1].save(fileName)
+            if not LuFile:
+                LuFile = fileName
+
     cmd = "bf luis:convert --in {0} --out {1}".format(LuFile, JsonFile)
     os.system(cmd)
 

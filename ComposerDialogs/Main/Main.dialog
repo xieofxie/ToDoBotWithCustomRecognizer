@@ -8,11 +8,7 @@
   },
   "autoEndDialog": true,
   "defaultResultProperty": "dialog.result",
-  "recognizer": {
-    "$kind": "Microsoft.SpacyRecognizer",
-    "endpoint": "http://127.0.0.1:5000",
-    "applicationId": "id"
-  },
+  "recognizer": "main.lu",
   "triggers": [
     {
       "$type": "Microsoft.OnConversationUpdateActivity",
