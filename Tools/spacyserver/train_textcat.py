@@ -97,11 +97,6 @@ def main(json_data, model=None, output_dir=None, n_iter=10, n_texts=2000, init_t
                 )
             )
 
-    # test the trained model
-    test_text = "add an item to todo list"
-    doc = nlp(test_text)
-    print(test_text, doc.cats)
-
     if output_dir is not None:
         with nlp.use_params(optimizer.averages):
             nlp.to_disk(output_dir)

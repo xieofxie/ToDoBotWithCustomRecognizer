@@ -74,6 +74,7 @@ def query_app(id, query):
     nlp_c, nlp_e = id_models[id]
     doc_category = nlp_c(query)
     doc_entity = nlp_e(query)
+    print(query, doc_category.cats, doc_entity.ents)
     return {
         "cats": doc_category.cats,
         "ents": [(ent.label_, ent.text) for ent in doc_entity.ents],

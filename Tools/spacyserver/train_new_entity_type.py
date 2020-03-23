@@ -103,13 +103,6 @@ def main(json_data, model=None, new_model_name="entity", output_dir=None, n_iter
                 nlp.update(texts, annotations, sgd=optimizer, drop=0.35, losses=losses)
             print("Losses", losses)
 
-    # test the trained model
-    test_text = "add a grocery item to buy milk"
-    doc = nlp(test_text)
-    print("Entities in '%s'" % test_text)
-    for ent in doc.ents:
-        print(ent.label_, ent.text)
-
     # save model to output directory
     if output_dir is not None:
         output_dir = Path(output_dir)

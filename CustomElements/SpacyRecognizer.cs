@@ -11,6 +11,7 @@ using AdaptiveExpressions.Properties;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,6 +22,12 @@ namespace BotProject.CustomElements
     {
         [JsonProperty("$kind")]
         public const string DeclarativeType = "Microsoft.SpacyRecognizer";
+
+        public const string TraceName = "SpacyRecognizer";
+
+        public const string TraceType = "Microsoft.SpacyRecognizer.TraceType";
+
+        public const string TraceLabel = "SpacyRecognizer Trace";
 
         public SpacyRecognizer()
         {
@@ -45,6 +52,16 @@ namespace BotProject.CustomElements
             var utterance = activity.Text;
 
             RecognizerResult recognizerResult = null;
+            JObject luisResponse = null;
+
+            var dcState = dialogContext.GetState();
+            var endPoint = Endpoint.GetValue(dcState);
+            var id = ApplicationId.GetValue(dcState);
+            var application = new LuisApplication
+            {
+                ApplicationId = id,
+                Endpoint = endPoint,
+            };
 
             if (string.IsNullOrWhiteSpace(utterance))
             {
@@ -59,17 +76,30 @@ namespace BotProject.CustomElements
             {
                 var httpClient = new HttpClient();
 
-                var uri = BuildUri(dialogContext);
+                var uri = BuildUri(application);
                 var content = BuildRequestBody(utterance);
                 var response = await httpClient.PostAsync(uri.Uri, new StringContent(content.ToString(), System.Text.Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
-                var luisResponse = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                luisResponse = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
                 recognizerResult = new RecognizerResult();
 
                 recognizerResult.Text = utterance;
                 recognizerResult.Intents = GetIntents(luisResponse);
                 recognizerResult.Entities = ExtractEntitiesAndMetadata(luisResponse);
             }
+
+            var traceInfo = JObject.FromObject(
+                new
+                {
+                    recognizerResult,
+                    spacyModel = new
+                    {
+                        ModelID = application.ApplicationId,
+                    },
+                    spacyResult = luisResponse,
+                });
+
+            await dialogContext.Context.TraceActivityAsync(TraceName, traceInfo, TraceType, TraceLabel, cancellationToken).ConfigureAwait(false);
 
             return recognizerResult;
         }
@@ -125,11 +155,10 @@ namespace BotProject.CustomElements
         }
 
         // Follow botbuilder-dotnet\libraries\Microsoft.Bot.Builder.AI.LUIS\LuisRecognizerOptionsV3.cs
-        private UriBuilder BuildUri(DialogContext dialogContext)
+        private UriBuilder BuildUri(LuisApplication options)
         {
-            var dcState = dialogContext.GetState();
-            var endPoint = Endpoint.GetValue(dcState);
-            var id = ApplicationId.GetValue(dcState);
+            var endPoint = options.Endpoint;
+            var id = options.ApplicationId;
             return new UriBuilder($"{endPoint}/query_app/{id}");
         }
 
@@ -141,6 +170,13 @@ namespace BotProject.CustomElements
             };
 
             return content;
+        }
+
+        private class LuisApplication
+        {
+            public string ApplicationId { get; set; }
+
+            public string Endpoint { get; set; }
         }
     }
 }
