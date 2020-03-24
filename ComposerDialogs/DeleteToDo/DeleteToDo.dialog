@@ -2,8 +2,7 @@
   "$type": "Microsoft.AdaptiveDialog",
   "$designer": {
     "id": "380079",
-    "name": "DeleteToDo",
-    "description": ""
+    "name": "DeleteToDo"
   },
   "autoEndDialog": "true",
   "defaultResultProperty": "dialog.result",
@@ -12,7 +11,6 @@
       "$type": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
-        "description": "",
         "id": "138705"
       },
       "actions": [
@@ -33,10 +31,10 @@
               "prompt": "${bfdprompt-133430()}",
               "maxTurnCount": 3,
               "property": "dialog.listType",
+              "value": "=@ListType",
               "alwaysPrompt": false,
               "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#DeleteToDo && !@listType",
               "outputFormat": "value",
-              "value": "=@listType",
               "choices": [
                 {
                   "value": "Shopping"
@@ -88,9 +86,9 @@
               "prompt": "${bfdprompt-841583()}",
               "maxTurnCount": 3,
               "property": "dialog.item",
+              "value": "=@TaskContent",
               "alwaysPrompt": false,
-              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#DeleteToDo && !@itemTitle",
-              "value": "=@itemTitle"
+              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#DeleteToDo && !@itemTitle"
             },
             {
               "$type": "Microsoft.EditArray",

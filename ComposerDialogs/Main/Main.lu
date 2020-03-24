@@ -1,11 +1,11 @@
 > !# @enableSections = true
 
 > Entity definitions 
-@ ml itemTitle
-@ ml containsAll
+@ ml TaskContent
+@ ml ContainsAll
 
 > Add a list entity to detect list tye
-@ list listType roleListType =
+@ list ListType roleListType =
     - todo:
         - to do
         - todo
@@ -156,218 +156,218 @@
 
 > Add item
 # AddToDo
-- add {itemTitle=schedule car maintenance} to my {listType: roleListType=to do} list
-- add {itemTitle=get a perm} to my {listType: roleListType=to do} list
-- add a few items to the {listType: roleListType=grocery} list
-- add a {listType: roleListType=grocery} item to {itemTitle=buy fish}
-- add a {listType: roleListType=grocery} item to {itemTitle=buy fruit and vegetables}
-- add a {listType: roleListType=grocery} item to {itemTitle=buy vegetables}
-- add a new {listType: roleListType=shopping} list
-- add a {listType: roleListType=shopping} item to {itemTitle=buy dancing dresses}
-- add a {listType: roleListType=shopping} item to {itemTitle=buy orange juice}
-- add a task for {itemTitle=anna west to bring my swimsuit for my vacation}
-- add a task for {itemTitle=jimmy to play xbox games with me after work}
-- add a task for {itemTitle=li lei to bring my coat from home}
-- add a task for {itemTitle=raghu to bring my chocolates from germany}
-- add a task to {itemTitle=purchase fruit and vegetables}
-- add a task to {itemTitle=finish driving test this week}
-- add a task to {itemTitle=pick mary up after work}
-- add a task to {itemTitle=shop at gnc after work}
-- add a {listType: roleListType=to do} to {itemTitle=purchase a nice sweater}
-- add a {listType: roleListType=to do} to {itemTitle=buy shoes}
-- add a {listType: roleListType=todo} item {itemTitle=to vacuum by october 3rd}
-- add action item for {itemTitle=khalifa to pack my school supplies} in my list
-- add an item to {itemTitle=buy some snacks}
-- add a task of {itemTitle=chores to do around the house}
-- add {itemTitle=bronwnies} to the {listType: roleListType=grocery} list
-- add {itemTitle=buy gum}
-- add {itemTitle=buy milk} to my {listType: roleListType=shopping} list
-- add {itemTitle=call my mother} to my {listType: roleListType=todo} list
-- add {itemTitle=go running} to my {listType: roleListType=to dos}
-- add {itemTitle=go to whole foods} in my {listType: roleListType=to do} list
-- add {listType: roleListType=grocery} add {itemTitle=spinach} my {listType: roleListType=groceries} list
-- add {listType: roleListType=grocery} items {itemTitle=cream cheese and raisin} to the list
-- add {listType: roleListType=grocery} items {itemTitle=dinners and storage bag} to the {listType: roleListType=shopping} list
-- add {itemTitle=have a haircut} to my tasks
+- add {TaskContent=schedule car maintenance} to my {ListType: roleListType=to do} list
+- add {TaskContent=get a perm} to my {ListType: roleListType=to do} list
+- add a few items to the {ListType: roleListType=grocery} list
+- add a {ListType: roleListType=grocery} item to {TaskContent=buy fish}
+- add a {ListType: roleListType=grocery} item to {TaskContent=buy fruit and vegetables}
+- add a {ListType: roleListType=grocery} item to {TaskContent=buy vegetables}
+- add a new {ListType: roleListType=shopping} list
+- add a {ListType: roleListType=shopping} item to {TaskContent=buy dancing dresses}
+- add a {ListType: roleListType=shopping} item to {TaskContent=buy orange juice}
+- add a task for {TaskContent=anna west to bring my swimsuit for my vacation}
+- add a task for {TaskContent=jimmy to play xbox games with me after work}
+- add a task for {TaskContent=li lei to bring my coat from home}
+- add a task for {TaskContent=raghu to bring my chocolates from germany}
+- add a task to {TaskContent=purchase fruit and vegetables}
+- add a task to {TaskContent=finish driving test this week}
+- add a task to {TaskContent=pick mary up after work}
+- add a task to {TaskContent=shop at gnc after work}
+- add a {ListType: roleListType=to do} to {TaskContent=purchase a nice sweater}
+- add a {ListType: roleListType=to do} to {TaskContent=buy shoes}
+- add a {ListType: roleListType=todo} item {TaskContent=to vacuum by october 3rd}
+- add action item for {TaskContent=khalifa to pack my school supplies} in my list
+- add an item to {TaskContent=buy some snacks}
+- add a task of {TaskContent=chores to do around the house}
+- add {TaskContent=bronwnies} to the {ListType: roleListType=grocery} list
+- add {TaskContent=buy gum}
+- add {TaskContent=buy milk} to my {ListType: roleListType=shopping} list
+- add {TaskContent=call my mother} to my {ListType: roleListType=todo} list
+- add {TaskContent=go running} to my {ListType: roleListType=to dos}
+- add {TaskContent=go to whole foods} in my {ListType: roleListType=to do} list
+- add {ListType: roleListType=grocery} add {TaskContent=spinach} my {ListType: roleListType=groceries} list
+- add {ListType: roleListType=grocery} items {TaskContent=cream cheese and raisin} to the list
+- add {ListType: roleListType=grocery} items {TaskContent=dinners and storage bag} to the {ListType: roleListType=shopping} list
+- add {TaskContent=have a haircut} to my tasks
 - add items as i speak
-- add {itemTitle=juicer} {listType: roleListType=groceries} list
-- add {itemTitle=melon and sugars and brown sugar} to {listType: roleListType=shopping} list
-- add more to {listType: roleListType=grocery} list
-- add {itemTitle=peanuts} the {listType: roleListType=grocery} list
-- add {itemTitle=purchase a cinema ticket} to my list
-- add {itemTitle=purchasing food and drinks} to my {listType: roleListType=shopping} list
-- add {itemTitle=reading} to my {listType: roleListType=to do} list
-- add {itemTitle=shoes} to the {listType: roleListType=shopping} lists
-- add some items to that {listType: roleListType=shopping} notes
-- add some items to the {listType: roleListType=grocery} list
-- add some {itemTitle=jeans} on our {listType: roleListType=shopping} lists
-- add something in this {listType: roleListType=grocery} list
+- add {TaskContent=juicer} {ListType: roleListType=groceries} list
+- add {TaskContent=melon and sugars and brown sugar} to {ListType: roleListType=shopping} list
+- add more to {ListType: roleListType=grocery} list
+- add {TaskContent=peanuts} the {ListType: roleListType=grocery} list
+- add {TaskContent=purchase a cinema ticket} to my list
+- add {TaskContent=purchasing food and drinks} to my {ListType: roleListType=shopping} list
+- add {TaskContent=reading} to my {ListType: roleListType=to do} list
+- add {TaskContent=shoes} to the {ListType: roleListType=shopping} lists
+- add some items to that {ListType: roleListType=shopping} notes
+- add some items to the {ListType: roleListType=grocery} list
+- add some {TaskContent=jeans} on our {ListType: roleListType=shopping} lists
+- add something in this {ListType: roleListType=grocery} list
 - add something to my list
-- add {itemTitle=tapioca starch} on my {listType: roleListType=shopping} list
-- add {itemTitle=tapioca starch} on our {listType: roleListType=shopping} list
-- add task to {itemTitle=buy a coat}
-- add task to {itemTitle=set up dining room table}
-- add this on our {listType: roleListType=shopping} list
-- add this stuff on my {listType: roleListType=shopping} list
-- add this thing in {listType: roleListType=to do} list
-- add to my {listType: roleListType=grocery} list
-- add to my {listType: roleListType=to do} list {itemTitle=pick up clothes}
-- add to my {listType: roleListType=to do} list {itemTitle=print papers for 10 copies this afternoon}
-- add to my {listType: roleListType=todos} list {itemTitle=mail the insurance forms out by saturday}
-- add to note {listType: roleListType=shopping} list
-- add to {listType: roleListType=shopping} list
-- add to the {listType: roleListType=grocery} note {itemTitle=buy milk}
-- append a {itemTitle=summer reading} in my list
-- append an task of {itemTitle=guest to invite at the party}
+- add {TaskContent=tapioca starch} on my {ListType: roleListType=shopping} list
+- add {TaskContent=tapioca starch} on our {ListType: roleListType=shopping} list
+- add task to {TaskContent=buy a coat}
+- add task to {TaskContent=set up dining room table}
+- add this on our {ListType: roleListType=shopping} list
+- add this stuff on my {ListType: roleListType=shopping} list
+- add this thing in {ListType: roleListType=to do} list
+- add to my {ListType: roleListType=grocery} list
+- add to my {ListType: roleListType=to do} list {TaskContent=pick up clothes}
+- add to my {ListType: roleListType=to do} list {TaskContent=print papers for 10 copies this afternoon}
+- add to my {ListType: roleListType=todos} list {TaskContent=mail the insurance forms out by saturday}
+- add to note {ListType: roleListType=shopping} list
+- add to {ListType: roleListType=shopping} list
+- add to the {ListType: roleListType=grocery} note {TaskContent=buy milk}
+- append a {TaskContent=summer reading} in my list
+- append an task of {TaskContent=guest to invite at the party}
 - append this item onto my notes
-- ask a task for {itemTitle=kim to bring my coat from home}
-- can i add {itemTitle=shirts} on the {listType: roleListType=todos} list
-- can i put on {itemTitle=caramel cheese popcorn} on my {listType: roleListType=grocery} list
-- could i add {itemTitle=medicine} to the {listType: roleListType=todos} list
-- create a task to {itemTitle=meet my friends}
-- create task to {itemTitle=go to the mall}
-- create task to {itemTitle=meet john after 5:00 p.m.}
-- create task to {itemTitle=cyber shop on nov. 11}
-- create to do read {itemTitle=a book tonight}
-- create to do to {itemTitle=go running in the park}
-- {itemTitle=need go to library this week}, add this {listType: roleListType=todo} item
-- put {itemTitle=cheese} on list
-- put {itemTitle=ham} on my {listType: roleListType=shopping} list
-- put {itemTitle=hikes} on my {listType: roleListType=to do} list
-- put {itemTitle=ice cream} on the {listType: roleListType=groceries} list
-- put {itemTitle=milk} on my {listType: roleListType=grocery} list
-- put {itemTitle=on caramel cheese popcorn} on my {listType: roleListType=grocery shopping} list
-- remind me to {itemTitle=attend the meeting tomorrow}
-- remind me to {itemTitle=buy first aid creams and berries}
-- remind me to {itemTitle=buy milk}
-- remind me to {itemTitle=meet my teacher}
-- remind me to shop for {itemTitle=a new carpet}
-- to {listType: roleListType=grocery} list add {itemTitle=milk}
-- to my {listType: roleListType=shopping} list add {itemTitle=paper towels}
-- to my vacation {listType: roleListType=to do} list add {itemTitle=buy sunblock}
-- would you add {itemTitle=heavy cream} to the {listType: roleListType=todos} list
-- would you please add {listType: roleListType=todo} item of {itemTitle=all hands meeting next monday}
+- ask a task for {TaskContent=kim to bring my coat from home}
+- can i add {TaskContent=shirts} on the {ListType: roleListType=todos} list
+- can i put on {TaskContent=caramel cheese popcorn} on my {ListType: roleListType=grocery} list
+- could i add {TaskContent=medicine} to the {ListType: roleListType=todos} list
+- create a task to {TaskContent=meet my friends}
+- create task to {TaskContent=go to the mall}
+- create task to {TaskContent=meet john after 5:00 p.m.}
+- create task to {TaskContent=cyber shop on nov. 11}
+- create to do read {TaskContent=a book tonight}
+- create to do to {TaskContent=go running in the park}
+- {TaskContent=need go to library this week}, add this {ListType: roleListType=todo} item
+- put {TaskContent=cheese} on list
+- put {TaskContent=ham} on my {ListType: roleListType=shopping} list
+- put {TaskContent=hikes} on my {ListType: roleListType=to do} list
+- put {TaskContent=ice cream} on the {ListType: roleListType=groceries} list
+- put {TaskContent=milk} on my {ListType: roleListType=grocery} list
+- put {TaskContent=on caramel cheese popcorn} on my {ListType: roleListType=grocery shopping} list
+- remind me to {TaskContent=attend the meeting tomorrow}
+- remind me to {TaskContent=buy first aid creams and berries}
+- remind me to {TaskContent=buy milk}
+- remind me to {TaskContent=meet my teacher}
+- remind me to shop for {TaskContent=a new carpet}
+- to {ListType: roleListType=grocery} list add {TaskContent=milk}
+- to my {ListType: roleListType=shopping} list add {TaskContent=paper towels}
+- to my vacation {ListType: roleListType=to do} list add {TaskContent=buy sunblock}
+- would you add {TaskContent=heavy cream} to the {ListType: roleListType=todos} list
+- would you please add {ListType: roleListType=todo} item of {TaskContent=all hands meeting next monday}
 
 # DeleteToDo
-- can you delete {itemTitle=todo1}
-- can you delete {itemTitle=abc} item
-- can you help to remove {containsAll=all} tasks
-- cancel {itemTitle=apples} from {listType: roleListType=shopping} list
-- clear my {listType: roleListType=todo} list
-- delete {containsAll=all} from my {listType: roleListType=grocery} list
-- delete {itemTitle=eggs} from list
-- delete off {itemTitle=pancake mix} on the {listType: roleListType=shopping} list
-- delete {itemTitle=shampoo} from {listType: roleListType=shopping} list
-- delete {itemTitle=shirts} from list
-- delete task {itemTitle=go fishing}
-- delete task {itemTitle=go to cinema tonight}
-- delete the item {itemTitle=buy socks} from my {listType: roleListType=to-do} list
-- delete the second task in my {listType: roleListType=shopping} list
-- delete the task {itemTitle=house cleanup this weekend}
-- delete the task {itemTitle=hit the gym every morning}
-- delete the to do {itemTitle=meet my friends tomorrow}
-- delete the to do {itemTitle=daily practice piano}
-- delete the to do {itemTitle=meet john when he comes here the next friday}
-- delete to do {itemTitle=buy milk}
-- delete to do {itemTitle=go shopping}
-- delete to do that {itemTitle=go hiking tomorrow}
-- erase {itemTitle=bananas} from {listType: roleListType=shopping} list
-- erase {itemTitle=peanuts} on the {listType: roleListType=shopping} list
-- no need to {itemTitle=buy milk} in {listType: roleListType=grocery} list
-- omit the {itemTitle=milk} in the {listType: roleListType=grocery} list
-- remove {containsAll=all}
-- remove {containsAll=all} tasks
-- remove {containsAll=all} todo items tomorrow
-- remove {itemTitle=asprin} from {listType: roleListType=shopping} list
-- remove {itemTitle=black shoes} from {listType: roleListType=shopping} list
-- remove {itemTitle=class} from {listType: roleListType=todo} list
-- remove {itemTitle=salad vegetables} from {listType: roleListType=grocery} list
-- remove task {itemTitle=buy dog food}
-- remove task {itemTitle=go shopping}
-- remove task {itemTitle=go shopping with john this saturday}
-- remove task that {itemTitle=go hiking this weekend}
-- remove task that {itemTitle=lawn mowing}
-- remove the item {itemTitle=paris} from my list
-- remove the task that {itemTitle=go to library after work}
-- remove the to do {itemTitle=physical examination}
-- remove the to do that {itemTitle=pick tom up at six p.m.}
-- remove to do {itemTitle=go to the gym}
-- remove to do that {itemTitle=go to the dentist tomorrow morning}
-- {listType: roleListType=shopping} list delete {itemTitle=a}
-- {listType: roleListType=shopping} list delete {itemTitle=dog food}
-- {listType: roleListType=shopping} list delete {itemTitle=eggs}
-- {listType: roleListType=shopping} list delete {itemTitle=milk}
-- take {itemTitle=coffee} off my {listType: roleListType=groceries} list
-- take {itemTitle=lemons and onions} off my {listType: roleListType=shopping} list
-- take {itemTitle=milk} off {listType: roleListType=grocery} list
-- take {itemTitle=socks and shoes} off my {listType: roleListType=shopping} list
-- {listType: roleListType=todo} list delete {itemTitle=paris vacation}
+- can you delete {TaskContent=todo1}
+- can you delete {TaskContent=abc} item
+- can you help to remove {ContainsAll=all} tasks
+- cancel {TaskContent=apples} from {ListType: roleListType=shopping} list
+- clear my {ListType: roleListType=todo} list
+- delete {ContainsAll=all} from my {ListType: roleListType=grocery} list
+- delete {TaskContent=eggs} from list
+- delete off {TaskContent=pancake mix} on the {ListType: roleListType=shopping} list
+- delete {TaskContent=shampoo} from {ListType: roleListType=shopping} list
+- delete {TaskContent=shirts} from list
+- delete task {TaskContent=go fishing}
+- delete task {TaskContent=go to cinema tonight}
+- delete the item {TaskContent=buy socks} from my {ListType: roleListType=to-do} list
+- delete the second task in my {ListType: roleListType=shopping} list
+- delete the task {TaskContent=house cleanup this weekend}
+- delete the task {TaskContent=hit the gym every morning}
+- delete the to do {TaskContent=meet my friends tomorrow}
+- delete the to do {TaskContent=daily practice piano}
+- delete the to do {TaskContent=meet john when he comes here the next friday}
+- delete to do {TaskContent=buy milk}
+- delete to do {TaskContent=go shopping}
+- delete to do that {TaskContent=go hiking tomorrow}
+- erase {TaskContent=bananas} from {ListType: roleListType=shopping} list
+- erase {TaskContent=peanuts} on the {ListType: roleListType=shopping} list
+- no need to {TaskContent=buy milk} in {ListType: roleListType=grocery} list
+- omit the {TaskContent=milk} in the {ListType: roleListType=grocery} list
+- remove {ContainsAll=all}
+- remove {ContainsAll=all} tasks
+- remove {ContainsAll=all} todo items tomorrow
+- remove {TaskContent=asprin} from {ListType: roleListType=shopping} list
+- remove {TaskContent=black shoes} from {ListType: roleListType=shopping} list
+- remove {TaskContent=class} from {ListType: roleListType=todo} list
+- remove {TaskContent=salad vegetables} from {ListType: roleListType=grocery} list
+- remove task {TaskContent=buy dog food}
+- remove task {TaskContent=go shopping}
+- remove task {TaskContent=go shopping with john this saturday}
+- remove task that {TaskContent=go hiking this weekend}
+- remove task that {TaskContent=lawn mowing}
+- remove the item {TaskContent=paris} from my list
+- remove the task that {TaskContent=go to library after work}
+- remove the to do {TaskContent=physical examination}
+- remove the to do that {TaskContent=pick tom up at six p.m.}
+- remove to do {TaskContent=go to the gym}
+- remove to do that {TaskContent=go to the dentist tomorrow morning}
+- {ListType: roleListType=shopping} list delete {TaskContent=a}
+- {ListType: roleListType=shopping} list delete {TaskContent=dog food}
+- {ListType: roleListType=shopping} list delete {TaskContent=eggs}
+- {ListType: roleListType=shopping} list delete {TaskContent=milk}
+- take {TaskContent=coffee} off my {ListType: roleListType=groceries} list
+- take {TaskContent=lemons and onions} off my {ListType: roleListType=shopping} list
+- take {TaskContent=milk} off {ListType: roleListType=grocery} list
+- take {TaskContent=socks and shoes} off my {ListType: roleListType=shopping} list
+- {ListType: roleListType=todo} list delete {TaskContent=paris vacation}
 
 # ShowToDo
-- access my {listType: roleListType=shopping} list
-- access my {listType: roleListType=to do} list
-- access the {listType: roleListType=groceries} list
-- {containsAll=all} {listType: roleListType=shopping} list
-- bring up {containsAll=everything} on my {listType: roleListType=shopping} list
-- bring up {listType: roleListType=grocery} notes
-- bring up {listType: roleListType=shopping} note
-- browse my {listType: roleListType=groceries}
-- can you show my {listType: roleListType=to do} list
+- access my {ListType: roleListType=shopping} list
+- access my {ListType: roleListType=to do} list
+- access the {ListType: roleListType=groceries} list
+- {ContainsAll=all} {ListType: roleListType=shopping} list
+- bring up {ContainsAll=everything} on my {ListType: roleListType=shopping} list
+- bring up {ListType: roleListType=grocery} notes
+- bring up {ListType: roleListType=shopping} note
+- browse my {ListType: roleListType=groceries}
+- can you show my {ListType: roleListType=to do} list
 - check my task list
-- check my {listType: roleListType=to do} list
-- display {containsAll=all} notes from last month
-- display {listType: roleListType=groceries} list
-- display notes with {listType: roleListType=groceries}
-- display {listType: roleListType=shopping} list
+- check my {ListType: roleListType=to do} list
+- display {ContainsAll=all} notes from last month
+- display {ListType: roleListType=groceries} list
+- display notes with {ListType: roleListType=groceries}
+- display {ListType: roleListType=shopping} list
 - display tasks note
-- display {listType: roleListType=todo} list
-- do i have a list called {listType: roleListType=grocery} list
+- display {ListType: roleListType=todo} list
+- do i have a list called {ListType: roleListType=grocery} list
 - do i have any lists
-- find list about {listType: roleListType=shopping}
-- find my {listType: roleListType=grocery} items i saved on saturday
-- find my {listType: roleListType=shopping} list
-- find note labeled {listType: roleListType=grocery}
-- find notes called {listType: roleListType=grocery}
-- find notes for {listType: roleListType=grocery} {listType: roleListType=shopping}
-- find notes with {listType: roleListType=groceries}
-- find {listType: roleListType=shopping}
-- find task list on {listType: roleListType=shopping}
-- find the list i create for {listType: roleListType=shopping}
-- find the {listType: roleListType=to do list} for me
-- get work items on my {listType: roleListType=todo} list
+- find list about {ListType: roleListType=shopping}
+- find my {ListType: roleListType=grocery} items i saved on saturday
+- find my {ListType: roleListType=shopping} list
+- find note labeled {ListType: roleListType=grocery}
+- find notes called {ListType: roleListType=grocery}
+- find notes for {ListType: roleListType=grocery} {ListType: roleListType=shopping}
+- find notes with {ListType: roleListType=groceries}
+- find {ListType: roleListType=shopping}
+- find task list on {ListType: roleListType=shopping}
+- find the list i create for {ListType: roleListType=shopping}
+- find the {ListType: roleListType=to do list} for me
+- get work items on my {ListType: roleListType=todo} list
 - help access my personal list
-- help show my {listType: roleListType=to do} list
+- help show my {ListType: roleListType=to do} list
 - i have to see my tasks
-- i have to see the {listType: roleListType=grocery} list i created today
-- i want to check my {listType: roleListType=shopping} list
-- i want to see {listType: roleListType=grocery} list
-- is there anything on my {listType: roleListType=to do} list
-- list {listType: roleListType=grocery} notes
-- look at my {listType: roleListType=grocery} list
-- pull {listType: roleListType=grocery} list
-- pull up {listType: roleListType=grocery} list
-- pull up my {listType: roleListType=grocery} list
+- i have to see the {ListType: roleListType=grocery} list i created today
+- i want to check my {ListType: roleListType=shopping} list
+- i want to see {ListType: roleListType=grocery} list
+- is there anything on my {ListType: roleListType=to do} list
+- list {ListType: roleListType=grocery} notes
+- look at my {ListType: roleListType=grocery} list
+- pull {ListType: roleListType=grocery} list
+- pull up {ListType: roleListType=grocery} list
+- pull up my {ListType: roleListType=grocery} list
 - pull up my notes
-- pull up {listType: roleListType=to do} list
-- read aloud my {listType: roleListType=grocery} list
+- pull up {ListType: roleListType=to do} list
+- read aloud my {ListType: roleListType=grocery} list
 - read out my tasks
-- review {listType: roleListType=grocery} list
-- {listType: roleListType=shopping} list
-- show {containsAll=all} my {listType: roleListType=shopping} list
-- show me {containsAll=all} tasks
-- show my {listType: roleListType=to do} list
-- show my {listType: roleListType=to dos}
-- show my {listType: roleListType=todos}
-- take me to my {listType: roleListType=shopping} list
-- view my {listType: roleListType=grocery} list
-- view {listType: roleListType=shopping} list
-- what about {listType: roleListType=grocery} list
+- review {ListType: roleListType=grocery} list
+- {ListType: roleListType=shopping} list
+- show {ContainsAll=all} my {ListType: roleListType=shopping} list
+- show me {ContainsAll=all} tasks
+- show my {ListType: roleListType=to do} list
+- show my {ListType: roleListType=to dos}
+- show my {ListType: roleListType=todos}
+- take me to my {ListType: roleListType=shopping} list
+- view my {ListType: roleListType=grocery} list
+- view {ListType: roleListType=shopping} list
+- what about {ListType: roleListType=grocery} list
 - what am i going to do next
-- what are my notes for the {listType: roleListType=grocery} store
-- what are my tasks for {listType: roleListType=todo}
-- what do i have to buy on the {listType: roleListType=shopping} list
-- what do i need to buy in the {listType: roleListType=shopping} list
-- what is on my {listType: roleListType=shopping} list
-- what is the last task on my {listType: roleListType=to do} list for tomorow
-- where is the {listType: roleListType=grocery} {listType: roleListType=shopping} notes i worked on last night
-- would you bring up my new {listType: roleListType=grocery} notes
+- what are my notes for the {ListType: roleListType=grocery} store
+- what are my tasks for {ListType: roleListType=todo}
+- what do i have to buy on the {ListType: roleListType=shopping} list
+- what do i need to buy in the {ListType: roleListType=shopping} list
+- what is on my {ListType: roleListType=shopping} list
+- what is the last task on my {ListType: roleListType=to do} list for tomorow
+- where is the {ListType: roleListType=grocery} {ListType: roleListType=shopping} notes i worked on last night
+- would you bring up my new {ListType: roleListType=grocery} notes

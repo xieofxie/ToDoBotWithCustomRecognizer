@@ -154,7 +154,7 @@
       "$designer": {
         "id": "723797"
       },
-      "intent": "AddToDo",
+      "condition": "#AddToDo.Score > 0.5",
       "actions": [
         {
           "$type": "Microsoft.BeginDialog",
@@ -165,13 +165,15 @@
           "activityProcessed": true,
           "dialog": "AddToDo"
         }
-      ]
+      ],
+      "intent": "AddToDo"
     },
     {
       "$type": "Microsoft.OnIntent",
       "$designer": {
         "id": "332735"
       },
+      "condition": "#DeleteToDo.Score > 0.5",
       "actions": [
         {
           "$type": "Microsoft.BeginDialog",
@@ -189,6 +191,7 @@
       "$designer": {
         "id": "877754"
       },
+      "condition": "#ShowToDo.Score > 0.5",
       "actions": [
         {
           "$type": "Microsoft.BeginDialog",

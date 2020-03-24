@@ -2,8 +2,7 @@
   "$type": "Microsoft.AdaptiveDialog",
   "$designer": {
     "id": "950825",
-    "name": "AddToDo",
-    "description": ""
+    "name": "AddToDo"
   },
   "autoEndDialog": "true",
   "defaultResultProperty": "dialog.result",
@@ -12,7 +11,6 @@
       "$type": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
-        "description": "",
         "id": "692581"
       },
       "actions": [
@@ -25,7 +23,7 @@
           "prompt": "${bfdprompt-662396()}",
           "maxTurnCount": 3,
           "property": "dialog.item",
-          "value": "=@itemTitle",
+          "value": "=@TaskContent",
           "alwaysPrompt": false,
           "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@itemTitle"
         },
@@ -46,7 +44,7 @@
               "prompt": "${bfdprompt-690824()}",
               "maxTurnCount": 3,
               "property": "dialog.listType",
-              "value": "=@listType",
+              "value": "=@ListType",
               "alwaysPrompt": false,
               "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@listType",
               "outputFormat": "value",
