@@ -8,7 +8,7 @@
   },
   "autoEndDialog": true,
   "defaultResultProperty": "dialog.result",
-  "recognizer": "Main.lu",
+  "recognizer": "ToDoBotWithLuisSample-0.lu",
   "triggers": [
     {
       "$type": "Microsoft.OnConversationUpdateActivity",
@@ -206,5 +206,5 @@
     }
   ],
   "$schema": "https://raw.githubusercontent.com/microsoft/BotFramework-Composer/stable/Composer/packages/server/schemas/sdk.schema",
-  "generator": "Main.lg"
+  "generator": "ToDoBotWithLuisSample-0.lg"
 }
