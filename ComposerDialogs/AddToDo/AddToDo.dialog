@@ -15,6 +15,23 @@
       },
       "actions": [
         {
+          "$type": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "055724",
+            "name": "Set properties"
+          },
+          "assignments": [
+            {
+              "property": "dialog.taskContent",
+              "value": "=coalesce(@TaskContent, $taskContent)"
+            },
+            {
+              "property": "dialog.listType",
+              "value": "=coalesce(@ListType, @roleListType, $listType)"
+            }
+          ]
+        },
+        {
           "$type": "Microsoft.TextInput",
           "$designer": {
             "id": "662396",
@@ -22,57 +39,47 @@
           },
           "prompt": "${bfdprompt-662396()}",
           "maxTurnCount": 3,
-          "property": "dialog.item",
+          "property": "dialog.taskContent",
           "value": "=@TaskContent",
           "alwaysPrompt": false,
-          "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@itemTitle"
+          "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.9"
         },
         {
-          "$type": "Microsoft.IfCondition",
+          "$type": "Microsoft.ChoiceInput",
           "$designer": {
-            "id": "413742",
-            "name": "Branch: If/Else"
+            "id": "456695",
+            "name": "Multiple choice"
           },
-          "condition": "dialog.listType == null",
-          "actions": [
+          "prompt": "${bfdprompt-456695()}",
+          "maxTurnCount": 3,
+          "property": "dialog.listType",
+          "value": "=coalesce(@ListType, @roleListType)",
+          "alwaysPrompt": false,
+          "allowInterruptions": "!@listType",
+          "outputFormat": "value",
+          "choices": [
             {
-              "$type": "Microsoft.ChoiceInput",
-              "$designer": {
-                "id": "690824",
-                "name": "Multiple choice"
-              },
-              "prompt": "${bfdprompt-690824()}",
-              "maxTurnCount": 3,
-              "property": "dialog.listType",
-              "value": "=@ListType",
-              "alwaysPrompt": false,
-              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#AddToDo && !@listType",
-              "outputFormat": "value",
-              "choices": [
-                {
-                  "value": "Shopping"
-                },
-                {
-                  "value": "Todo"
-                },
-                {
-                  "value": "Grocery"
-                }
-              ],
-              "appendChoices": "true",
-              "defaultLocale": "en-us",
-              "style": "Auto",
-              "choiceOptions": {
-                "inlineSeparator": ", ",
-                "inlineOr": " or ",
-                "inlineOrMore": ", or ",
-                "includeNumbers": true
-              },
-              "recognizerOptions": {
-                "noValue": false
-              }
+              "value": "Shopping"
+            },
+            {
+              "value": "Todo"
+            },
+            {
+              "value": "Grocery"
             }
-          ]
+          ],
+          "appendChoices": "true",
+          "defaultLocale": "en-us",
+          "style": "Auto",
+          "choiceOptions": {
+            "inlineSeparator": ", ",
+            "inlineOr": " or ",
+            "inlineOrMore": ", or ",
+            "includeNumbers": true
+          },
+          "recognizerOptions": {
+            "noValue": false
+          }
         },
         {
           "$type": "Microsoft.EditArray",
@@ -82,7 +89,7 @@
           },
           "changeType": "Push",
           "itemsProperty": "user.taskLists[dialog.listType]",
-          "value": "=dialog.item"
+          "value": "=dialog.taskContent"
         },
         {
           "$type": "Microsoft.SendActivity",
@@ -91,25 +98,10 @@
             "name": "Send a response"
           },
           "activity": "${bfdactivity-056548()}"
-        },
-        {
-          "$type": "Microsoft.DeleteProperty",
-          "$designer": {
-            "id": "777450",
-            "name": "Delete a Property"
-          },
-          "property": "dialog.item"
-        },
-        {
-          "$type": "Microsoft.DeleteProperty",
-          "$designer": {
-            "id": "891304",
-            "name": "Delete a Property"
-          },
-          "property": "dialog.listType"
         }
       ]
     }
   ],
-  "generator": "AddToDo.lg"
+  "generator": "AddToDo.lg",
+  "recognizer": "AddToDo.lu"
 }

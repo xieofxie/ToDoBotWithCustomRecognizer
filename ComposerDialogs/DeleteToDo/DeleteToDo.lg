@@ -1,8 +1,5 @@
 [import](common.lg)
 
-# bfdprompt-133430()
-- Which list do you want to remove an item from?
-
 # bfdactivity-012019()
 - ${List-readback(user.taskLists, dialog.listType)}
 
@@ -23,3 +20,6 @@
     Text = ${Items-readback()}
     ${Welcome-Actions()}
 ]
+
+# bfdprompt-098282()
+- Which list do you want to remove an item from?

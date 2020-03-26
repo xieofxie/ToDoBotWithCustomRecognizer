@@ -15,57 +15,60 @@
       },
       "actions": [
         {
-          "$type": "Microsoft.IfCondition",
+          "$type": "Microsoft.SetProperties",
           "$designer": {
-            "id": "209420",
-            "name": "Branch: If/Else"
+            "id": "725895",
+            "name": "Set properties"
           },
-          "condition": "dialog.listType == null",
-          "actions": [
+          "assignments": [
             {
-              "$type": "Microsoft.ChoiceInput",
-              "$designer": {
-                "id": "234956",
-                "name": "Multiple choice"
-              },
-              "prompt": "${bfdprompt-234956()}",
-              "maxTurnCount": 3,
-              "property": "dialog.listType",
-              "value": "=@ListType",
-              "alwaysPrompt": false,
-              "allowInterruptions": "max(select(turn.recognized.intents,x,x.value.score)) > 0.7 && !#ShowToDo && !@ListType",
-              "outputFormat": "value",
-              "choices": [
-                {
-                  "value": "Todo"
-                },
-                {
-                  "value": "Shopping"
-                },
-                {
-                  "value": "Grocery"
-                },
-                {
-                  "value": "All"
-                },
-                {
-                  "value": "Cancel"
-                }
-              ],
-              "appendChoices": "true",
-              "defaultLocale": "en-us",
-              "style": "Auto",
-              "choiceOptions": {
-                "inlineSeparator": ", ",
-                "inlineOr": " or ",
-                "inlineOrMore": ", or ",
-                "includeNumbers": true
-              },
-              "recognizerOptions": {
-                "noValue": false
-              }
+              "property": "$listType",
+              "value": "=coalesce(@ListType, @roleListType, $listType)"
             }
           ]
+        },
+        {
+          "$type": "Microsoft.ChoiceInput",
+          "$designer": {
+            "id": "807838",
+            "name": "Multiple choice"
+          },
+          "prompt": "${bfdprompt-807838()}",
+          "maxTurnCount": 3,
+          "property": "dialog.listType",
+          "value": "=coalesce(@ListType, @roleListType)",
+          "alwaysPrompt": false,
+          "allowInterruptions": "!@listType",
+          "outputFormat": "value",
+          "choices": [
+            {
+              "value": "Todo"
+            },
+            {
+              "value": "Shopping"
+            },
+            {
+              "value": "Grocery"
+            },
+            {
+              "value": "All"
+            },
+            {
+              "value": "Cancel"
+            }
+          ],
+          "appendChoices": "true",
+          "defaultLocale": "en-us",
+          "style": "Auto",
+          "choiceOptions": {
+            "inlineSeparator": ", ",
+            "inlineOr": " or ",
+            "inlineOrMore": ", or ",
+            "includeNumbers": true
+          },
+          "recognizerOptions": {
+            "noValue": false
+          }
         },
         {
           "$type": "Microsoft.SendActivity",
@@ -74,17 +77,10 @@
             "name": "Send a response"
           },
           "activity": "${bfdactivity-285295()}"
-        },
-        {
-          "$type": "Microsoft.DeleteProperty",
-          "$designer": {
-            "id": "760969",
-            "name": "Delete a Property"
-          },
-          "property": "dialog.listType"
         }
       ]
     }
   ],
-  "generator": "ShowToDo.lg"
+  "generator": "ShowToDo.lg",
+  "recognizer": "ShowToDo.lu"
 }
