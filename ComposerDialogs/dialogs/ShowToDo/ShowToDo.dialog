@@ -85,6 +85,18 @@
           "condition": "dialog.count > 0",
           "actions": [
             {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "GmSvQx"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "GetToDos",
+              "options": {
+                "listType": "${dialog.listType}"
+              },
+              "resultProperty": "dialog.todos"
+            },
+            {
               "$type": "Microsoft.SendActivity",
               "$designer": {
                 "id": "ZEwh72"

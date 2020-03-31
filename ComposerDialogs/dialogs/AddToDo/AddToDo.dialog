@@ -133,25 +133,53 @@
               },
               "$kind": "Microsoft.EndDialog"
             }
+          ],
+          "actions": [
+            {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "Iwe07c"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "AddToList",
+              "options": {
+                "listType": "${dialog.listType}",
+                "taskContent": "${dialog.taskContent}"
+              }
+            },
+            {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "FI0VxH"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "CountTotal",
+              "options": {
+                "listType": "${dialog.listType}"
+              },
+              "resultProperty": "dialog.count"
+            },
+            {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "n-_oVy"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "GetToDos",
+              "options": {
+                "listType": "${dialog.listType}"
+              },
+              "resultProperty": "dialog.todos"
+            },
+            {
+              "$type": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "lxUk-1",
+                "name": "Send a response"
+              },
+              "activity": "${bfdactivity-lxUk-1()}"
+            }
           ]
-        },
-        {
-          "$type": "Microsoft.EditArray",
-          "$designer": {
-            "id": "533164",
-            "name": "Edit an Array Property"
-          },
-          "changeType": "Push",
-          "itemsProperty": "user.taskLists[dialog.listType]",
-          "value": "=dialog.taskContent"
-        },
-        {
-          "$type": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "056548",
-            "name": "Send a response"
-          },
-          "activity": "${bfdactivity-056548()}"
         }
       ]
     }

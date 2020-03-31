@@ -1,0 +1,32 @@
+{
+  "$type": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "P_GsvN",
+    "name": "AddToList"
+  },
+  "$kind": "Microsoft.AdaptiveDialog",
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$type": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "93jzem"
+      },
+      "actions": [
+        {
+          "$type": "Microsoft.EditArray",
+          "$designer": {
+            "id": "DoLneg",
+            "name": "Edit an Array Property"
+          },
+          "changeType": "Push",
+          "itemsProperty": "user.taskLists[dialog.listType]",
+          "value": "=setProperty(setProperty({},\"Topic\",dialog.taskContent),\"IsCompleted\",False)"
+        }
+      ]
+    }
+  ],
+  "generator": "AddToList.lg"
+}

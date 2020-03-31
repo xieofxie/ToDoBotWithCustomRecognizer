@@ -3,9 +3,6 @@
 # bfdprompt-662396()
 - ${AskTaskContentText()}
 
-# bfdactivity-056548()
-- ${AfterTaskAdded(dialog.taskContent, dialog.listType)}
-
 # bfdprompt-456695()
 - Which list should I add **${dialog.taskContent}** to?
 
@@ -40,10 +37,13 @@
 # AfterTaskAdded.Text(TaskContent, ListType)
 - I added ${TaskContent} to your ${ListType} list.
 
-# AfterTaskAdded(TaskContent, ListType)
+# AfterTaskAdded(TaskContent, ListType, TotalNumber, ToDos)
 [Activity
     Text = ${AfterTaskAdded.Text(TaskContent, ListType)}
     Speak = ${AfterTaskAdded.Text(TaskContent, ListType)}
-    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(FTotalNumber(ListType)), FToDos(ListType), False, CheckIconSource(), UncheckIconSource()))}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(TotalNumber), ToDos, False, CheckIconSource(), UncheckIconSource()))}
     InputHint = ignoringInput
 ]
+
+# bfdactivity-lxUk-1()
+- ${AfterTaskAdded(dialog.taskContent, dialog.listType, dialog.count, dialog.todos)}

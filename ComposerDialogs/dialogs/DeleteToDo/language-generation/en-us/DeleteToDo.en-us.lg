@@ -2,7 +2,7 @@
 [import](ShowToDo.lg)
 
 # bfdactivity-012019()
-- ${ShowToDo(dialog.count,dialog.listType,FToDos(dialog.listType))}
+- ${ShowToDo(dialog.count,dialog.listType,dialog.todos)}
 
 # bfdprompt-841583()
 [Activity
@@ -17,7 +17,7 @@
 - ${NoTasksInList()}
 
 # bfdactivity-809470()
-- ${TaskDeleted(False,dialog.listType,dialog.taskContent, dialog.count, FToDos(dialog.listType))}
+- ${TaskDeleted(False,dialog.listType,dialog.deletedItem.Topic, dialog.count, dialog.todos)}
 
 > From DeleteToDo
 
@@ -45,7 +45,7 @@
 [Activity
     Text = ${TaskDeletedText(IsDeleteAll, ListType, TaskContent)}
     Speak = ${TaskDeletedText(IsDeleteAll, ListType, TaskContent)}
-    Attachments = ${json(ShowToDoCard(CardTitle(ListType), TotalNumber, ToDos, False, CheckIconSource(), UncheckIconSource()))}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(TotalNumber), ToDos, False, CheckIconSource(), UncheckIconSource()))}
     InputHint = ignoringInput
 ]
 
@@ -60,3 +60,6 @@
 
 # AfterTaskDeleted.Text(TaskContent, ListType)
 - I deleted ${TaskContent} from your ${ListType} list.
+
+# bfdactivity-CZBp8F()
+- Sorry, I couldn't find the item

@@ -4,7 +4,7 @@
 - What list would you like to see?
 
 # bfdactivity-ZEwh72()
-- ${ShowToDo(dialog.count,dialog.listType,FToDos(dialog.listType))}
+- ${ShowToDo(dialog.count,dialog.listType,dialog.todos)}
 
 # bfdactivity-yD5ABI()
 - ${NoTasksMessage(dialog.listType)}

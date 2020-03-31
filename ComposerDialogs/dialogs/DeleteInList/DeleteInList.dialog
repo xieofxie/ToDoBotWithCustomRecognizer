@@ -1,0 +1,74 @@
+{
+  "$type": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "Uw_CMD",
+    "name": "DeleteInList"
+  },
+  "$kind": "Microsoft.AdaptiveDialog",
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$type": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "Ow6fuR"
+      },
+      "actions": [
+        {
+          "$type": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "iW20uo"
+          },
+          "$kind": "Microsoft.SetProperties",
+          "assignments": [
+            {
+              "property": "dialog.item",
+              "value": "=where(user.taskLists[dialog.listType],iter,iter.Topic==dialog.taskContent)"
+            }
+          ]
+        },
+        {
+          "$type": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "6At6AT"
+          },
+          "$kind": "Microsoft.IfCondition",
+          "condition": "dialog.item==null || count(dialog.item)==0",
+          "actions": [
+            {
+              "$type": "Microsoft.EndDialog",
+              "$designer": {
+                "id": "o7l-iy"
+              },
+              "$kind": "Microsoft.EndDialog",
+              "value": "=null"
+            }
+          ],
+          "elseActions": [
+            {
+              "$type": "Microsoft.EditArray",
+              "$designer": {
+                "id": "Hoykw9",
+                "name": "Edit an Array Property"
+              },
+              "itemsProperty": "user.taskLists[dialog.listType]",
+              "resultProperty": "dialog.itemDeleted",
+              "value": "=dialog.item[0]",
+              "changeType": "remove"
+            },
+            {
+              "$type": "Microsoft.EndDialog",
+              "$designer": {
+                "id": "0xmEXZ"
+              },
+              "$kind": "Microsoft.EndDialog",
+              "value": "=dialog.item[0]"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "DeleteInList.lg"
+}

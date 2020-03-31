@@ -86,8 +86,20 @@
             "id": "713992",
             "name": "Branch: If/Else"
           },
-          "condition": "=dialog.count > 0",
+          "condition": "dialog.count > 0",
           "actions": [
+            {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "1KbyfW"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "GetToDos",
+              "options": {
+                "listType": "${dialog.listType}"
+              },
+              "resultProperty": "dialog.todos"
+            },
             {
               "$type": "Microsoft.SendActivity",
               "$designer": {
@@ -110,15 +122,42 @@
               "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.9"
             },
             {
-              "$type": "Microsoft.EditArray",
+              "$type": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "223973",
-                "name": "Edit an Array Property"
+                "id": "2N-yGS"
               },
-              "changeType": "Remove",
-              "itemsProperty": "user.taskLists[dialog.listType]",
-              "resultProperty": "dialog.itemDeleted",
-              "value": "=dialog.taskContent"
+              "$kind": "Microsoft.BeginDialog",
+              "options": {
+                "listType": "${dialog.listType}",
+                "taskContent": "${dialog.taskContent}"
+              },
+              "dialog": "DeleteInList",
+              "resultProperty": "dialog.deletedItem"
+            },
+            {
+              "$type": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "HSECRw"
+              },
+              "$kind": "Microsoft.IfCondition",
+              "condition": "dialog.deletedItem==null",
+              "actions": [
+                {
+                  "$type": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "CZBp8F"
+                  },
+                  "$kind": "Microsoft.SendActivity",
+                  "activity": "${bfdactivity-CZBp8F()}"
+                },
+                {
+                  "$type": "Microsoft.EndDialog",
+                  "$designer": {
+                    "id": "uOFVmi"
+                  },
+                  "$kind": "Microsoft.EndDialog"
+                }
+              ]
             },
             {
               "$type": "Microsoft.BeginDialog",
@@ -131,6 +170,18 @@
                 "listType": "${dialog.listType}"
               },
               "resultProperty": "dialog.count"
+            },
+            {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "haJenL"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "GetToDos",
+              "options": {
+                "listType": "${dialog.listType}"
+              },
+              "resultProperty": "dialog.todos"
             },
             {
               "$type": "Microsoft.SendActivity",

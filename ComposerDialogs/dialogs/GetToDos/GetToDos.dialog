@@ -1,0 +1,43 @@
+{
+  "$type": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "fN8EU7",
+    "name": "GetToDos"
+  },
+  "$kind": "Microsoft.AdaptiveDialog",
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$type": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "Jc3eSV"
+      },
+      "actions": [
+        {
+          "$type": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "QVoTc2"
+          },
+          "$kind": "Microsoft.SetProperties",
+          "assignments": [
+            {
+              "property": "dialog.result",
+              "value": "=select(indicesAndValues(user.taskLists[dialog.listType]),iter,setProperty(iter.value, \"Id\", iter.index))"
+            }
+          ]
+        },
+        {
+          "$type": "Microsoft.EndDialog",
+          "$designer": {
+            "id": "_utP-l"
+          },
+          "$kind": "Microsoft.EndDialog",
+          "value": "=dialog.result"
+        }
+      ]
+    }
+  ],
+  "generator": "GetToDos.lg"
+}

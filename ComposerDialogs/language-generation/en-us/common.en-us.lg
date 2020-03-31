@@ -84,18 +84,6 @@ ${Help-prefix()}, I have added **${dialog.taskContent}** to your ${dialog
 You have **${count(user.taskLists[dialog.listType])}** items in your ${dialog.listType} list.
 ```
 
-> Custom
-
-# FTotalNumber(listType)
-- ${count(user.taskLists[listType])}
-
-# FToDos(listType)
-- ${select(indicesAndValues(user.taskLists[listType]),iter,FTaskItem(iter.index,iter.value,False))}
-
-# FTaskItem(id, taskContent, com)
-- ${setProperty(setProperty(setProperty({}, "Id", id), "Topic", taskContent), "IsCompleted", com)}
-
-
 > From ToDoMain
 
 # CompletedMessage.Text
