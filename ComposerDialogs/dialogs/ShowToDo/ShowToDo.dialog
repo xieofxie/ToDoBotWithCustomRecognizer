@@ -49,12 +49,6 @@
             },
             {
               "value": "Grocery"
-            },
-            {
-              "value": "All"
-            },
-            {
-              "value": "Cancel"
             }
           ],
           "appendChoices": "true",
@@ -71,12 +65,52 @@
           }
         },
         {
-          "$type": "Microsoft.SendActivity",
+          "$type": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "285295",
-            "name": "Send a response"
+            "id": "ckEHvu"
           },
-          "activity": "${bfdactivity-285295()}"
+          "$kind": "Microsoft.BeginDialog",
+          "dialog": "CountTotal",
+          "options": {
+            "listType": "${dialog.listType}"
+          },
+          "resultProperty": "dialog.count"
+        },
+        {
+          "$type": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "kqY3nC"
+          },
+          "$kind": "Microsoft.IfCondition",
+          "condition": "dialog.count > 0",
+          "actions": [
+            {
+              "$type": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "ZEwh72"
+              },
+              "$kind": "Microsoft.SendActivity",
+              "activity": "${bfdactivity-ZEwh72()}"
+            },
+            {
+              "$type": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "g0kIsI"
+              },
+              "$kind": "Microsoft.SendActivity",
+              "activity": "${bfdactivity-g0kIsI()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$type": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "yD5ABI"
+              },
+              "$kind": "Microsoft.SendActivity",
+              "activity": "${bfdactivity-yD5ABI()}"
+            }
+          ]
         }
       ]
     }

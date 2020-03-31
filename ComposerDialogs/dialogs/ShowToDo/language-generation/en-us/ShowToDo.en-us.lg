@@ -1,10 +1,76 @@
 [import](common.lg)
 
-# bfdactivity-285295()
-[Activity
-    Text = ${Items-readback()}
-    ${Welcome-Actions()}
-]
-
 # bfdprompt-807838()
 - What list would you like to see?
+
+# bfdactivity-ZEwh72()
+- ${ShowToDo(dialog.count,dialog.listType,FToDos(dialog.listType))}
+
+# bfdactivity-yD5ABI()
+- ${NoTasksMessage(dialog.listType)}
+
+# bfdactivity-g0kIsI()
+- ${AskAddOrCompleteTaskMessage()}
+
+> From ShowToDo
+
+# NoTasksMessage.Text(ListType)
+- You don't have anything in your ${ListType} list. Let me know if you want to add an item.
+
+# NoTasksMessage(ListType)
+[Activity
+    Text = ${NoTasksMessage.Text(ListType)}
+    Speak = ${NoTasksMessage.Text(ListType)}
+    InputHint = acceptingInput
+]
+
+# ShowToDo(AllTasksCount, ListType, ToDos)
+[Activity
+    Text = ${ShowToDoText(AllTasksCount, ListType, ToDos)}
+    Speak = ${ShowToDoText(AllTasksCount, ListType, ToDos)}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(AllTasksCount), ToDos, False, CheckIconSource(), UncheckIconSource()))}
+    InputHint = ignoringInput
+]
+
+# ShowToDoText(AllTasksCount, ListType, ToDos)
+- IF: ${AllTasksCount <= count(ToDos)}
+  - ${ShowToDoTextForSinglePage(ToDos)}
+- ELSE:
+  - ${ShowToDoTextForMultiPage(AllTasksCount, ListType, ToDos)}
+
+  # ShowToDoTextForSinglePage(ToDos)
+- IF: ${count(ToDos) == 1}
+  - ${LatestTask.Text()}
+- ELSE:
+  - ${LatestTasks.Text()}
+
+# LatestTask.Text
+- The most recent item is:
+
+# LatestTasks.Text
+- The most recent items are:
+
+# ShowToDoTextForMultiPage(AllTasksCount, ListType, ToDos)
+- ${CardSummary(AllTasksCount, ListType, ToDos)}
+
+# CardSummary(AllTasksCount, ListType, ToDos)
+- IF: ${AllTasksCount == 1}
+  - ${CardSummaryMessageForSingleTask.Text(ListType)}
+- ELSE:
+  - ${CardSummaryMessageForMultipleTasks.Text(AllTasksCount, ListType, ToDos)}
+
+  # CardSummaryMessageForSingleTask.Text(ListType)
+- You have 1 item on your ${ListType} list:  
+
+# CardSummaryMessageForMultipleTasks.Text(AllTasksCount, ListType, ToDos)
+- You have ${AllTasksCount} items on your ${ListType} list. Here are the ${count(ToDos)} most recent:
+
+# AskAddOrCompleteTaskMessage.Text
+- Let me know if you want to add an item or mark one as complete.
+
+# AskAddOrCompleteTaskMessage()
+[Activity
+    Text = ${AskAddOrCompleteTaskMessage.Text()}
+    Speak = ${AskAddOrCompleteTaskMessage.Text()}
+    InputHint = ignoringInput
+]
