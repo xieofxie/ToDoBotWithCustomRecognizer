@@ -2,10 +2,11 @@
   "$type": "Microsoft.AdaptiveDialog",
   "$designer": {
     "id": "950825",
-    "name": "AddToDo"
+    "name": "AddToDoNewName"
   },
   "autoEndDialog": "true",
   "defaultResultProperty": "dialog.result",
+  "recognizer": "AddToDo.lu",
   "triggers": [
     {
       "$type": "Microsoft.OnBeginDialog",
@@ -42,7 +43,7 @@
           "property": "dialog.taskContent",
           "value": "=@TaskContent",
           "alwaysPrompt": false,
-          "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.9"
+          "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.5"
         },
         {
           "$type": "Microsoft.ChoiceInput",
@@ -82,6 +83,59 @@
           }
         },
         {
+          "$type": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "lRsuXt"
+          },
+          "$kind": "Microsoft.BeginDialog",
+          "dialog": "CheckDuplicate",
+          "resultProperty": "dialog.duplicate",
+          "options": {
+            "taskContent": "${dialog.taskContent}",
+            "listType": "${dialog.listType}"
+          }
+        },
+        {
+          "$type": "Microsoft.ConfirmInput",
+          "$designer": {
+            "id": "sIgrfn"
+          },
+          "$kind": "Microsoft.ConfirmInput",
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "defaultLocale": "en-us",
+          "style": "Auto",
+          "prompt": "${bfdprompt-sIgrfn()}",
+          "value": "=if(dialog.duplicate,null,True)",
+          "property": "dialog.addDuplicate"
+        },
+        {
+          "$type": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "LqhLN9"
+          },
+          "$kind": "Microsoft.IfCondition",
+          "condition": "dialog.addDuplicate",
+          "elseActions": [
+            {
+              "$type": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "QRekYt"
+              },
+              "$kind": "Microsoft.SendActivity",
+              "activity": "${bfdactivity-QRekYt()}"
+            },
+            {
+              "$type": "Microsoft.EndDialog",
+              "$designer": {
+                "id": "-fYnxb"
+              },
+              "$kind": "Microsoft.EndDialog"
+            }
+          ]
+        },
+        {
           "$type": "Microsoft.EditArray",
           "$designer": {
             "id": "533164",
@@ -102,6 +156,5 @@
       ]
     }
   ],
-  "generator": "AddToDo.lg",
-  "recognizer": "AddToDo.lu"
+  "generator": "AddToDo.lg"
 }

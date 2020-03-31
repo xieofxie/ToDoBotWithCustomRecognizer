@@ -1,0 +1,43 @@
+{
+  "$type": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "lIzFgG",
+    "name": "CheckDuplicate"
+  },
+  "$kind": "Microsoft.AdaptiveDialog",
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$type": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "51ssH0"
+      },
+      "actions": [
+        {
+          "$type": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "NzceEA"
+          },
+          "$kind": "Microsoft.SetProperties",
+          "assignments": [
+            {
+              "property": "dialog.result",
+              "value": "=user.taskLists && user.taskLists[dialog.listType] && contains(user.taskLists[dialog.listType], dialog.taskContent)"
+            }
+          ]
+        },
+        {
+          "$type": "Microsoft.EndDialog",
+          "$designer": {
+            "id": "elxItr"
+          },
+          "$kind": "Microsoft.EndDialog",
+          "value": "=dialog.result"
+        }
+      ]
+    }
+  ],
+  "generator": "CheckDuplicate.lg"
+}

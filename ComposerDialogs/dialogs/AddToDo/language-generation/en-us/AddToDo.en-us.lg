@@ -1,13 +1,49 @@
 [import](common.lg)
 
 # bfdprompt-662396()
-[Activity
-    Text = Ok, what would you like to add?
-    SuggestedActions = Help | Cancel
-]
+- ${AskTaskContentText()}
 
 # bfdactivity-056548()
-- ${Add-Todo-Text()}
+- ${AfterTaskAdded(dialog.taskContent, dialog.listType)}
 
 # bfdprompt-456695()
 - Which list should I add **${dialog.taskContent}** to?
+
+# bfdprompt-sIgrfn()
+- ${AskAddDupTaskPrompt(dialog.taskContent)}
+
+# bfdactivity-QRekYt()
+- ${CompletedMessage()}
+
+> From AddToDo
+
+# AskTaskContentText.Text
+- OK, what do you want to add?
+
+# AskTaskContentText
+[Activity
+    Text = ${AskTaskContentText.Text()}
+    Speak = ${AskTaskContentText.Text()}
+    InputHint = expectingInput
+]
+
+# AskAddDupTaskPrompt.Text(TaskContent)
+- You already have ${TaskContent} on your list. Do you still want to add it?
+
+# AskAddDupTaskPrompt(TaskContent)
+[Activity
+    Text = ${AskAddDupTaskPrompt.Text(TaskContent)}
+    Speak = ${AskAddDupTaskPrompt.Text(TaskContent)}
+    InputHint = expectingInput
+]
+
+# AfterTaskAdded.Text(TaskContent, ListType)
+- I added ${TaskContent} to your ${ListType} list.
+
+# AfterTaskAdded(TaskContent, ListType)
+[Activity
+    Text = ${AfterTaskAdded.Text(TaskContent, ListType)}
+    Speak = ${AfterTaskAdded.Text(TaskContent, ListType)}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(FTotalNumber(ListType)), FToDos(ListType), False, CheckIconSource(), UncheckIconSource()))}
+    InputHint = ignoringInput
+]
