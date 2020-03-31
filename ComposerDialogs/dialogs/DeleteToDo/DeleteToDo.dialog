@@ -69,12 +69,24 @@
           }
         },
         {
+          "$type": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "WUBz7T"
+          },
+          "$kind": "Microsoft.BeginDialog",
+          "dialog": "CountTotal",
+          "options": {
+            "listType": "${dialog.listType}"
+          },
+          "resultProperty": "dialog.count"
+        },
+        {
           "$type": "Microsoft.IfCondition",
           "$designer": {
             "id": "713992",
             "name": "Branch: If/Else"
           },
-          "condition": "user.taskLists && user.taskLists[dialog.listType] && count(user.taskLists[dialog.listType]) > 0",
+          "condition": "=dialog.count > 0",
           "actions": [
             {
               "$type": "Microsoft.SendActivity",
@@ -105,8 +117,20 @@
               },
               "changeType": "Remove",
               "itemsProperty": "user.taskLists[dialog.listType]",
-              "resultProperty": "turn.itemDeleted",
+              "resultProperty": "dialog.itemDeleted",
               "value": "=dialog.taskContent"
+            },
+            {
+              "$type": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "THbNdd"
+              },
+              "$kind": "Microsoft.BeginDialog",
+              "dialog": "CountTotal",
+              "options": {
+                "listType": "${dialog.listType}"
+              },
+              "resultProperty": "dialog.count"
             },
             {
               "$type": "Microsoft.SendActivity",

@@ -122,6 +122,18 @@ You have **${count(user.taskLists[dialog.listType])}** items in your ${dia
 # CardNumber(number)
 - ${if(number==1,'1 Item',number + ' Items')}
 
+> From ToDoShared
+
+# NoTasksInList.Text
+- Your list is empty.
+
+# NoTasksInList
+[Activity
+    Text = ${NoTasksInList.Text()}
+    Speak = ${NoTasksInList.Text()}
+    InputHint = acceptingInput
+]
+
 > From IconImageSource
 
 # CheckIconSource

@@ -1,7 +1,8 @@
 [import](common.lg)
+[import](ShowToDo.lg)
 
 # bfdactivity-012019()
-- ${List-readback(user.taskLists, dialog.listType)}
+- ${ShowToDo(dialog.count,dialog.listType,FToDos(dialog.listType))}
 
 # bfdprompt-841583()
 [Activity
@@ -9,17 +10,53 @@
     SuggestedActions = Help | Cancel
 ]
 
-# bfdactivity-809470()
-[Activity
-    Text = ${Delete-Items-readback()}
-    ${Welcome-Actions()}
-]
+# bfdprompt-098282()
+- ${ListTypePromptForDelete()}
 
 # bfdactivity-689712()
+- ${NoTasksInList()}
+
+# bfdactivity-809470()
+- ${TaskDeleted(False,dialog.listType,dialog.taskContent, dialog.count, FToDos(dialog.listType))}
+
+> From DeleteToDo
+
+# ListTypePromptForDelete.Text
+- Do you want to delete something from your To Do, Shopping, or Grocery list?
+
+# ListTypePromptForDelete
 [Activity
-    Text = ${Items-readback()}
-    ${Welcome-Actions()}
+    Text = ${ListTypePromptForDelete.Text()}
+    Speak = ${ListTypePromptForDelete.Text()}
+    InputHint = expectingInput
 ]
 
-# bfdprompt-098282()
-- Which list do you want to remove an item from?
+# AskTaskIndexRetryForDelete.Text
+- Sorry, I couldn't find the item. Let's try again, what do you want to delete?
+
+# AskTaskIndexRetryForDelete
+[Activity
+    Text = ${AskTaskIndexRetryForDelete.Text()}
+    Speak = ${AskTaskIndexRetryForDelete.Text()}
+    InputHint = expectingInput
+]
+
+# TaskDeleted(IsDeleteAll, ListType, TaskContent, TotalNumber, ToDos)
+[Activity
+    Text = ${TaskDeletedText(IsDeleteAll, ListType, TaskContent)}
+    Speak = ${TaskDeletedText(IsDeleteAll, ListType, TaskContent)}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), TotalNumber, ToDos, False, CheckIconSource(), UncheckIconSource()))}
+    InputHint = ignoringInput
+]
+
+# TaskDeletedText(IsDeleteAll, ListType, TaskContent)
+- IF: ${IsDeleteAll == true}
+  - ${AfterAllTasksDeleted.Text(ListType)}
+- ELSE:
+  - ${AfterTaskDeleted.Text(TaskContent, ListType)}
+
+# AfterAllTasksDeleted.Text(ListType)
+- I cleared your ${ListType} list.
+
+# AfterTaskDeleted.Text(TaskContent, ListType)
+- I deleted ${TaskContent} from your ${ListType} list.
