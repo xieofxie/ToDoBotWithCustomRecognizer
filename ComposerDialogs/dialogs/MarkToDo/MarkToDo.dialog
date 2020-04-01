@@ -1,8 +1,8 @@
 {
   "$kind": "Microsoft.AdaptiveDialog",
   "$designer": {
-    "id": "380079",
-    "name": "DeleteToDo"
+    "id": "MSnMKx",
+    "name": "MarkToDo"
   },
   "autoEndDialog": "true",
   "defaultResultProperty": "dialog.result",
@@ -11,13 +11,13 @@
       "$kind": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
-        "id": "138705"
+        "id": "Wgpk4J"
       },
       "actions": [
         {
           "$kind": "Microsoft.SetProperties",
           "$designer": {
-            "id": "749630",
+            "id": "n_toQu",
             "name": "Set properties"
           },
           "assignments": [
@@ -34,10 +34,10 @@
         {
           "$kind": "Microsoft.ChoiceInput",
           "$designer": {
-            "id": "098282",
+            "id": "5iE8DA",
             "name": "Multiple choice"
           },
-          "prompt": "${bfdprompt-098282()}",
+          "prompt": "${bfdprompt-5iE8DA()}",
           "maxTurnCount": 3,
           "property": "dialog.listType",
           "value": "=coalesce(@ListType, @roleListType)",
@@ -71,9 +71,8 @@
         {
           "$kind": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "WUBz7T"
+            "id": "2bgaHn"
           },
-          "$kind": "Microsoft.BeginDialog",
           "dialog": "CountTotal",
           "options": {
             "listType": "${dialog.listType}"
@@ -83,7 +82,7 @@
         {
           "$kind": "Microsoft.IfCondition",
           "$designer": {
-            "id": "713992",
+            "id": "CcIvXD",
             "name": "Branch: If/Else"
           },
           "condition": "dialog.count > 0",
@@ -91,9 +90,8 @@
             {
               "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "1KbyfW"
+                "id": "IxamhV"
               },
-              "$kind": "Microsoft.BeginDialog",
               "dialog": "GetToDos",
               "options": {
                 "listType": "${dialog.listType}"
@@ -103,18 +101,18 @@
             {
               "$kind": "Microsoft.SendActivity",
               "$designer": {
-                "id": "012019",
+                "id": "VI9Jwf",
                 "name": "Send a response"
               },
-              "activity": "${bfdactivity-012019()}"
+              "activity": "${bfdactivity-VI9Jwf()}"
             },
             {
               "$kind": "Microsoft.TextInput",
               "$designer": {
-                "id": "841583",
+                "id": "wAvK0n",
                 "name": "Text input"
               },
-              "prompt": "${bfdprompt-841583()}",
+              "prompt": "${bfdprompt-wAvK0n()}",
               "maxTurnCount": 3,
               "property": "dialog.taskContent",
               "value": "=@TaskContent",
@@ -124,47 +122,42 @@
             {
               "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "2N-yGS"
+                "id": "iP-vVM"
               },
-              "$kind": "Microsoft.BeginDialog",
               "options": {
                 "listType": "${dialog.listType}",
                 "taskContent": "${dialog.taskContent}"
               },
-              "dialog": "DeleteInList",
-              "resultProperty": "dialog.deletedItem"
+              "dialog": "MarkInList",
+              "resultProperty": "dialog.markedItem"
             },
             {
               "$kind": "Microsoft.IfCondition",
               "$designer": {
-                "id": "HSECRw"
+                "id": "gj_NXG"
               },
-              "$kind": "Microsoft.IfCondition",
-              "condition": "dialog.deletedItem==null",
+              "condition": "dialog.markedItem==null",
               "actions": [
                 {
                   "$kind": "Microsoft.SendActivity",
                   "$designer": {
-                    "id": "CZBp8F"
+                    "id": "xQ7IEd"
                   },
-                  "$kind": "Microsoft.SendActivity",
-                  "activity": "${bfdactivity-CZBp8F()}"
+                  "activity": "${bfdactivity-xQ7IEd()}"
                 },
                 {
                   "$kind": "Microsoft.EndDialog",
                   "$designer": {
-                    "id": "uOFVmi"
-                  },
-                  "$kind": "Microsoft.EndDialog"
+                    "id": "Q71PI_"
+                  }
                 }
               ]
             },
             {
               "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "THbNdd"
+                "id": "FvZK-2"
               },
-              "$kind": "Microsoft.BeginDialog",
               "dialog": "CountTotal",
               "options": {
                 "listType": "${dialog.listType}"
@@ -174,9 +167,8 @@
             {
               "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "haJenL"
+                "id": "PkbTHW"
               },
-              "$kind": "Microsoft.BeginDialog",
               "dialog": "GetToDos",
               "options": {
                 "listType": "${dialog.listType}"
@@ -186,26 +178,25 @@
             {
               "$kind": "Microsoft.SendActivity",
               "$designer": {
-                "id": "809470",
+                "id": "d56H_l",
                 "name": "Send a response"
               },
-              "activity": "${bfdactivity-809470()}"
+              "activity": "${bfdactivity-d56H_l()}"
             }
           ],
           "elseActions": [
             {
               "$kind": "Microsoft.SendActivity",
               "$designer": {
-                "id": "689712",
+                "id": "UTh7g6",
                 "name": "Send a response"
               },
-              "activity": "${bfdactivity-689712()}"
+              "activity": "${bfdactivity-UTh7g6()}"
             }
           ]
         }
       ]
     }
   ],
-  "generator": "DeleteToDo.lg",
-  "recognizer": "DeleteToDo.lu"
+  "generator": "MarkToDo.lg"
 }

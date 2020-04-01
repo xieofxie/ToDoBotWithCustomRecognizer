@@ -373,3 +373,54 @@
 - what is the last task on my {ListType: roleListType=to do} list for tomorow
 - where is the {ListType: roleListType=grocery} {ListType: roleListType=shopping} notes i worked on last night
 - would you bring up my new {ListType: roleListType=grocery} notes
+
+
+# MarkToDo
+- {ContainsAll=all} have been done
+- {ContainsAll=all} have been purchased in the {ListType:roleListType =shopping} list
+- already complete the {ListType:roleListType =shopping} items in the list
+- check off {TaskContent=apples} from list
+- check off {TaskContent=bananas} from my {ListType:roleListType =grocery} list
+- check off {TaskContent=garbage} from {ListType:roleListType =grocery} list
+- check off {TaskContent=meet john at 8 am} from {ListType:roleListType =to do} list
+- check off {TaskContent=shampoo} from {ListType:roleListType =shopping} list as done
+- check the box {TaskContent=shampoo} in my {ListType:roleListType =shopping} list
+- complete {ContainsAll=all}
+- complete {TaskContent=pick up black shoes} in my {ListType:roleListType =to-do} list
+- complete task {TaskContent=go shopping}
+- done with the task {TaskContent=abc} in our {ListType:roleListType =shopping} list
+- done with the task {TaskContent=shopping}
+- done with the task {TaskContent=tapioca starch} in our {ListType:roleListType =shopping} list
+- finish {TaskContent=hikes} on my {ListType:roleListType =to do} list
+- finish {TaskContent=peanuts} on the {ListType:roleListType =shopping} list
+- i have finished the interview which is the last task in my {ListType:roleListType =to do} list
+- let me check off the {ListType:roleListType =groceries} list
+- mark {TaskContent=buy fish} as completed
+- mark {TaskContent=fish} as complete
+- mark {TaskContent=happy} on {ListType:roleListType =to dos} list
+- mark {TaskContent=lemons and onions} in {ListType:roleListType =grocery} list
+- mark {TaskContent=pancake mix} on my {ListType:roleListType =grocery shopping} list
+- mark {TaskContent=peanuts} on my {ListType:roleListType =grocery} list as done
+- mark {TaskContent=peanuts} on my {ListType:roleListType =grocery} {ListType:roleListType =shopping} list
+- mark {TaskContent=pick mary up} as finished
+- mark {TaskContent=pick up milk} on my {ListType:roleListType =to-do} list
+- mark {TaskContent=play badminton with tom} as finished
+- mark {TaskContent=salad} on my {ListType:roleListType =grocery} {ListType:roleListType =shopping} list
+- mark {TaskContent=salad} on the {ListType:roleListType =groceries} list
+- mark task {TaskContent=buy a bottle of vinegar} as finished
+- mark task {TaskContent=go running} as finished
+- mark task {TaskContent=read a book} as done
+- mark the first task as completed
+- mark the item {TaskContent=garbage} from {ListType:roleListType =grocery} list
+- mark the task {TaskContent=buy milk} as done
+- mark the task {TaskContent=get some food} as complete
+- mark the task go {ListType:roleListType =shopping} as finished
+- mark the task {TaskContent=reserve a restaurant for tomorrow's dinner} as finished
+- mark the task {TaskContent=visit my grandma} as completed
+- set the {ListType:roleListType =grocery} list as finished
+- set the item as finished
+- {ListType:roleListType =shopping} list completed
+- {ListType:roleListType =shopping} list just done
+- task {TaskContent=train} has been done
+- task completed {TaskContent=buy gum}
+- the 3rd task finished

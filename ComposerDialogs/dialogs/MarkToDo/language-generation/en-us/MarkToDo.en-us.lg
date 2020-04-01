@@ -1,0 +1,55 @@
+[import](common.lg)
+[import](ShowToDo.lg)
+
+# bfdprompt-5iE8DA()
+- ${ListTypePromptForComplete()}
+
+# bfdactivity-VI9Jwf()
+- ${ShowToDo(dialog.count,dialog.listType,dialog.todos)}
+
+# bfdprompt-wAvK0n()
+[Activity
+    Text = Ok, give me the exact title of the todo you would like to mark..
+    SuggestedActions = Help | Cancel
+]
+
+# bfdactivity-xQ7IEd()
+- Sorry, I couldn't find the item
+
+# bfdactivity-d56H_l()
+- ${TaskCompleted(False,dialog.listType,dialog.markedItem.Topic, dialog.count, dialog.todos)}
+
+# bfdactivity-UTh7g6()
+- ${NoTasksInList()}
+
+> From MarkToDo
+
+# ListTypePromptForComplete.Text
+- Do you want to mark an item on your To Do, Shopping, or Grocery list as complete?
+
+# ListTypePromptForComplete
+[Activity
+    Text = ${ListTypePromptForComplete.Text()}
+    Speak = ${ListTypePromptForComplete.Text()}
+    InputHint = expectingInput
+]
+
+# TaskCompleted(IsCompleteAll,ListType,TaskContent,AllTasksCount,ToDos)
+[Activity
+    Text = ${CardSummary(AllTasksCount, ListType, ToDos)}
+    Speak = ${TaskCompletedSpeak(IsCompleteAll, ListType, TaskContent)}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(AllTasksCount), ToDos, False, CheckIconSource(), UncheckIconSource()))}
+    InputHint = ignoringInput
+]
+
+# TaskCompletedSpeak(IsCompleteAll, ListType, TaskContent)
+- IF: ${IsCompleteAll == true}
+  - ${AfterAllTasksCompleted.Text(ListType)}
+- ELSE:
+  - ${AfterTaskCompleted.Text(TaskContent, ListType)}
+
+  # AfterAllTasksCompleted.Text(ListType)
+- I marked all items on your ${ListType} list as complete.
+
+# AfterTaskCompleted.Text(TaskContent, ListType)
+- OK, I marked ${TaskContent} on your ${ListType} list as complete.

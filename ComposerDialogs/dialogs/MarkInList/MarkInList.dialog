@@ -1,8 +1,8 @@
 {
   "$kind": "Microsoft.AdaptiveDialog",
   "$designer": {
-    "id": "Uw_CMD",
-    "name": "DeleteInList"
+    "id": "P7FWNo",
+    "name": "MarkInList"
   },
   "autoEndDialog": "true",
   "defaultResultProperty": "dialog.result",
@@ -11,52 +11,65 @@
       "$kind": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
-        "id": "Ow6fuR"
+        "id": "jBTSTb"
       },
       "actions": [
         {
           "$kind": "Microsoft.SetProperties",
           "$designer": {
-            "id": "iW20uo"
+            "id": "_UbYdb"
           },
           "assignments": [
             {
               "property": "dialog.item",
-              "value": "=where(user.taskLists[dialog.listType],iter,iter.Topic==dialog.taskContent)"
+              "value": "=where(indicesAndValues(user.taskLists[dialog.listType]),iter,iter.value.Topic==dialog.taskContent)"
             }
           ]
         },
         {
           "$kind": "Microsoft.IfCondition",
           "$designer": {
-            "id": "6At6AT"
+            "id": "9FQ0WR"
           },
           "condition": "dialog.item==null || count(dialog.item)==0",
           "actions": [
             {
               "$kind": "Microsoft.EndDialog",
               "$designer": {
-                "id": "o7l-iy"
+                "id": "VhV5Hb"
               },
               "value": "=null"
             }
           ],
           "elseActions": [
             {
-              "$kind": "Microsoft.EditArray",
+              "$kind": "Microsoft.SetProperties",
               "$designer": {
-                "id": "Hoykw9",
-                "name": "Edit an Array Property"
+                "id": "Ccvh-9"
               },
-              "itemsProperty": "user.taskLists[dialog.listType]",
-              "resultProperty": "dialog.itemDeleted",
-              "value": "=dialog.item[0]",
-              "changeType": "remove"
+              "assignments": [
+                {
+                  "property": "dialog.item[0].value.IsCompleted",
+                  "value": "=True"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "w-vJxo"
+              },
+              "assignments": [
+                {
+                  "property": "user.taskLists[dialog.listType][dialog.item[0].index]",
+                  "value": "=dialog.item[0].value"
+                }
+              ]
             },
             {
               "$kind": "Microsoft.EndDialog",
               "$designer": {
-                "id": "0xmEXZ"
+                "id": "S8ID-l"
               },
               "value": "=dialog.item[0]"
             }
@@ -65,5 +78,5 @@
       ]
     }
   ],
-  "generator": "DeleteInList.lg"
+  "generator": "MarkInList.lg"
 }

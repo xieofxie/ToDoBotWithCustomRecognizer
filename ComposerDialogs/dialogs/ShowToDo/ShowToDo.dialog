@@ -1,5 +1,5 @@
 {
-  "$type": "Microsoft.AdaptiveDialog",
+  "$kind": "Microsoft.AdaptiveDialog",
   "$designer": {
     "id": "107562",
     "name": "ShowToDo"
@@ -8,14 +8,14 @@
   "defaultResultProperty": "dialog.result",
   "triggers": [
     {
-      "$type": "Microsoft.OnBeginDialog",
+      "$kind": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
         "id": "180122"
       },
       "actions": [
         {
-          "$type": "Microsoft.SetProperties",
+          "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "725895",
             "name": "Set properties"
@@ -28,7 +28,7 @@
           ]
         },
         {
-          "$type": "Microsoft.ChoiceInput",
+          "$kind": "Microsoft.ChoiceInput",
           "$designer": {
             "id": "807838",
             "name": "Multiple choice"
@@ -65,7 +65,7 @@
           }
         },
         {
-          "$type": "Microsoft.BeginDialog",
+          "$kind": "Microsoft.BeginDialog",
           "$designer": {
             "id": "ckEHvu"
           },
@@ -77,7 +77,7 @@
           "resultProperty": "dialog.count"
         },
         {
-          "$type": "Microsoft.IfCondition",
+          "$kind": "Microsoft.IfCondition",
           "$designer": {
             "id": "kqY3nC"
           },
@@ -85,7 +85,7 @@
           "condition": "dialog.count > 0",
           "actions": [
             {
-              "$type": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.BeginDialog",
               "$designer": {
                 "id": "GmSvQx"
               },
@@ -97,7 +97,7 @@
               "resultProperty": "dialog.todos"
             },
             {
-              "$type": "Microsoft.SendActivity",
+              "$kind": "Microsoft.SendActivity",
               "$designer": {
                 "id": "ZEwh72"
               },
@@ -105,7 +105,7 @@
               "activity": "${bfdactivity-ZEwh72()}"
             },
             {
-              "$type": "Microsoft.SendActivity",
+              "$kind": "Microsoft.SendActivity",
               "$designer": {
                 "id": "g0kIsI"
               },
@@ -115,7 +115,7 @@
           ],
           "elseActions": [
             {
-              "$type": "Microsoft.SendActivity",
+              "$kind": "Microsoft.SendActivity",
               "$designer": {
                 "id": "yD5ABI"
               },

@@ -1,5 +1,5 @@
 {
-  "$type": "Microsoft.AdaptiveDialog",
+  "$kind": "Microsoft.AdaptiveDialog",
   "$designer": {
     "id": "950825",
     "name": "AddToDoNewName"
@@ -9,14 +9,14 @@
   "recognizer": "AddToDo.lu",
   "triggers": [
     {
-      "$type": "Microsoft.OnBeginDialog",
+      "$kind": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
         "id": "692581"
       },
       "actions": [
         {
-          "$type": "Microsoft.SetProperties",
+          "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "055724",
             "name": "Set properties"
@@ -33,7 +33,7 @@
           ]
         },
         {
-          "$type": "Microsoft.TextInput",
+          "$kind": "Microsoft.TextInput",
           "$designer": {
             "id": "662396",
             "name": "Text input"
@@ -46,7 +46,7 @@
           "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.5"
         },
         {
-          "$type": "Microsoft.ChoiceInput",
+          "$kind": "Microsoft.ChoiceInput",
           "$designer": {
             "id": "456695",
             "name": "Multiple choice"
@@ -83,7 +83,7 @@
           }
         },
         {
-          "$type": "Microsoft.BeginDialog",
+          "$kind": "Microsoft.BeginDialog",
           "$designer": {
             "id": "lRsuXt"
           },
@@ -96,7 +96,7 @@
           }
         },
         {
-          "$type": "Microsoft.ConfirmInput",
+          "$kind": "Microsoft.ConfirmInput",
           "$designer": {
             "id": "sIgrfn"
           },
@@ -111,7 +111,7 @@
           "property": "dialog.addDuplicate"
         },
         {
-          "$type": "Microsoft.IfCondition",
+          "$kind": "Microsoft.IfCondition",
           "$designer": {
             "id": "LqhLN9"
           },
@@ -119,7 +119,7 @@
           "condition": "dialog.addDuplicate",
           "elseActions": [
             {
-              "$type": "Microsoft.SendActivity",
+              "$kind": "Microsoft.SendActivity",
               "$designer": {
                 "id": "QRekYt"
               },
@@ -127,7 +127,7 @@
               "activity": "${bfdactivity-QRekYt()}"
             },
             {
-              "$type": "Microsoft.EndDialog",
+              "$kind": "Microsoft.EndDialog",
               "$designer": {
                 "id": "-fYnxb"
               },
@@ -136,7 +136,7 @@
           ],
           "actions": [
             {
-              "$type": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.BeginDialog",
               "$designer": {
                 "id": "Iwe07c"
               },
@@ -148,7 +148,7 @@
               }
             },
             {
-              "$type": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.BeginDialog",
               "$designer": {
                 "id": "FI0VxH"
               },
@@ -160,7 +160,7 @@
               "resultProperty": "dialog.count"
             },
             {
-              "$type": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.BeginDialog",
               "$designer": {
                 "id": "n-_oVy"
               },
@@ -172,7 +172,7 @@
               "resultProperty": "dialog.todos"
             },
             {
-              "$type": "Microsoft.SendActivity",
+              "$kind": "Microsoft.SendActivity",
               "$designer": {
                 "id": "lxUk-1",
                 "name": "Send a response"

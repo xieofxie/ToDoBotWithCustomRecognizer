@@ -1,5 +1,5 @@
 {
-  "$type": "Microsoft.AdaptiveDialog",
+  "$kind": "Microsoft.AdaptiveDialog",
   "$designer": {
     "id": "lIzFgG",
     "name": "CheckDuplicate"
@@ -9,14 +9,14 @@
   "defaultResultProperty": "dialog.result",
   "triggers": [
     {
-      "$type": "Microsoft.OnBeginDialog",
+      "$kind": "Microsoft.OnBeginDialog",
       "$designer": {
         "name": "BeginDialog",
         "id": "51ssH0"
       },
       "actions": [
         {
-          "$type": "Microsoft.SetProperties",
+          "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "NzceEA"
           },
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "$type": "Microsoft.EndDialog",
+          "$kind": "Microsoft.EndDialog",
           "$designer": {
             "id": "elxItr"
           },
