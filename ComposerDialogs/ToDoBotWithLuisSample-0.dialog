@@ -18,6 +18,51 @@
       },
       "actions": [
         {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "yVGpD-"
+          },
+          "dialog": "AddToList",
+          "options": {
+            "listType": "ToDo",
+            "taskContent": "buy milk"
+          }
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "ULBbPX"
+          },
+          "dialog": "AddToList",
+          "options": {
+            "listType": "ToDo",
+            "taskContent": "buy juice"
+          }
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "Q7GIdu"
+          },
+          "dialog": "AddToList",
+          "options": {
+            "listType": "ToDo",
+            "taskContent": "buy water"
+          }
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "9snHo6"
+          },
+          "assignments": [
+            {
+              "property": "conversation.page",
+              "value": "=0"
+            }
+          ]
+        },
+        {
           "$kind": "Microsoft.Foreach",
           "$designer": {
             "id": "518944",

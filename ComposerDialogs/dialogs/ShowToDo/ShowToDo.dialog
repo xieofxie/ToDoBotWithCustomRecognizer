@@ -38,7 +38,7 @@
           "property": "dialog.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
-          "allowInterruptions": "!@listType",
+          "allowInterruptions": false,
           "outputFormat": "value",
           "choices": [
             {
@@ -69,7 +69,6 @@
           "$designer": {
             "id": "ckEHvu"
           },
-          "$kind": "Microsoft.BeginDialog",
           "dialog": "CountTotal",
           "options": {
             "listType": "${dialog.listType}"
@@ -81,7 +80,6 @@
           "$designer": {
             "id": "kqY3nC"
           },
-          "$kind": "Microsoft.IfCondition",
           "condition": "dialog.count > 0",
           "actions": [
             {
@@ -89,7 +87,6 @@
               "$designer": {
                 "id": "GmSvQx"
               },
-              "$kind": "Microsoft.BeginDialog",
               "dialog": "GetToDos",
               "options": {
                 "listType": "${dialog.listType}"
@@ -101,16 +98,86 @@
               "$designer": {
                 "id": "ZEwh72"
               },
-              "$kind": "Microsoft.SendActivity",
               "activity": "${bfdactivity-ZEwh72()}"
             },
             {
-              "$kind": "Microsoft.SendActivity",
+              "$kind": "Microsoft.TextInput",
               "$designer": {
-                "id": "g0kIsI"
+                "id": "k63lez"
               },
-              "$kind": "Microsoft.SendActivity",
-              "activity": "${bfdactivity-g0kIsI()}"
+              "maxTurnCount": 3,
+              "alwaysPrompt": false,
+              "allowInterruptions": false,
+              "prompt": "${bfdprompt-k63lez()}",
+              "value": "= select(turn.recognized.intents,x,x.key)[0]",
+              "property": "dialog.showPage",
+              "validations": [
+                "#ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
+              ]
+            },
+            {
+              "$kind": "Microsoft.TraceActivity",
+              "$designer": {
+                "id": "dP_zbA"
+              }
+            },
+            {
+              "$kind": "Microsoft.SwitchCondition",
+              "$designer": {
+                "id": "ySibRE"
+              },
+              "condition": "dialog.showPage",
+              "cases": [
+                {
+                  "value": "ShowNextPage",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SetProperties",
+                      "$designer": {
+                        "id": "0CqZoh"
+                      },
+                      "assignments": [
+                        {
+                          "property": "conversation.page",
+                          "value": "=conversation.page+1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "value": "ShowPreviousPage",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SetProperties",
+                      "$designer": {
+                        "id": "Eq4fVm"
+                      },
+                      "assignments": [
+                        {
+                          "property": "conversation.page",
+                          "value": "=int(conversation.page)-1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.TraceActivity",
+              "$designer": {
+                "id": "W3KEvt"
+              }
+            },
+            {
+              "$kind": "Microsoft.RepeatDialog",
+              "$designer": {
+                "id": "oedBQN"
+              },
+              "options": {
+                "listType": "${dialog.listType}"
+              }
             }
           ],
           "elseActions": [
@@ -119,7 +186,6 @@
               "$designer": {
                 "id": "yD5ABI"
               },
-              "$kind": "Microsoft.SendActivity",
               "activity": "${bfdactivity-yD5ABI()}"
             }
           ]

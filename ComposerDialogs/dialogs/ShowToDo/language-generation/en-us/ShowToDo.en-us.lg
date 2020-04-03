@@ -9,9 +9,6 @@
 # bfdactivity-yD5ABI()
 - ${NoTasksMessage(dialog.listType)}
 
-# bfdactivity-g0kIsI()
-- ${AskAddOrCompleteTaskMessage()}
-
 > From ShowToDo
 
 # NoTasksMessage.Text(ListType)
@@ -74,3 +71,6 @@
     Speak = ${AskAddOrCompleteTaskMessage.Text()}
     InputHint = ignoringInput
 ]
+
+# bfdprompt-k63lez()
+- ${AskAddOrCompleteTaskMessage()}

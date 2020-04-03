@@ -4,7 +4,6 @@
     "id": "fN8EU7",
     "name": "GetToDos"
   },
-  "$kind": "Microsoft.AdaptiveDialog",
   "autoEndDialog": "true",
   "defaultResultProperty": "dialog.result",
   "triggers": [
@@ -20,11 +19,42 @@
           "$designer": {
             "id": "QVoTc2"
           },
-          "$kind": "Microsoft.SetProperties",
           "assignments": [
             {
               "property": "dialog.result",
               "value": "=select(indicesAndValues(user.taskLists[dialog.listType]),iter,setProperty(iter.value, \"Id\", iter.index))"
+            },
+            {
+              "property": "dialog.count",
+              "value": "=count(dialog.result)"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "_cd97G"
+          },
+          "dialog": "CorrectPage",
+          "options": "setProperty({},\"count\",dialog.count)"
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "V26lcv"
+          },
+          "assignments": [
+            {
+              "property": "dialog.start",
+              "value": "=conversation.page*int(settings.displaySize)"
+            },
+            {
+              "property": "dialog.end",
+              "value": "=min(dialog.count,(conversation.page+1)*int(settings.displaySize))"
+            },
+            {
+              "property": "dialog.result",
+              "value": "=subArray(dialog.result,dialog.start,dialog.end)"
             }
           ]
         },
@@ -33,7 +63,6 @@
           "$designer": {
             "id": "_utP-l"
           },
-          "$kind": "Microsoft.EndDialog",
           "value": "=dialog.result"
         }
       ]
