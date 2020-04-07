@@ -198,5 +198,6 @@
       ]
     }
   ],
-  "generator": "MarkToDo.lg"
+  "generator": "MarkToDo.lg",
+  "recognizer": "MarkToDo.lu"
 }
