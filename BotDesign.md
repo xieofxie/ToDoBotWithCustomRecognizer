@@ -29,5 +29,16 @@ taskContent
 
 settings.displaySize
 
+url
+token
+
+{
+    Id,
+    IsCompleted,
+    Topic
+}
+
+tasks
+
 # Flow
 

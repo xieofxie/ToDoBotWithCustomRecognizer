@@ -1,0 +1,104 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "XBnR32",
+    "name": "GetToDosOutlook"
+  },
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "Ydm02p"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "KrA0_M"
+          },
+          "connectionName": "outlook",
+          "title": "Login",
+          "property": "dialog.token",
+          "allowInterruptions": false,
+          "text": "Please sign in",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "Zy937O"
+          },
+          "assignments": [
+            {
+              "property": "dialog.token",
+              "value": "=dialog.token.token"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "7D0luF"
+          },
+          "dialog": "OutlookGetOrCreateTaskFolderAsync",
+          "options": {
+            "token": "${dialog.token}",
+            "listType": "${dialog.listType}"
+          },
+          "resultProperty": "dialog.id"
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "kIc1F0"
+          },
+          "assignments": [
+            {
+              "property": "dialog.url",
+              "value": "=settings.graphBaseUrl  + \"taskFolders/\" + dialog.id + \"/tasks\""
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "IlOA81"
+          },
+          "dialog": "GetAsync",
+          "options": {
+            "token": "${dialog.token}",
+            "url": "${dialog.url}"
+          },
+          "resultProperty": "dialog.result"
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "jpXbyv"
+          },
+          "assignments": [
+            {
+              "property": "dialog.tasks",
+              "value": "=dialog.result.content.value"
+            },
+            {
+              "property": "dialog.result",
+              "value": "=select(indicesAndValues(dialog.tasks),iter,setProperty(setProperty(setProperty(iter.value, \"Id\", iter.index),\"Topic\",iter.value.subject),\"IsCompleted\",if(iter.value.status==\"completed\",True,False)))"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.EndDialog",
+          "$designer": {
+            "id": "E6a7dO"
+          },
+          "value": "=dialog.result"
+        }
+      ]
+    }
+  ],
+  "generator": "GetToDosOutlook.lg"
+}

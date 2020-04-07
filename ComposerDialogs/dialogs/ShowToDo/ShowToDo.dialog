@@ -69,11 +69,29 @@
           "$designer": {
             "id": "ckEHvu"
           },
-          "dialog": "CountTotal",
+          "dialog": "GetToDosOutlook",
           "options": {
             "listType": "${dialog.listType}"
           },
-          "resultProperty": "dialog.count"
+          "resultProperty": "dialog.tasks"
+        },
+        {
+          "$kind": "Microsoft.TraceActivity",
+          "$designer": {
+            "id": "xIU402"
+          }
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "yX62vo"
+          },
+          "assignments": [
+            {
+              "property": "dialog.count",
+              "value": "=count(dialog.tasks)"
+            }
+          ]
         },
         {
           "$kind": "Microsoft.IfCondition",
@@ -88,10 +106,8 @@
                 "id": "GmSvQx"
               },
               "dialog": "GetToDos",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.todos"
+              "resultProperty": "dialog.todos",
+              "options": "=setProperty({},\"tasks\",dialog.tasks)"
             },
             {
               "$kind": "Microsoft.SendActivity",
@@ -114,12 +130,6 @@
               "validations": [
                 "#ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
               ]
-            },
-            {
-              "$kind": "Microsoft.TraceActivity",
-              "$designer": {
-                "id": "dP_zbA"
-              }
             },
             {
               "$kind": "Microsoft.SwitchCondition",

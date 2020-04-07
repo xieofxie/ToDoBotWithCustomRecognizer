@@ -21,12 +21,8 @@
           },
           "assignments": [
             {
-              "property": "dialog.result",
-              "value": "=select(indicesAndValues(user.taskLists[dialog.listType]),iter,setProperty(iter.value, \"Id\", iter.index))"
-            },
-            {
               "property": "dialog.count",
-              "value": "=count(dialog.result)"
+              "value": "=count(dialog.tasks)"
             }
           ]
         },
@@ -54,7 +50,7 @@
             },
             {
               "property": "dialog.result",
-              "value": "=subArray(dialog.result,dialog.start,dialog.end)"
+              "value": "=subArray(dialog.tasks,dialog.start,dialog.end)"
             }
           ]
         },
