@@ -76,12 +76,6 @@
           "resultProperty": "dialog.tasks"
         },
         {
-          "$kind": "Microsoft.TraceActivity",
-          "$designer": {
-            "id": "xIU402"
-          }
-        },
-        {
           "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "yX62vo"
@@ -122,13 +116,13 @@
                 "id": "k63lez"
               },
               "maxTurnCount": 3,
-              "alwaysPrompt": false,
+              "alwaysPrompt": true,
               "allowInterruptions": false,
               "prompt": "${bfdprompt-k63lez()}",
               "value": "= select(turn.recognized.intents,x,x.key)[0]",
               "property": "dialog.showPage",
               "validations": [
-                "#ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
+                "true || #ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
               ]
             },
             {
@@ -172,13 +166,15 @@
                     }
                   ]
                 }
+              ],
+              "default": [
+                {
+                  "$kind": "Microsoft.EndDialog",
+                  "$designer": {
+                    "id": "ZX53nv"
+                  }
+                }
               ]
-            },
-            {
-              "$kind": "Microsoft.TraceActivity",
-              "$designer": {
-                "id": "W3KEvt"
-              }
             },
             {
               "$kind": "Microsoft.RepeatDialog",

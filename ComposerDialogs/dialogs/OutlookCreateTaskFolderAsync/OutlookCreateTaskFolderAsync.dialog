@@ -15,17 +15,28 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.BeginDialog",
+          "$kind": "Microsoft.HttpRequest",
           "$designer": {
-            "id": "x7O3Vj"
+            "id": "BaLakb"
           },
-          "dialog": "PostAsync",
-          "options": {
-            "token": "${dialog.token}",
-            "url": "${settings.graphBaseUrl + 'taskFolders'}",
-            "listType": "${dialog.listType}"
+          "responseType": "Json",
+          "method": "POST",
+          "url": "=settings.graphBaseUrl + 'taskFolders'",
+          "body": {
+            "name": "${dialog.listType}"
           },
+          "headers": {
+            "Accept": "application/json",
+            "Authorization": "='Bearer ' + dialog.token"
+          },
+          "contentType": "application/json",
           "resultProperty": "dialog.result"
+        },
+        {
+          "$kind": "Microsoft.TraceActivity",
+          "$designer": {
+            "id": "iCLTZG"
+          }
         },
         {
           "$kind": "Microsoft.EndDialog",

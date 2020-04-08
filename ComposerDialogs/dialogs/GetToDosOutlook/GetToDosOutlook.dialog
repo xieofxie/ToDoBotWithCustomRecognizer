@@ -15,28 +15,12 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.OAuthInput",
+          "$kind": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "KrA0_M"
+            "id": "Oprt4L"
           },
-          "connectionName": "outlook",
-          "title": "Login",
-          "property": "dialog.token",
-          "allowInterruptions": false,
-          "text": "Please sign in",
-          "alwaysPrompt": false
-        },
-        {
-          "$kind": "Microsoft.SetProperties",
-          "$designer": {
-            "id": "Zy937O"
-          },
-          "assignments": [
-            {
-              "property": "dialog.token",
-              "value": "=dialog.token.token"
-            }
-          ]
+          "dialog": "OAuth",
+          "resultProperty": "dialog.token"
         },
         {
           "$kind": "Microsoft.BeginDialog",

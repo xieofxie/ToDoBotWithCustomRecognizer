@@ -1,0 +1,40 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "DOZWiO",
+    "name": "OAuth"
+  },
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "JiDVoC"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.OAuthInput",
+          "$designer": {
+            "id": "0-gvLm"
+          },
+          "connectionName": "outlook",
+          "title": "Login",
+          "property": "dialog.token",
+          "allowInterruptions": false,
+          "text": "Please sign in",
+          "alwaysPrompt": false
+        },
+        {
+          "$kind": "Microsoft.EndDialog",
+          "$designer": {
+            "id": "cz-kXr"
+          },
+          "value": "=dialog.token.token"
+        }
+      ]
+    }
+  ],
+  "generator": "OAuth.lg"
+}

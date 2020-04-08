@@ -24,6 +24,8 @@ Could be removed as it is part of chitchat
 # Variable
 conversation.listType: for interruption from show to del
 conversation.page: for interruption from show to del
+- remember to clear
+- pay attention to order
 
 taskContent
 
@@ -33,12 +35,20 @@ url
 token
 
 {
+    // Index
     Id,
     IsCompleted,
-    Topic
+    Topic,
+    id,
 }
 
 tasks
+todos
+- for display
 
 # Flow
 
+Since we can't circular call dialogs like:
+    mark -> show(which to mark) -> mark(after selection) -> show(finish mark)
+
+The first show should be within mark

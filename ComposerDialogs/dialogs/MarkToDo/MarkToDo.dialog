@@ -73,11 +73,23 @@
           "$designer": {
             "id": "2bgaHn"
           },
-          "dialog": "CountTotal",
+          "dialog": "GetToDosOutlook",
           "options": {
             "listType": "${dialog.listType}"
           },
-          "resultProperty": "dialog.count"
+          "resultProperty": "dialog.tasks"
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "t3RvdZ"
+          },
+          "assignments": [
+            {
+              "property": "dialog.count",
+              "value": "=count(dialog.tasks)"
+            }
+          ]
         },
         {
           "$kind": "Microsoft.IfCondition",
@@ -93,10 +105,8 @@
                 "id": "IxamhV"
               },
               "dialog": "GetToDos",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.todos"
+              "resultProperty": "dialog.todos",
+              "options": "=setProperty({},\"tasks\",dialog.tasks)"
             },
             {
               "$kind": "Microsoft.SendActivity",
@@ -124,12 +134,9 @@
               "$designer": {
                 "id": "iP-vVM"
               },
-              "options": {
-                "listType": "${dialog.listType}",
-                "taskContent": "${dialog.taskContent}"
-              },
-              "dialog": "MarkInList",
-              "resultProperty": "dialog.markedItem"
+              "dialog": "MatchInList",
+              "resultProperty": "dialog.markedItem",
+              "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
             },
             {
               "$kind": "Microsoft.IfCondition",
@@ -156,24 +163,20 @@
             {
               "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "FvZK-2"
+                "id": "L7ZaRO"
               },
-              "dialog": "CountTotal",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.count"
+              "dialog": "MarkInListOutlook",
+              "options": "=setProperty({},\"task\",dialog.markedItem)"
             },
             {
-              "$kind": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.ReplaceDialog",
               "$designer": {
-                "id": "PkbTHW"
+                "id": "SaTeku"
               },
-              "dialog": "GetToDos",
+              "dialog": "ShowToDo",
               "options": {
                 "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.todos"
+              }
             },
             {
               "$kind": "Microsoft.SendActivity",
@@ -181,7 +184,8 @@
                 "id": "d56H_l",
                 "name": "Send a response"
               },
-              "activity": "${bfdactivity-d56H_l()}"
+              "activity": "${bfdactivity-d56H_l()}",
+              "disabled": true
             }
           ],
           "elseActions": [

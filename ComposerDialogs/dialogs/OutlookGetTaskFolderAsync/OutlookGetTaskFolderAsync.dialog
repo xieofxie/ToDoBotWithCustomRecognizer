@@ -38,7 +38,7 @@
             },
             {
               "property": "dialog.id",
-              "value": "=if(dialog.folders,dialog.folders[0].id,null)"
+              "value": "=if(count(dialog.folders)>=1,dialog.folders[0].id,null)"
             }
           ]
         },

@@ -1,0 +1,40 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "2OD91J",
+    "name": "MarkInListOutlook"
+  },
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "ONrH1X"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "-AKi_C"
+          },
+          "dialog": "OAuth",
+          "resultProperty": "dialog.token"
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "MJp3xz"
+          },
+          "dialog": "PostAsync",
+          "options": {
+            "token": "${dialog.token}",
+            "url": "${settings.graphBaseUrl + 'tasks/' + dialog.task.id + '/complete'}"
+          }
+        }
+      ]
+    }
+  ],
+  "generator": "MarkInListOutlook.lg"
+}
