@@ -85,22 +85,28 @@
         {
           "$kind": "Microsoft.BeginDialog",
           "$designer": {
+            "id": "NgVkiJ"
+          },
+          "dialog": "GetToDosOutlook",
+          "options": {
+            "listType": "${dialog.listType}"
+          },
+          "resultProperty": "dialog.tasks"
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
             "id": "lRsuXt"
           },
-          "$kind": "Microsoft.BeginDialog",
-          "dialog": "CheckDuplicate",
+          "dialog": "MatchInList",
           "resultProperty": "dialog.duplicate",
-          "options": {
-            "taskContent": "${dialog.taskContent}",
-            "listType": "${dialog.listType}"
-          }
+          "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
         },
         {
           "$kind": "Microsoft.ConfirmInput",
           "$designer": {
             "id": "sIgrfn"
           },
-          "$kind": "Microsoft.ConfirmInput",
           "maxTurnCount": 3,
           "alwaysPrompt": false,
           "allowInterruptions": false,
@@ -115,7 +121,6 @@
           "$designer": {
             "id": "LqhLN9"
           },
-          "$kind": "Microsoft.IfCondition",
           "condition": "dialog.addDuplicate",
           "elseActions": [
             {
@@ -123,15 +128,13 @@
               "$designer": {
                 "id": "QRekYt"
               },
-              "$kind": "Microsoft.SendActivity",
               "activity": "${bfdactivity-QRekYt()}"
             },
             {
               "$kind": "Microsoft.EndDialog",
               "$designer": {
                 "id": "-fYnxb"
-              },
-              "$kind": "Microsoft.EndDialog"
+              }
             }
           ],
           "actions": [
@@ -140,36 +143,21 @@
               "$designer": {
                 "id": "Iwe07c"
               },
-              "$kind": "Microsoft.BeginDialog",
-              "dialog": "AddToList",
+              "dialog": "AddToListOutlook",
               "options": {
                 "listType": "${dialog.listType}",
                 "taskContent": "${dialog.taskContent}"
               }
             },
             {
-              "$kind": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.ReplaceDialog",
               "$designer": {
-                "id": "FI0VxH"
+                "id": "8nNkT-"
               },
-              "$kind": "Microsoft.BeginDialog",
-              "dialog": "CountTotal",
+              "dialog": "ShowToDo",
               "options": {
                 "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.count"
-            },
-            {
-              "$kind": "Microsoft.BeginDialog",
-              "$designer": {
-                "id": "n-_oVy"
-              },
-              "$kind": "Microsoft.BeginDialog",
-              "dialog": "GetToDos",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.todos"
+              }
             },
             {
               "$kind": "Microsoft.SendActivity",
@@ -177,7 +165,8 @@
                 "id": "lxUk-1",
                 "name": "Send a response"
               },
-              "activity": "${bfdactivity-lxUk-1()}"
+              "activity": "${bfdactivity-lxUk-1()}",
+              "disabled": true
             }
           ]
         }

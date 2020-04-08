@@ -1,0 +1,77 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "3iLTOt",
+    "name": "AddToListOutlook"
+  },
+  "autoEndDialog": "true",
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "id": "baEbL1"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "3tl4CI"
+          },
+          "dialog": "OAuth",
+          "resultProperty": "dialog.token"
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "3gc_Py"
+          },
+          "dialog": "OutlookGetOrCreateTaskFolderAsync",
+          "options": {
+            "token": "${dialog.token}",
+            "listType": "${dialog.listType}"
+          },
+          "resultProperty": "dialog.id"
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "bT-rCD"
+          },
+          "assignments": [
+            {
+              "property": "dialog.url",
+              "value": "=settings.graphBaseUrl  + \"taskFolders/\" + dialog.id + \"/tasks\""
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "-WS37j"
+          },
+          "responseType": "Json",
+          "method": "POST",
+          "url": "=dialog.url",
+          "headers": {
+            "Accept": "application/json",
+            "Authorization": "='Bearer ' + dialog.token"
+          },
+          "contentType": "application/json",
+          "resultProperty": "dialog.result",
+          "body": {
+            "subject": "${dialog.taskContent}"
+          }
+        },
+        {
+          "$kind": "Microsoft.TraceActivity",
+          "$designer": {
+            "id": "gl5fds"
+          }
+        }
+      ]
+    }
+  ],
+  "generator": "AddToListOutlook.lg"
+}
