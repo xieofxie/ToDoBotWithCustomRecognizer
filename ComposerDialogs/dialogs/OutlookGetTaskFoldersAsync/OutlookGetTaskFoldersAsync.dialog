@@ -15,22 +15,43 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.BeginDialog",
+          "$kind": "Microsoft.IfCondition",
           "$designer": {
-            "id": "WkYMLe"
+            "id": "0dEqRZ"
           },
-          "dialog": "GetAsync",
-          "options": {
-            "url": "${dialog.url}"
-          },
-          "resultProperty": "dialog.result"
+          "condition": "=turn.listToId==null",
+          "actions": [
+            {
+              "$kind": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "DFtcve"
+              },
+              "dialog": "GetAsync",
+              "options": {
+                "url": "${dialog.url}"
+              },
+              "resultProperty": "dialog.result"
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "JCMxr6"
+              },
+              "assignments": [
+                {
+                  "property": "turn.listToId",
+                  "value": "=dialog.result.content.value"
+                }
+              ]
+            }
+          ]
         },
         {
           "$kind": "Microsoft.EndDialog",
           "$designer": {
             "id": "PXVzbK"
           },
-          "value": "=dialog.result.content.value"
+          "value": "=turn.listToId"
         }
       ]
     }

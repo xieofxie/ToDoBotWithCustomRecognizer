@@ -42,6 +42,15 @@
                 "listType": "${dialog.listType}"
               },
               "resultProperty": "dialog.id"
+            },
+            {
+              "$kind": "Microsoft.EditArray",
+              "$designer": {
+                "id": "DXIBQ-"
+              },
+              "changeType": "push",
+              "itemsProperty": "turn.listToId",
+              "value": "=setProperty(setProperty({},\"id\",dialog.id),\"name\",dialog.listType)"
             }
           ]
         },

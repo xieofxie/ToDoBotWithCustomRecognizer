@@ -22,8 +22,7 @@
           "options": {
             "url": "${settings.graphBaseUrl + 'taskFolders'}"
           },
-          "dialog": "OutlookGetTaskFoldersAsync",
-          "resultProperty": "dialog.folders"
+          "dialog": "OutlookGetTaskFoldersAsync"
         },
         {
           "$kind": "Microsoft.SetProperties",
@@ -33,7 +32,7 @@
           "assignments": [
             {
               "property": "dialog.folders",
-              "value": "=where(dialog.folders,folder,folder.name==dialog.listType)"
+              "value": "=where(turn.listToId,folder,folder.name==dialog.listType)"
             },
             {
               "property": "dialog.id",
