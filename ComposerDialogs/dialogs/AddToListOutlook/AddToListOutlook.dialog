@@ -41,34 +41,23 @@
           },
           "assignments": [
             {
+              "property": "dialog.body",
+              "value": "=setProperty({} , \"subject\" ,dialog.taskContent)"
+            },
+            {
               "property": "dialog.url",
               "value": "=settings.graphBaseUrl  + \"taskFolders/\" + dialog.id + \"/tasks\""
             }
           ]
         },
         {
-          "$kind": "Microsoft.HttpRequest",
+          "$kind": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "-WS37j"
+            "id": "7sCD8b"
           },
-          "responseType": "Json",
-          "method": "POST",
-          "url": "=dialog.url",
-          "headers": {
-            "Accept": "application/json",
-            "Authorization": "='Bearer ' + dialog.token"
-          },
-          "contentType": "application/json",
+          "dialog": "PostAsync",
           "resultProperty": "dialog.result",
-          "body": {
-            "subject": "${dialog.taskContent}"
-          }
-        },
-        {
-          "$kind": "Microsoft.TraceActivity",
-          "$designer": {
-            "id": "gl5fds"
-          }
+          "options": "=setProperty(setProperty(setProperty({},\"token\",dialog.token),\"url\",dialog.url),\"body\",dialog.body)"
         }
       ]
     }

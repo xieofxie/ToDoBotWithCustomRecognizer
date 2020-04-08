@@ -27,7 +27,8 @@
             "Authorization": "='Bearer ' + dialog.token"
           },
           "contentType": "application/json",
-          "resultProperty": "dialog.result"
+          "resultProperty": "dialog.result",
+          "body": "=dialog.body"
         },
         {
           "$kind": "Microsoft.TraceActivity",
