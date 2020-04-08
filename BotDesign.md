@@ -33,6 +33,7 @@ settings.displaySize
 
 url
 token
+- put into turn? To save time
 
 {
     // Index
@@ -45,6 +46,8 @@ token
 tasks
 todos
 - for display
+
+also for folder name <-> id mapping
 
 # Flow
 

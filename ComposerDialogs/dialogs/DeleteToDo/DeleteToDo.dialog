@@ -73,12 +73,23 @@
           "$designer": {
             "id": "WUBz7T"
           },
-          "$kind": "Microsoft.BeginDialog",
-          "dialog": "CountTotal",
+          "dialog": "GetToDosOutlook",
           "options": {
             "listType": "${dialog.listType}"
           },
-          "resultProperty": "dialog.count"
+          "resultProperty": "dialog.tasks"
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "K-bSF9"
+          },
+          "assignments": [
+            {
+              "property": "dialog.count",
+              "value": "=count(dialog.tasks)"
+            }
+          ]
         },
         {
           "$kind": "Microsoft.IfCondition",
@@ -93,12 +104,9 @@
               "$designer": {
                 "id": "1KbyfW"
               },
-              "$kind": "Microsoft.BeginDialog",
               "dialog": "GetToDos",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.todos"
+              "resultProperty": "dialog.todos",
+              "options": "=setProperty({},\"tasks\",dialog.tasks)"
             },
             {
               "$kind": "Microsoft.SendActivity",
@@ -126,20 +134,15 @@
               "$designer": {
                 "id": "2N-yGS"
               },
-              "$kind": "Microsoft.BeginDialog",
-              "options": {
-                "listType": "${dialog.listType}",
-                "taskContent": "${dialog.taskContent}"
-              },
-              "dialog": "DeleteInList",
-              "resultProperty": "dialog.deletedItem"
+              "dialog": "MatchInList",
+              "resultProperty": "dialog.deletedItem",
+              "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
             },
             {
               "$kind": "Microsoft.IfCondition",
               "$designer": {
                 "id": "HSECRw"
               },
-              "$kind": "Microsoft.IfCondition",
               "condition": "dialog.deletedItem==null",
               "actions": [
                 {
@@ -147,41 +150,33 @@
                   "$designer": {
                     "id": "CZBp8F"
                   },
-                  "$kind": "Microsoft.SendActivity",
                   "activity": "${bfdactivity-CZBp8F()}"
                 },
                 {
                   "$kind": "Microsoft.EndDialog",
                   "$designer": {
                     "id": "uOFVmi"
-                  },
-                  "$kind": "Microsoft.EndDialog"
+                  }
                 }
               ]
             },
             {
               "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "THbNdd"
+                "id": "9DeyhL"
               },
-              "$kind": "Microsoft.BeginDialog",
-              "dialog": "CountTotal",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
-              "resultProperty": "dialog.count"
+              "dialog": "DeleteInListOutlook",
+              "options": "=setProperty({},\"task\",dialog.deletedItem)"
             },
             {
-              "$kind": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.ReplaceDialog",
               "$designer": {
-                "id": "haJenL"
+                "id": "mFf8Hl"
               },
-              "$kind": "Microsoft.BeginDialog",
-              "dialog": "GetToDos",
               "options": {
                 "listType": "${dialog.listType}"
               },
-              "resultProperty": "dialog.todos"
+              "dialog": "ShowToDo"
             },
             {
               "$kind": "Microsoft.SendActivity",
@@ -189,7 +184,8 @@
                 "id": "809470",
                 "name": "Send a response"
               },
-              "activity": "${bfdactivity-809470()}"
+              "activity": "${bfdactivity-809470()}",
+              "disabled": true
             }
           ],
           "elseActions": [
