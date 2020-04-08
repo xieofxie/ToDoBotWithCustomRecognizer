@@ -21,8 +21,7 @@
           },
           "dialog": "GetAsync",
           "options": {
-            "url": "${dialog.url}",
-            "token": "${dialog.token}"
+            "url": "${dialog.url}"
           },
           "resultProperty": "dialog.result"
         },

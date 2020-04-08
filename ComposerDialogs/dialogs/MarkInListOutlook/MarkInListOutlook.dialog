@@ -19,8 +19,7 @@
           "$designer": {
             "id": "-AKi_C"
           },
-          "dialog": "OAuth",
-          "resultProperty": "dialog.token"
+          "dialog": "OAuth"
         },
         {
           "$kind": "Microsoft.BeginDialog",
@@ -29,7 +28,6 @@
           },
           "dialog": "PostAsync",
           "options": {
-            "token": "${dialog.token}",
             "url": "${settings.graphBaseUrl + 'tasks/' + dialog.task.id + '/complete'}"
           }
         }

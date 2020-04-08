@@ -24,11 +24,11 @@
           "url": "=dialog.url",
           "headers": {
             "Accept": "application/json",
-            "Authorization": "='Bearer ' + dialog.token"
+            "Authorization": "='Bearer ' + turn.token"
           },
           "contentType": "application/json",
           "resultProperty": "dialog.result",
-          "body": "=dialog.body"
+          "body": "=if(dialog.body==null,{},dialog.body)"
         },
         {
           "$kind": "Microsoft.TraceActivity",

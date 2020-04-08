@@ -24,7 +24,7 @@
           "url": "=dialog.url",
           "headers": {
             "Accept": "application/json",
-            "Authorization": "= 'Bearer ' + dialog.token"
+            "Authorization": "='Bearer ' + turn.token"
           },
           "contentType": "application/json",
           "resultProperty": "dialog.result"

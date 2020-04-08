@@ -19,8 +19,7 @@
           "$designer": {
             "id": "jLrdsY"
           },
-          "dialog": "OAuth",
-          "resultProperty": "dialog.token"
+          "dialog": "OAuth"
         },
         {
           "$kind": "Microsoft.BeginDialog",
@@ -29,7 +28,6 @@
           },
           "dialog": "DeleteAsync",
           "options": {
-            "token": "${dialog.token}",
             "url": "${settings.graphBaseUrl + 'tasks/' + dialog.task.id}"
           }
         }

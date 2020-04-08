@@ -15,12 +15,6 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.TraceActivity",
-          "$designer": {
-            "id": "Ri9Ko3"
-          }
-        },
-        {
           "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "f5WOsk"

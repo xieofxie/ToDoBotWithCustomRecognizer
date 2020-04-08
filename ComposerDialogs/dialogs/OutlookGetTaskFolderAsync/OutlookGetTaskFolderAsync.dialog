@@ -20,7 +20,6 @@
             "id": "XcHWIb"
           },
           "options": {
-            "token": "${dialog.token}",
             "url": "${settings.graphBaseUrl + 'taskFolders'}"
           },
           "dialog": "OutlookGetTaskFoldersAsync",

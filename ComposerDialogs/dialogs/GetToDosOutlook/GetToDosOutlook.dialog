@@ -19,8 +19,7 @@
           "$designer": {
             "id": "Oprt4L"
           },
-          "dialog": "OAuth",
-          "resultProperty": "dialog.token"
+          "dialog": "OAuth"
         },
         {
           "$kind": "Microsoft.BeginDialog",
@@ -29,7 +28,6 @@
           },
           "dialog": "OutlookGetOrCreateTaskFolderAsync",
           "options": {
-            "token": "${dialog.token}",
             "listType": "${dialog.listType}"
           },
           "resultProperty": "dialog.id"
@@ -53,7 +51,6 @@
           },
           "dialog": "GetAsync",
           "options": {
-            "token": "${dialog.token}",
             "url": "${dialog.url}"
           },
           "resultProperty": "dialog.result"

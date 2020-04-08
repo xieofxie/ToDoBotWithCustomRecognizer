@@ -15,23 +15,44 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.OAuthInput",
+          "$kind": "Microsoft.IfCondition",
           "$designer": {
-            "id": "0-gvLm"
+            "id": "yrHBei"
           },
-          "connectionName": "outlook",
-          "title": "Login",
-          "property": "dialog.token",
-          "allowInterruptions": false,
-          "text": "Please sign in",
-          "alwaysPrompt": false
+          "condition": "=turn.token==null",
+          "actions": [
+            {
+              "$kind": "Microsoft.OAuthInput",
+              "$designer": {
+                "id": "rQN8Ix"
+              },
+              "connectionName": "outlook",
+              "title": "Login",
+              "property": "dialog.result",
+              "allowInterruptions": false,
+              "text": "Please sign in",
+              "alwaysPrompt": false
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "y7VUj4"
+              },
+              "assignments": [
+                {
+                  "property": "turn.token",
+                  "value": "=dialog.result.token"
+                }
+              ]
+            }
+          ]
         },
         {
           "$kind": "Microsoft.EndDialog",
           "$designer": {
             "id": "cz-kXr"
           },
-          "value": "=dialog.token.token"
+          "value": "=turn.token"
         }
       ]
     }

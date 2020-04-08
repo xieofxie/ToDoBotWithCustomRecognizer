@@ -19,8 +19,7 @@
           "$designer": {
             "id": "3tl4CI"
           },
-          "dialog": "OAuth",
-          "resultProperty": "dialog.token"
+          "dialog": "OAuth"
         },
         {
           "$kind": "Microsoft.BeginDialog",
@@ -29,7 +28,6 @@
           },
           "dialog": "OutlookGetOrCreateTaskFolderAsync",
           "options": {
-            "token": "${dialog.token}",
             "listType": "${dialog.listType}"
           },
           "resultProperty": "dialog.id"
@@ -57,7 +55,7 @@
           },
           "dialog": "PostAsync",
           "resultProperty": "dialog.result",
-          "options": "=setProperty(setProperty(setProperty({},\"token\",dialog.token),\"url\",dialog.url),\"body\",dialog.body)"
+          "options": "=setProperty(setProperty({},\"url\",dialog.url),\"body\",dialog.body)"
         }
       ]
     }

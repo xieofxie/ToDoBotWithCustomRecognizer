@@ -36,7 +36,7 @@
             "id": "oHFZRI"
           },
           "dialog": "PostAsync",
-          "options": "=setProperty(setProperty(setProperty({},\"token\",dialog.token),\"url\",dialog.url),\"body\",dialog.body)",
+          "options": "=setProperty(setProperty({},\"url\",dialog.url),\"body\",dialog.body)",
           "resultProperty": "dialog.result"
         },
         {

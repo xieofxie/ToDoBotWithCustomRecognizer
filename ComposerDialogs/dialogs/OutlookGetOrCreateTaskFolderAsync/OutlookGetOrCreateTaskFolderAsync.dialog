@@ -21,7 +21,6 @@
           },
           "dialog": "OutlookGetTaskFolderAsync",
           "options": {
-            "token": "${dialog.token}",
             "listType": "${dialog.listType}"
           },
           "resultProperty": "dialog.id"
@@ -40,7 +39,6 @@
               },
               "dialog": "OutlookCreateTaskFolderAsync",
               "options": {
-                "token": "${dialog.token}",
                 "listType": "${dialog.listType}"
               },
               "resultProperty": "dialog.id"

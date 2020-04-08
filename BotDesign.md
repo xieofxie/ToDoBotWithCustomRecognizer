@@ -32,8 +32,10 @@ taskContent
 settings.displaySize
 
 url
-token
-- put into turn? To save time
+turn.token
+turn.listToId
+- list name to id in outlook
+- assume no deletion
 
 {
     // Index
