@@ -126,55 +126,11 @@
               ]
             },
             {
-              "$kind": "Microsoft.SwitchCondition",
+              "$kind": "Microsoft.BeginDialog",
               "$designer": {
-                "id": "ySibRE"
+                "id": "ss8EUt"
               },
-              "condition": "dialog.showPage",
-              "cases": [
-                {
-                  "value": "ShowNextPage",
-                  "actions": [
-                    {
-                      "$kind": "Microsoft.SetProperties",
-                      "$designer": {
-                        "id": "0CqZoh"
-                      },
-                      "assignments": [
-                        {
-                          "property": "conversation.page",
-                          "value": "=conversation.page+1"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "value": "ShowPreviousPage",
-                  "actions": [
-                    {
-                      "$kind": "Microsoft.SetProperties",
-                      "$designer": {
-                        "id": "Eq4fVm"
-                      },
-                      "assignments": [
-                        {
-                          "property": "conversation.page",
-                          "value": "=int(conversation.page)-1"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "default": [
-                {
-                  "$kind": "Microsoft.EndDialog",
-                  "$designer": {
-                    "id": "ZX53nv"
-                  }
-                }
-              ]
+              "dialog": "ShowNextPrev"
             },
             {
               "$kind": "Microsoft.RepeatDialog",

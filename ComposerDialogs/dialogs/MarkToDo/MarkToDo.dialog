@@ -136,9 +136,44 @@
                   "prompt": "${bfdprompt-kad_Gj()}",
                   "maxTurnCount": 3,
                   "property": "dialog.taskContent",
-                  "value": "=@TaskContent",
-                  "alwaysPrompt": false,
+                  "value": "=turn.activity.text",
+                  "alwaysPrompt": true,
                   "allowInterruptions": "false && !@taskContent && #_Interruption.Score >= 0.9"
+                },
+                {
+                  "$kind": "Microsoft.BeginDialog",
+                  "$designer": {
+                    "id": "Fhk0eX"
+                  },
+                  "dialog": "ShowNextPrev",
+                  "resultProperty": "dialog.result"
+                },
+                {
+                  "$kind": "Microsoft.IfCondition",
+                  "$designer": {
+                    "id": "gUJMOy"
+                  },
+                  "condition": "=dialog.result",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.RepeatDialog",
+                      "$designer": {
+                        "id": "PZqpap"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "licVqh"
+                  },
+                  "assignments": [
+                    {
+                      "property": "dialog.taskContent",
+                      "value": "=coalesce(@TaskContent, $taskContent)"
+                    }
+                  ]
                 }
               ]
             },

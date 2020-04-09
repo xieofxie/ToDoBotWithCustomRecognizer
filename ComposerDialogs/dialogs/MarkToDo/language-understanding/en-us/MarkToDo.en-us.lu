@@ -1,6 +1,9 @@
 > To learn more about the LU file format, read the documentation at
 > https://aka.ms/lu-file-format
 
+> Prebuilt
+@ prebuilt ordinal
+
 > Entity definitions 
 @ ml TaskContent
 @ ml ContainsAll
@@ -76,3 +79,41 @@
 - task {TaskContent=train} has been done
 - task completed {TaskContent=buy gum}
 - the 3rd task finished
+
+# ShowNextPage
+- are there any other tasks
+- can you show next page
+- display the next page
+- displays more
+- displays the next
+- next
+- next task
+- reveal more
+- show greater
+- show more
+- show more tasks
+- show more work
+- show next
+- show next page
+- show next sheet
+- show next website
+- tell more
+- tell more tasks
+- what's more
+- what's next
+- what's on the next
+
+# ShowPreviousPage
+- can you get previous for me
+- can you show previous for me
+- display the previous
+- display the previous page
+- displays previously
+- i need to check previous tasks
+- show back
+- show earlier
+- show last time
+- show me everthing on the previous page
+- show previous
+- show previous page
+- shows the prior

@@ -50,9 +50,10 @@ tasks
 todos
 - for display
 
+showPage
+
 # Flow
 
 The first show should be within mark
-- create a show-select dialog
 
-support all in show-select/first show in mark
+support all in first show in mark
