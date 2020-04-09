@@ -1,5 +1,0 @@
-{
-    "$kind": "Microsoft.SpacyRecognizer",
-    "endpoint": "http://127.0.0.1:9000",
-    "applicationId": "id"
-  }

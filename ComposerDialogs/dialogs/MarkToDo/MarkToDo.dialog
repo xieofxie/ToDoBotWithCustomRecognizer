@@ -28,6 +28,10 @@
             {
               "property": "dialog.listType",
               "value": "=coalesce(@ListType, @roleListType, $listType)"
+            },
+            {
+              "property": "dialog.containsAll",
+              "value": "=coalesce(@ContainsAll, $containsAll)"
             }
           ]
         },
@@ -100,63 +104,107 @@
           "condition": "dialog.count > 0",
           "actions": [
             {
-              "$kind": "Microsoft.BeginDialog",
+              "$kind": "Microsoft.IfCondition",
               "$designer": {
-                "id": "IxamhV"
+                "id": "CPgTHI"
               },
-              "dialog": "GetToDos",
-              "resultProperty": "dialog.todos",
-              "options": "=setProperty({},\"tasks\",dialog.tasks)"
-            },
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "VI9Jwf",
-                "name": "Send a response"
-              },
-              "activity": "${bfdactivity-VI9Jwf()}"
-            },
-            {
-              "$kind": "Microsoft.TextInput",
-              "$designer": {
-                "id": "wAvK0n",
-                "name": "Text input"
-              },
-              "prompt": "${bfdprompt-wAvK0n()}",
-              "maxTurnCount": 3,
-              "property": "dialog.taskContent",
-              "value": "=@TaskContent",
-              "alwaysPrompt": false,
-              "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.9"
-            },
-            {
-              "$kind": "Microsoft.BeginDialog",
-              "$designer": {
-                "id": "iP-vVM"
-              },
-              "dialog": "MatchInList",
-              "resultProperty": "dialog.markedItem",
-              "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
+              "condition": "=dialog.taskContent==null&&dialog.containsAll==null",
+              "actions": [
+                {
+                  "$kind": "Microsoft.BeginDialog",
+                  "$designer": {
+                    "id": "tZ_oRL"
+                  },
+                  "dialog": "GetToDos",
+                  "resultProperty": "dialog.todos",
+                  "options": "=setProperty({},\"tasks\",dialog.tasks)"
+                },
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "9sNU1n",
+                    "name": "Send a response"
+                  },
+                  "activity": "${bfdactivity-9sNU1n()}"
+                },
+                {
+                  "$kind": "Microsoft.TextInput",
+                  "$designer": {
+                    "id": "kad_Gj",
+                    "name": "Text input"
+                  },
+                  "prompt": "${bfdprompt-kad_Gj()}",
+                  "maxTurnCount": 3,
+                  "property": "dialog.taskContent",
+                  "value": "=@TaskContent",
+                  "alwaysPrompt": false,
+                  "allowInterruptions": "false && !@taskContent && #_Interruption.Score >= 0.9"
+                }
+              ]
             },
             {
               "$kind": "Microsoft.IfCondition",
               "$designer": {
-                "id": "gj_NXG"
+                "id": "ojUEeJ"
               },
-              "condition": "dialog.markedItem==null",
+              "condition": "=dialog.containsAll == null",
               "actions": [
                 {
-                  "$kind": "Microsoft.SendActivity",
+                  "$kind": "Microsoft.BeginDialog",
                   "$designer": {
-                    "id": "xQ7IEd"
+                    "id": "q-qZbC"
                   },
-                  "activity": "${bfdactivity-xQ7IEd()}"
+                  "dialog": "MatchInList",
+                  "resultProperty": "dialog.markedItem",
+                  "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
                 },
                 {
-                  "$kind": "Microsoft.EndDialog",
+                  "$kind": "Microsoft.IfCondition",
                   "$designer": {
-                    "id": "Q71PI_"
-                  }
+                    "id": "vNldia"
+                  },
+                  "condition": "dialog.markedItem==null",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "pElble"
+                      },
+                      "activity": "${bfdactivity-pElble()}"
+                    },
+                    {
+                      "$kind": "Microsoft.EndDialog",
+                      "$designer": {
+                        "id": "WntC-9"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "jr1n0H"
+                  },
+                  "assignments": [
+                    {
+                      "property": "dialog.markeds",
+                      "value": "=createArray(dialog.markedItem)"
+                    }
+                  ]
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "EyUbGC"
+                  },
+                  "assignments": [
+                    {
+                      "property": "dialog.markeds",
+                      "value": "=dialog.tasks"
+                    }
+                  ]
                 }
               ]
             },
@@ -166,7 +214,7 @@
                 "id": "L7ZaRO"
               },
               "dialog": "MarkInListOutlook",
-              "options": "=setProperty({},\"task\",dialog.markedItem)"
+              "options": "=setProperty({},\"tasks\",dialog.markeds)"
             },
             {
               "$kind": "Microsoft.ReplaceDialog",

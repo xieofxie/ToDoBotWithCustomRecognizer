@@ -28,6 +28,7 @@ conversation.page: for interruption from show to del
 - pay attention to order
 
 taskContent
+containsAll
 
 settings.displaySize
 
@@ -49,11 +50,9 @@ tasks
 todos
 - for display
 
-also for folder name <-> id mapping
-
 # Flow
 
-Since we can't circular call dialogs like:
-    mark -> show(which to mark) -> mark(after selection) -> show(finish mark)
-
 The first show should be within mark
+- create a show-select dialog
+
+support all in show-select/first show in mark
