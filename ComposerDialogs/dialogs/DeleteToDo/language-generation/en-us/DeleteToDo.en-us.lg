@@ -2,7 +2,7 @@
 [import](ShowToDo.lg)
 
 # bfdactivity-012019()
-- ${ShowToDo(dialog.count,dialog.listType,dialog.todos)}
+- ${ShowToDo(dialog.count,conversation.listType,dialog.todos)}
 
 # bfdprompt-841583()
 [Activity
@@ -17,7 +17,7 @@
 - ${NoTasksInList()}
 
 # bfdactivity-809470()
-- ${TaskDeleted(False,dialog.listType,dialog.deletedItem.Topic, dialog.count, dialog.todos)}
+- ${TaskDeleted(False,conversation.listType,dialog.deletedItem.Topic, dialog.count, dialog.todos)}
 
 > From DeleteToDo
 

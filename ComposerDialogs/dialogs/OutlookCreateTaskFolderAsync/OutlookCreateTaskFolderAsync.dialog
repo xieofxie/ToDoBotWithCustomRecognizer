@@ -22,7 +22,7 @@
           "assignments": [
             {
               "property": "dialog.body",
-              "value": "=setProperty({} , \"name\" ,dialog.listType)"
+              "value": "=setProperty({} , \"name\" ,conversation.listType)"
             },
             {
               "property": "dialog.url",

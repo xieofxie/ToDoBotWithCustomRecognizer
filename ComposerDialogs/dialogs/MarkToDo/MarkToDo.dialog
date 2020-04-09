@@ -26,8 +26,8 @@
               "value": "=coalesce(@TaskContent, $taskContent)"
             },
             {
-              "property": "dialog.listType",
-              "value": "=coalesce(@ListType, @roleListType, $listType)"
+              "property": "conversation.listType",
+              "value": "=coalesce(@ListType, @roleListType, conversation.listType)"
             },
             {
               "property": "dialog.containsAll",
@@ -43,7 +43,7 @@
           },
           "prompt": "${bfdprompt-5iE8DA()}",
           "maxTurnCount": 3,
-          "property": "dialog.listType",
+          "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
           "allowInterruptions": "!@listType",
@@ -56,7 +56,10 @@
               "value": "Grocery"
             },
             {
-              "value": "Todo"
+              "value": "To Do",
+              "synonyms": [
+                "todo"
+              ]
             }
           ],
           "appendChoices": "true",
@@ -78,9 +81,6 @@
             "id": "2bgaHn"
           },
           "dialog": "GetToDosOutlook",
-          "options": {
-            "listType": "${dialog.listType}"
-          },
           "resultProperty": "dialog.tasks"
         },
         {
@@ -256,10 +256,7 @@
               "$designer": {
                 "id": "SaTeku"
               },
-              "dialog": "ShowToDo",
-              "options": {
-                "listType": "${dialog.listType}"
-              }
+              "dialog": "ShowToDo"
             },
             {
               "$kind": "Microsoft.SendActivity",

@@ -5,7 +5,7 @@
 - ${ListTypePromptForComplete()}
 
 # bfdactivity-9sNU1n()
-- ${ShowToDo(dialog.count,dialog.listType,dialog.todos)}
+- ${ShowToDo(dialog.count,conversation.listType,dialog.todos)}
 
 # bfdprompt-kad_Gj()
 [Activity
@@ -17,7 +17,7 @@
 - Sorry, I couldn't find the item
 
 # bfdactivity-d56H_l()
-- ${TaskCompleted(False,dialog.listType,dialog.markedItem.Topic, dialog.count, dialog.todos)}
+- ${TaskCompleted(False,conversation.listType,dialog.markedItem.Topic, dialog.count, dialog.todos)}
 
 # bfdactivity-UTh7g6()
 - ${NoTasksInList()}

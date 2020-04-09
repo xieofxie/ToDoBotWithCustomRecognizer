@@ -26,8 +26,8 @@
               "value": "=coalesce(@TaskContent, $taskContent)"
             },
             {
-              "property": "dialog.listType",
-              "value": "=coalesce(@ListType, @roleListType, $listType)"
+              "property": "conversation.listType",
+              "value": "=coalesce(@ListType, @roleListType, conversation.listType)"
             }
           ]
         },
@@ -39,7 +39,7 @@
           },
           "prompt": "${bfdprompt-098282()}",
           "maxTurnCount": 3,
-          "property": "dialog.listType",
+          "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
           "allowInterruptions": "!@listType",
@@ -52,7 +52,10 @@
               "value": "Grocery"
             },
             {
-              "value": "Todo"
+              "value": "To Do",
+              "synonyms": [
+                "todo"
+              ]
             }
           ],
           "appendChoices": "true",
@@ -74,9 +77,6 @@
             "id": "WUBz7T"
           },
           "dialog": "GetToDosOutlook",
-          "options": {
-            "listType": "${dialog.listType}"
-          },
           "resultProperty": "dialog.tasks"
         },
         {
@@ -172,9 +172,6 @@
               "$kind": "Microsoft.ReplaceDialog",
               "$designer": {
                 "id": "mFf8Hl"
-              },
-              "options": {
-                "listType": "${dialog.listType}"
               },
               "dialog": "ShowToDo"
             },

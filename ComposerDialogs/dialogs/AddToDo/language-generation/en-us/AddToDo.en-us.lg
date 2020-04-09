@@ -46,4 +46,4 @@
 ]
 
 # bfdactivity-lxUk-1()
-- ${AfterTaskAdded(dialog.taskContent, dialog.listType, dialog.count, dialog.todos)}
+- ${AfterTaskAdded(dialog.taskContent, conversation.listType, dialog.count, dialog.todos)}

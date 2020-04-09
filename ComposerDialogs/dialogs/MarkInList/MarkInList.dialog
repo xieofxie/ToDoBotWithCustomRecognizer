@@ -22,7 +22,7 @@
           "assignments": [
             {
               "property": "dialog.item",
-              "value": "=where(indicesAndValues(user.taskLists[dialog.listType]),iter,iter.value.Topic==dialog.taskContent)"
+              "value": "=where(indicesAndValues(user.taskLists[conversation.listType]),iter,iter.value.Topic==dialog.taskContent)"
             }
           ]
         },
@@ -61,7 +61,7 @@
               },
               "assignments": [
                 {
-                  "property": "user.taskLists[dialog.listType][dialog.item[0].index]",
+                  "property": "user.taskLists[conversation.listType][dialog.item[0].index]",
                   "value": "=dialog.item[0].value"
                 }
               ]

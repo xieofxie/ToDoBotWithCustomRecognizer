@@ -4,10 +4,10 @@
 - What list would you like to see?
 
 # bfdactivity-ZEwh72()
-- ${ShowToDo(dialog.count,dialog.listType,dialog.todos)}
+- ${ShowToDo(dialog.count,conversation.listType,dialog.todos)}
 
 # bfdactivity-yD5ABI()
-- ${NoTasksMessage(dialog.listType)}
+- ${NoTasksMessage(conversation.listType)}
 
 > From ShowToDo
 

@@ -27,9 +27,6 @@
             "id": "7D0luF"
           },
           "dialog": "OutlookGetOrCreateTaskFolderAsync",
-          "options": {
-            "listType": "${dialog.listType}"
-          },
           "resultProperty": "dialog.id"
         },
         {

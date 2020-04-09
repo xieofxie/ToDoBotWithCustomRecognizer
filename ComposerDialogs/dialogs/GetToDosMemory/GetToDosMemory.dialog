@@ -21,7 +21,7 @@
           },
           "assignments": [
             {
-              "value": "=select(indicesAndValues(user.taskLists[dialog.listType]),iter,setProperty(iter.value, \"Id\", iter.index))",
+              "value": "=select(indicesAndValues(user.taskLists[conversation.listType]),iter,setProperty(iter.value, \"Id\", iter.index))",
               "property": "dialog.result"
             }
           ]

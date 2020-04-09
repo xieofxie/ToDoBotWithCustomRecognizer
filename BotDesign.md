@@ -22,10 +22,13 @@ Could be removed as it is part of chitchat
 ## Show
 
 # Variable
-conversation.listType: for interruption from show to del
-conversation.page: for interruption from show to del
+conversation.listType
+- for interruption from show to del
 - remember to clear
 - pay attention to order
+
+conversation.page
+- for interruption from show to del
 
 taskContent
 containsAll
@@ -33,6 +36,7 @@ containsAll
 settings.displaySize
 
 url
+
 turn.token
 turn.listToId
 - list name to id in outlook
@@ -50,10 +54,6 @@ tasks
 todos
 - for display
 
-showPage
-
 # Flow
-
-The first show should be within mark
 
 support all in first show in mark

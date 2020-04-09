@@ -20,9 +20,6 @@
             "id": "v9Mu5H"
           },
           "dialog": "OutlookGetTaskFolderAsync",
-          "options": {
-            "listType": "${dialog.listType}"
-          },
           "resultProperty": "dialog.id"
         },
         {
@@ -38,9 +35,6 @@
                 "id": "6LQxFl"
               },
               "dialog": "OutlookCreateTaskFolderAsync",
-              "options": {
-                "listType": "${dialog.listType}"
-              },
               "resultProperty": "dialog.id"
             },
             {
@@ -50,7 +44,7 @@
               },
               "changeType": "push",
               "itemsProperty": "turn.listToId",
-              "value": "=setProperty(setProperty({},\"id\",dialog.id),\"name\",dialog.listType)"
+              "value": "=setProperty(setProperty({},\"id\",dialog.id),\"name\",conversation.listType)"
             }
           ]
         },

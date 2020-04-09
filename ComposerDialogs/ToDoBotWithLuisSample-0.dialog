@@ -24,7 +24,7 @@
           },
           "dialog": "AddToList",
           "options": {
-            "listType": "ToDo",
+            "listType": "To Do",
             "taskContent": "buy milk"
           }
         },
@@ -35,7 +35,7 @@
           },
           "dialog": "AddToList",
           "options": {
-            "listType": "ToDo",
+            "listType": "To Do",
             "taskContent": "buy juice"
           }
         },
@@ -46,7 +46,7 @@
           },
           "dialog": "AddToList",
           "options": {
-            "listType": "ToDo",
+            "listType": "To Do",
             "taskContent": "buy water"
           }
         },

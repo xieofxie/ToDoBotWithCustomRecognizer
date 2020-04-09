@@ -22,7 +22,7 @@
             "name": "Edit an Array Property"
           },
           "changeType": "Push",
-          "itemsProperty": "user.taskLists[dialog.listType]",
+          "itemsProperty": "user.taskLists[conversation.listType]",
           "value": "=setProperty(setProperty({},\"Topic\",dialog.taskContent),\"IsCompleted\",False)"
         }
       ]

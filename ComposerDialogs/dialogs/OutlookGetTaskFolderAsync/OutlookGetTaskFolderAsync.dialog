@@ -32,7 +32,7 @@
           "assignments": [
             {
               "property": "dialog.folders",
-              "value": "=where(turn.listToId,folder,folder.name==dialog.listType)"
+              "value": "=where(turn.listToId,folder,folder.name==conversation.listType)"
             },
             {
               "property": "dialog.id",

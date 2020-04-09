@@ -29,8 +29,8 @@
 > This template uses pre-built functions to construct a response.
 # Delete-Items-readback
 - IF: ${turn.itemDeleted}
-    - ```I have removed **${dialog.taskContent}** from your ${dialog.listType} list.
-You have **${count(user.taskLists[dialog.listType])}** items in your ${dialog.listType} list.
+    - ```I have removed **${dialog.taskContent}** from your ${conversation.listType} list.
+You have **${count(user.taskLists[conversation.listType])}** items in your ${conversation.listType} list.
  ```
  - ELSE :
     - Sorry, I did not find **${dialog.taskContent}** in your todo list
@@ -42,10 +42,10 @@ You have **${count(user.taskLists[dialog.listType])}** items in your ${dia
     - items
 
 # Items-readback
-- IF : ${toLower(dialog.listType) == 'all' }
+- IF : ${toLower(conversation.listType) == 'all' }
     - ${Show-all-lists()}
 - ELSE :
-    - ${List-readback (user.taskLists, dialog.listType)}
+    - ${List-readback (user.taskLists, conversation.listType)}
 
 # Show-all-lists
 - ```
@@ -80,8 +80,8 @@ ${join(foreach(collection[type], item, todo-line(item)), '')}
 
 # Add-Todo-Text
 - ```
-${Help-prefix()}, I have added **${dialog.taskContent}** to your ${dialog.listType} list. 
-You have **${count(user.taskLists[dialog.listType])}** items in your ${dialog.listType} list.
+${Help-prefix()}, I have added **${dialog.taskContent}** to your ${conversation.listType} list. 
+You have **${count(user.taskLists[conversation.listType])}** items in your ${conversation.listType} list.
 ```
 
 > From ToDoMain

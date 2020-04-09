@@ -22,8 +22,8 @@
           },
           "assignments": [
             {
-              "property": "$listType",
-              "value": "=coalesce(@ListType, @roleListType, $listType)"
+              "property": "conversation.listType",
+              "value": "=coalesce(@ListType, @roleListType, conversation.listType)"
             }
           ]
         },
@@ -35,14 +35,17 @@
           },
           "prompt": "${bfdprompt-807838()}",
           "maxTurnCount": 3,
-          "property": "dialog.listType",
+          "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
           "allowInterruptions": false,
           "outputFormat": "value",
           "choices": [
             {
-              "value": "Todo"
+              "value": "To Do",
+              "synonyms": [
+                "todo"
+              ]
             },
             {
               "value": "Shopping"
@@ -70,9 +73,6 @@
             "id": "ckEHvu"
           },
           "dialog": "GetToDosOutlook",
-          "options": {
-            "listType": "${dialog.listType}"
-          },
           "resultProperty": "dialog.tasks"
         },
         {
@@ -136,9 +136,6 @@
               "$kind": "Microsoft.RepeatDialog",
               "$designer": {
                 "id": "oedBQN"
-              },
-              "options": {
-                "listType": "${dialog.listType}"
               }
             }
           ],

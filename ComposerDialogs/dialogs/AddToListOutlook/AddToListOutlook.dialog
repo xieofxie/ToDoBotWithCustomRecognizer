@@ -27,9 +27,6 @@
             "id": "3gc_Py"
           },
           "dialog": "OutlookGetOrCreateTaskFolderAsync",
-          "options": {
-            "listType": "${dialog.listType}"
-          },
           "resultProperty": "dialog.id"
         },
         {
