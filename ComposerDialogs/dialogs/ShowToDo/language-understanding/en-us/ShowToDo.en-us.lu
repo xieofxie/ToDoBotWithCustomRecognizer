@@ -24,8 +24,7 @@
         - grocer
 
 
-
-# ChoiceInput.response-807838
+# ShowToDo
 - access my {ListType: roleListType=shopping} list
 - access my {ListType: roleListType=to do} list
 - access the {ListType: roleListType=groceries} list

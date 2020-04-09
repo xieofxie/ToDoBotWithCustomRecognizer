@@ -15,17 +15,11 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.SetProperties",
+          "$kind": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "725895",
-            "name": "Set properties"
+            "id": "2Wp00Y"
           },
-          "assignments": [
-            {
-              "property": "conversation.listType",
-              "value": "=coalesce(@ListType, @roleListType, conversation.listType)"
-            }
-          ]
+          "dialog": "SetListTypePage"
         },
         {
           "$kind": "Microsoft.ChoiceInput",
@@ -117,12 +111,12 @@
               },
               "maxTurnCount": 3,
               "alwaysPrompt": true,
-              "allowInterruptions": false,
+              "allowInterruptions": "=#_Interruption.score > 0.9 || #ShowToDo.score > 0.5",
               "prompt": "${bfdprompt-k63lez()}",
               "value": "= select(turn.recognized.intents,x,x.key)[0]",
               "property": "dialog.showPage",
               "validations": [
-                "true || #ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
+                "#ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
               ]
             },
             {
@@ -148,6 +142,21 @@
               "activity": "${bfdactivity-yD5ABI()}"
             }
           ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "xVQ91h"
+      },
+      "intent": "ShowToDo",
+      "actions": [
+        {
+          "$kind": "Microsoft.RepeatDialog",
+          "$designer": {
+            "id": "gITD8G"
+          }
         }
       ]
     }

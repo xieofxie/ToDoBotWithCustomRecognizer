@@ -60,7 +60,7 @@
 - You have 1 item on your ${ListType} list:  
 
 # CardSummaryMessageForMultipleTasks.Text(AllTasksCount, ListType, ToDos)
-- You have ${AllTasksCount} items on your ${ListType} list. Here are the ${count(ToDos)} most recent:
+- You have ${AllTasksCount} items on your ${ListType} list. Here are the ones in page ${conversation.page + 1}:
 
 # AskAddOrCompleteTaskMessage.Text
 - Let me know if you want to add an item or mark one as complete.

@@ -16,6 +16,13 @@
       },
       "actions": [
         {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "Jk-nXo"
+          },
+          "dialog": "SetListTypePage"
+        },
+        {
           "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "055724",
@@ -25,10 +32,6 @@
             {
               "property": "dialog.taskContent",
               "value": "=coalesce(@TaskContent, $taskContent)"
-            },
-            {
-              "property": "conversation.listType",
-              "value": "=coalesce(@ListType, @roleListType, conversation.listType)"
             }
           ]
         },
