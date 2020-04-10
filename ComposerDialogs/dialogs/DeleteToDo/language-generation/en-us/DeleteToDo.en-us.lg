@@ -17,7 +17,7 @@
 - ${NoTasksInList()}
 
 # bfdactivity-809470()
-- ${TaskDeleted(False,conversation.listType,dialog.deletedItem.Topic, dialog.count, dialog.todos)}
+- ${TaskDeleted(False,conversation.listType,dialog.items[0].Topic, dialog.count, dialog.todos)}
 
 > From DeleteToDo
 

@@ -22,8 +22,6 @@
         - grocery
         - groceries
         - grocer
-    - all:
-        - all
 
 > Help intent and related utterances.
 # Help

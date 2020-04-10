@@ -26,7 +26,7 @@
             },
             {
               "property": "dialog.result",
-              "value": "=if(count(dialog.result)>=1,dialog.result[0],null)"
+              "value": "=if(count(dialog.result)>=1,dialog.result,{})"
             }
           ]
         },

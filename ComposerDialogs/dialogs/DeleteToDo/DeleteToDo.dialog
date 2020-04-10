@@ -138,7 +138,7 @@
                 "id": "2N-yGS"
               },
               "dialog": "MatchInList",
-              "resultProperty": "dialog.deletedItem",
+              "resultProperty": "dialog.items",
               "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
             },
             {
@@ -146,7 +146,7 @@
               "$designer": {
                 "id": "HSECRw"
               },
-              "condition": "dialog.deletedItem==null",
+              "condition": "count(dialog.items) == 0",
               "actions": [
                 {
                   "$kind": "Microsoft.SendActivity",
@@ -169,7 +169,7 @@
                 "id": "9DeyhL"
               },
               "dialog": "DeleteInListOutlook",
-              "options": "=setProperty({},\"task\",dialog.deletedItem)"
+              "options": "=setProperty({},\"task\",dialog.items[0])"
             },
             {
               "$kind": "Microsoft.ReplaceDialog",

@@ -52,12 +52,15 @@ turn.listToId
 }
 
 tasks
+- all
 todos
 - for display
+items
+- for operation
 
 # Flow
 
-support number in mark
+all is handled wrongly when repeat like 'do nothing at all'
 support all in first show in mark
 
 # Interruption Test

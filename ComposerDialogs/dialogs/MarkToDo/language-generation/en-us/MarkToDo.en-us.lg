@@ -4,20 +4,17 @@
 # bfdprompt-5iE8DA()
 - ${ListTypePromptForComplete()}
 
-# bfdactivity-9sNU1n()
+# bfdactivity-osbmhj()
 - ${ShowToDo(dialog.count,conversation.listType,dialog.todos)}
 
-# bfdprompt-kad_Gj()
+# bfdprompt-ZFdwqq()
 [Activity
     Text = Ok, give me the exact title of the todo you would like to mark..
     SuggestedActions = Help | Cancel
 ]
 
-# bfdactivity-pElble()
-- Sorry, I couldn't find the item
-
 # bfdactivity-d56H_l()
-- ${TaskCompleted(False,conversation.listType,dialog.markedItem.Topic, dialog.count, dialog.todos)}
+- ${TaskCompleted(False,conversation.listType,dialog.items[0].Topic, dialog.count, dialog.todos)}
 
 # bfdactivity-UTh7g6()
 - ${NoTasksInList()}
