@@ -6,7 +6,7 @@
 # bfdprompt-456695()
 - Which list should I add **${dialog.taskContent}** to?
 
-# bfdprompt-sIgrfn()
+# bfdprompt-RCO61b()
 - ${AskAddDupTaskPrompt(dialog.taskContent)}
 
 # bfdactivity-QRekYt()

@@ -46,7 +46,7 @@
           "property": "dialog.taskContent",
           "value": "=@TaskContent",
           "alwaysPrompt": false,
-          "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.5"
+          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
         },
         {
           "$kind": "Microsoft.ChoiceInput",
@@ -59,7 +59,7 @@
           "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
-          "allowInterruptions": "!@listType",
+          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)",
           "outputFormat": "value",
           "choices": [
             {
@@ -102,29 +102,51 @@
             "id": "lRsuXt"
           },
           "dialog": "MatchInList",
-          "resultProperty": "dialog.duplicate",
+          "resultProperty": "dialog.items",
           "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
         },
         {
-          "$kind": "Microsoft.ConfirmInput",
+          "$kind": "Microsoft.IfCondition",
           "$designer": {
-            "id": "sIgrfn"
+            "id": "LJyu77"
           },
-          "maxTurnCount": 3,
-          "alwaysPrompt": false,
-          "allowInterruptions": false,
-          "defaultLocale": "en-us",
-          "style": "Auto",
-          "prompt": "${bfdprompt-sIgrfn()}",
-          "value": "=if(dialog.duplicate,null,True)",
-          "property": "dialog.addDuplicate"
+          "condition": "=count(dialog.items) != 0",
+          "actions": [
+            {
+              "$kind": "Microsoft.ConfirmInput",
+              "$designer": {
+                "id": "RCO61b"
+              },
+              "maxTurnCount": 3,
+              "alwaysPrompt": false,
+              "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)",
+              "defaultLocale": "en-us",
+              "style": "Auto",
+              "prompt": "${bfdprompt-RCO61b()}",
+              "property": "dialog.add"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "C3hoUq"
+              },
+              "assignments": [
+                {
+                  "property": "dialog.add",
+                  "value": "=true"
+                }
+              ]
+            }
+          ]
         },
         {
           "$kind": "Microsoft.IfCondition",
           "$designer": {
             "id": "LqhLN9"
           },
-          "condition": "dialog.addDuplicate",
+          "condition": "=dialog.add",
           "elseActions": [
             {
               "$kind": "Microsoft.SendActivity",

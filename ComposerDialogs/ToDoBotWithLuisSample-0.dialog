@@ -18,16 +18,11 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.SetProperties",
+          "$kind": "Microsoft.BeginDialog",
           "$designer": {
-            "id": "9snHo6"
+            "id": "GfSxsA"
           },
-          "assignments": [
-            {
-              "property": "conversation.page",
-              "value": "=0"
-            }
-          ]
+          "dialog": "Reset"
         },
         {
           "$kind": "Microsoft.Foreach",
@@ -120,6 +115,13 @@
                 "name": "Send a response"
               },
               "activity": "${bfdactivity-304360()}"
+            },
+            {
+              "$kind": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "FuBpiS"
+              },
+              "dialog": "Reset"
             },
             {
               "$kind": "Microsoft.CancelAllDialogs",

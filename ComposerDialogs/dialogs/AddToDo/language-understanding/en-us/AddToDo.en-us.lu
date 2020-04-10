@@ -21,7 +21,7 @@
         - groceries
         - grocer
 
-# TextInput.response-662396
+# AddToDo
 - add {TaskContent=schedule car maintenance} to my {ListType: roleListType=to do} list
 - add {TaskContent=get a perm} to my {ListType: roleListType=to do} list
 - add a few items to the {ListType: roleListType=grocery} list
@@ -116,8 +116,3 @@
 
 
 
-
-# ChoiceInput.response-456695
-- todo list
-- shopping list
-- how about the to do list?

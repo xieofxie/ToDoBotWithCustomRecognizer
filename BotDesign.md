@@ -61,7 +61,10 @@ items
 # Flow
 
 all is handled wrongly when repeat like 'do nothing at all'
+
 support all in first show in mark
+
+test refill slot with utterances
 
 # Interruption Test
 **if prompt in show, interrupt will not go back**
@@ -69,15 +72,26 @@ support all in first show in mark
 help, cancel always included
 
 ## Add
-### Ask list type
-- add
-- show
-- mark
-
 ### Ask content
 - add
 - show
+    - V
 - mark
+    - V
+
+### Ask list type
+- add
+- show
+    - V
+- mark
+    - V
+
+### Duplicate
+- add
+- show
+    - V
+- mark
+    - V
 
 ## Show
 ### Ask list type
