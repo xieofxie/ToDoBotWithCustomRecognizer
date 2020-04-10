@@ -32,7 +32,7 @@
           "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
-          "allowInterruptions": false,
+          "allowInterruptions": "=#_Interruption.Score >= float(settings.interruptScore)",
           "outputFormat": "value",
           "choices": [
             {
@@ -111,12 +111,12 @@
               },
               "maxTurnCount": 3,
               "alwaysPrompt": true,
-              "allowInterruptions": "=#_Interruption.score > 0.9 || #ShowToDo.score > 0.5",
+              "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore) || #ShowToDo.score > float(settings.intentScore)",
               "prompt": "${bfdprompt-k63lez()}",
               "value": "= select(turn.recognized.intents,x,x.key)[0]",
               "property": "dialog.showPage",
               "validations": [
-                "#ShowNextPage.score > 0.5 || #ShowPreviousPage.score > 0.5"
+                "#ShowNextPage.score > float(settings.intentScore) || #ShowPreviousPage.score > float(settings.intentScore)"
               ]
             },
             {

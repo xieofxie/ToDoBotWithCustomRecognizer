@@ -4,7 +4,7 @@
 - ${Welcome-Message()}
 
 # bfdactivity-113335()
-- ${Welcome-Message()}
+- ${HelpMessage()}
 
 # bfdprompt-183920
 - Are you sure you want to cancel?
@@ -18,5 +18,3 @@
 # bfdactivity-470975
 - No worries. Let's get right back to where we were...
 
-# bfdactivity-456012
-- ${Welcome-Message()}

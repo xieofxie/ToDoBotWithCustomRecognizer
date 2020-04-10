@@ -18,39 +18,6 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.BeginDialog",
-          "$designer": {
-            "id": "yVGpD-"
-          },
-          "dialog": "AddToList",
-          "options": {
-            "listType": "To Do",
-            "taskContent": "buy milk"
-          }
-        },
-        {
-          "$kind": "Microsoft.BeginDialog",
-          "$designer": {
-            "id": "ULBbPX"
-          },
-          "dialog": "AddToList",
-          "options": {
-            "listType": "To Do",
-            "taskContent": "buy juice"
-          }
-        },
-        {
-          "$kind": "Microsoft.BeginDialog",
-          "$designer": {
-            "id": "Q7GIdu"
-          },
-          "dialog": "AddToList",
-          "options": {
-            "listType": "To Do",
-            "taskContent": "buy water"
-          }
-        },
-        {
           "$kind": "Microsoft.SetProperties",
           "$designer": {
             "id": "9snHo6"
@@ -175,24 +142,6 @@
         }
       ],
       "intent": "Cancel"
-    },
-    {
-      "$kind": "Microsoft.OnIntent",
-      "$designer": {
-        "id": "903332"
-      },
-      "condition": "#Greeting.Score > 0.8",
-      "actions": [
-        {
-          "$kind": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "456012",
-            "name": "Send a response"
-          },
-          "activity": "${bfdactivity-456012()}"
-        }
-      ],
-      "intent": "Greeting"
     },
     {
       "$kind": "Microsoft.OnIntent",

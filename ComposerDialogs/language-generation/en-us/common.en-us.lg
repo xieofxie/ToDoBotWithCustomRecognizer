@@ -1,14 +1,7 @@
-# bfdprompt-038757
-[Activity
-    Text = Ok, give me the exact title of the todo you would like to delete..
-    SuggestedActions = Help | Cancel
-]
-
-
 > Language generation templates.
 # Welcome-Actions
 [Activity
-    SuggestedActions = Add | View | Remove | Cancel | Help
+    SuggestedActions = Add a task | View my tasks | Mark a task | Cancel | Help
 ]
 
 # Welcome-Suffix
@@ -26,65 +19,17 @@
     ${Welcome-Actions()}
 ]
 
-> This template uses pre-built functions to construct a response.
-# Delete-Items-readback
-- IF: ${turn.itemDeleted}
-    - ```I have removed **${dialog.taskContent}** from your ${conversation.listType} list.
-You have **${count(user.taskLists[conversation.listType])}** items in your ${conversation.listType} list.
- ```
- - ELSE :
-    - Sorry, I did not find **${dialog.taskContent}** in your todo list
-
-# Items-Ordinality (list)
-- IF: ${list == null || count(list) == 1}
-    - item
-- ELSE:
-    - items
-
-# Items-readback
-- IF : ${toLower(conversation.listType) == 'all' }
-    - ${Show-all-lists()}
-- ELSE :
-    - ${List-readback (user.taskLists, conversation.listType)}
-
-# Show-all-lists
-- ```
-## Shopping list
-${List-readback (user.taskLists, 'shopping')}
-
-## Grocery list
-${List-readback (user.taskLists, 'grocery')}
-
-## Todo list
-${List-readback (user.taskLists, 'todo')}
-```
-
-> This template uses a foreach prebuilt function to call a template. The template helps with putting together each item in a line prefixed with `-`
-> This way, clients that support multi-line markdown for text can render the items as a list.
-# List-readback (collection, type)
-- IF: ${collection != null && collection[type] != null && count(collection[type]) != 0}
-    - ```You have ${count(collection[type])} ${Items-Ordinality(collection[type])} in your ${type} collection.
-${join(foreach(collection[type], item, todo-line(item)), '')}
-```
-- ELSE:
-    - ```You do not have any items in your ${type} list.```
-
-# todo-line (item)
-- ```- ${item}
-```
-
-# Help-prefix
-- Sure
-- You bet
-- Absolutely
-
-# Add-Todo-Text
-- ```
-${Help-prefix()}, I have added **${dialog.taskContent}** to your ${conversation.listType} list. 
-You have **${count(user.taskLists[conversation.listType])}** items in your ${conversation.listType} list.
-```
-
 > From ToDoMain
+
+# HelpMessage.Text
+- I can create a To Do, Shopping, or Grocery list for you, add or delete items to lists, or mark items as complete.
+
+# HelpMessage
+[Activity
+    Text = ${HelpMessage.Text()}
+    Speak = ${HelpMessage.Text()}
+    InputHint = acceptingInput
+]
 
 # CompletedMessage.Text
 - I'm here if you need anything else.

@@ -1,25 +1,23 @@
 # LU
 
-# Main
+## Main Dialog
+- Add
+- Del
+- Show
+- Mark
+- Cancel
+- Help
 
-## Add
-## Del
-## Show
-## Mark
-## Cancel
-## Help
-## Greeting
-Could be removed as it is part of chitchat
+## Show Dialog
+- Input List
+- Next
+    - **note it will conflict with content of task**
+- Previous
+- Show ToDo
 
-# Show
-## Input List
-
-## Next
-## Previous
-
-## Add
-## Del
-## Show
+## Add Dialog
+## Del Dialog
+## Mark Dialog
 
 # Variable
 conversation.listType
@@ -34,6 +32,8 @@ taskContent
 containsAll
 
 settings.displaySize
+settings.interruptScore
+settings.intentScore
 
 url
 
@@ -56,4 +56,49 @@ todos
 
 # Flow
 
+support number in mark
 support all in first show in mark
+
+# Interruption Test
+**if prompt in show, interrupt will not go back**
+
+help, cancel always included
+
+## Add
+### Ask list type
+- add
+- show
+- mark
+
+### Ask content
+- add
+- show
+- mark
+
+## Show
+### Ask list type
+- add
+    - V
+- show
+    - not needed here
+- mark
+    - V
+
+### Ask next/prev
+- add
+    - V
+- show
+    - V
+- mark
+    - V
+
+## Mark
+### Ask list type
+- add
+- show
+- mark
+
+### Ask content
+- add
+- show
+- mark
