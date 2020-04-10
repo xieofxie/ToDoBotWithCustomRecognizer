@@ -1,5 +1,7 @@
 # LU
 
+**note interruptions will conflict with content of task**
+
 ## Main Dialog
 - Add
 - Del
@@ -11,7 +13,6 @@
 ## Show Dialog
 - Input List
 - Next
-    - **note it will conflict with content of task**
 - Previous
 - Show ToDo
 
@@ -95,10 +96,15 @@ help, cancel always included
 ## Mark
 ### Ask list type
 - add
+    - V
 - show
+    - V
 - mark
+    - subtle..
 
 ### Ask content
 - add
+    - V
 - show
-- mark
+    - V
+- mark in another list?

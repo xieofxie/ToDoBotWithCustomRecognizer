@@ -128,16 +128,6 @@
                 "name": "Cancel all dialogs"
               }
             }
-          ],
-          "elseActions": [
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "470975",
-                "name": "Send a response"
-              },
-              "activity": "${bfdactivity-470975()}"
-            }
           ]
         }
       ],

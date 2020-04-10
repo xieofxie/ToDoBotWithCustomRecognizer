@@ -49,7 +49,7 @@
           "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
-          "allowInterruptions": "!@listType",
+          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)",
           "outputFormat": "value",
           "choices": [
             {
@@ -141,7 +141,7 @@
                   "property": "dialog.taskContent",
                   "value": "=turn.activity.text",
                   "alwaysPrompt": true,
-                  "allowInterruptions": "false && !@taskContent && #_Interruption.Score >= 0.9"
+                  "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
                 },
                 {
                   "$kind": "Microsoft.BeginDialog",

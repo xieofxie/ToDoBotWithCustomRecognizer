@@ -21,6 +21,16 @@
 
 > From ToDoMain
 
+# CancelMessage.Text
+- OK, let's start over.
+
+# CancelMessage
+[Activity
+    Text = ${CancelMessage.Text()}
+    Speak = ${CancelMessage.Text()}
+    InputHint = acceptingInput
+]
+
 # HelpMessage.Text
 - I can create a To Do, Shopping, or Grocery list for you, add or delete items to lists, or mark items as complete.
 

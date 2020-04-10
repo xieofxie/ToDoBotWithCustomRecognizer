@@ -10,11 +10,4 @@
 - Are you sure you want to cancel?
 
 # bfdactivity-304360()
-[Activity
-    Text = Cancelled
-    ${Welcome-Actions()}
-]
-
-# bfdactivity-470975
-- No worries. Let's get right back to where we were...
-
+- ${CancelMessage()}
