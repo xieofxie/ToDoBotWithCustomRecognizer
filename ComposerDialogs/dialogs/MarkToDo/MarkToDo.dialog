@@ -146,7 +146,7 @@
                       "prompt": "${bfdprompt-ZFdwqq()}",
                       "maxTurnCount": 3,
                       "property": "dialog.taskContent",
-                      "value": "=turn.activity.text",
+                      "value": "=@TaskContent",
                       "alwaysPrompt": true,
                       "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
                     },
@@ -191,18 +191,6 @@
                   },
                   "condition": "=dialog.items == null",
                   "actions": [
-                    {
-                      "$kind": "Microsoft.SetProperties",
-                      "$designer": {
-                        "id": "98R5L4"
-                      },
-                      "assignments": [
-                        {
-                          "property": "dialog.taskContent",
-                          "value": "=coalesce(@TaskContent, $taskContent)"
-                        }
-                      ]
-                    },
                     {
                       "$kind": "Microsoft.BeginDialog",
                       "$designer": {
