@@ -33,17 +33,3 @@
     Speak = ${AskAddDupTaskPrompt.Text(TaskContent)}
     InputHint = expectingInput
 ]
-
-# AfterTaskAdded.Text(TaskContent, ListType)
-- I added ${TaskContent} to your ${ListType} list.
-
-# AfterTaskAdded(TaskContent, ListType, TotalNumber, ToDos)
-[Activity
-    Text = ${AfterTaskAdded.Text(TaskContent, ListType)}
-    Speak = ${AfterTaskAdded.Text(TaskContent, ListType)}
-    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(TotalNumber), ToDos, False, CheckIconSource(), UncheckIconSource()))}
-    InputHint = ignoringInput
-]
-
-# bfdactivity-lxUk-1()
-- ${AfterTaskAdded(dialog.taskContent, conversation.listType, dialog.count, dialog.todos)}

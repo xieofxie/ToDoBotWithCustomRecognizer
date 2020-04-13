@@ -23,6 +23,10 @@
         - groceries
         - grocer
 
+# AskForListType
+- todo
+- shopping
+- grocery
 
 # ShowToDo
 - access my {ListType: roleListType=shopping} list

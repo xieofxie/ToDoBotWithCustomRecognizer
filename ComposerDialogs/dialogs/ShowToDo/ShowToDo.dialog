@@ -36,16 +36,16 @@
           "outputFormat": "value",
           "choices": [
             {
-              "value": "To Do",
-              "synonyms": [
-                "todo"
-              ]
-            },
-            {
               "value": "Shopping"
             },
             {
               "value": "Grocery"
+            },
+            {
+              "value": "To Do",
+              "synonyms": [
+                "todo"
+              ]
             }
           ],
           "appendChoices": "true",
@@ -98,11 +98,48 @@
               "options": "=setProperty({},\"tasks\",dialog.tasks)"
             },
             {
-              "$kind": "Microsoft.SendActivity",
+              "$kind": "Microsoft.SwitchCondition",
               "$designer": {
-                "id": "ZEwh72"
+                "id": "tGwxU5"
               },
-              "activity": "${bfdactivity-ZEwh72()}"
+              "cases": [
+                {
+                  "value": "add",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "Wjt18C",
+                        "name": "Send a response"
+                      },
+                      "activity": "${bfdactivity-Wjt18C()}"
+                    }
+                  ]
+                },
+                {
+                  "value": "mark",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "rYj5mA",
+                        "name": "Send a response"
+                      },
+                      "activity": "${bfdactivity-rYj5mA()}"
+                    }
+                  ]
+                }
+              ],
+              "condition": "dialog.fromType",
+              "default": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "6Dx7BT"
+                  },
+                  "activity": "${bfdactivity-6Dx7BT()}"
+                }
+              ]
             },
             {
               "$kind": "Microsoft.TextInput",

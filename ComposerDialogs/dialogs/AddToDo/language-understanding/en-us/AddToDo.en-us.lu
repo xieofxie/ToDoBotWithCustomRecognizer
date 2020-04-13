@@ -21,6 +21,11 @@
         - groceries
         - grocer
 
+# AskForListType
+- todo
+- shopping
+- grocery
+
 # AddToDo
 - add {TaskContent=schedule car maintenance} to my {ListType: roleListType=to do} list
 - add {TaskContent=get a perm} to my {ListType: roleListType=to do} list

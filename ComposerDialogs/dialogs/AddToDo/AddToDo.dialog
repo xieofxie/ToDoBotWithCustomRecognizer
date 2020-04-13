@@ -66,13 +66,13 @@
               "value": "Shopping"
             },
             {
+              "value": "Grocery"
+            },
+            {
               "value": "To Do",
               "synonyms": [
                 "todo"
               ]
-            },
-            {
-              "value": "Grocery"
             }
           ],
           "appendChoices": "true",
@@ -178,16 +178,11 @@
               "$designer": {
                 "id": "8nNkT-"
               },
-              "dialog": "ShowToDo"
-            },
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "lxUk-1",
-                "name": "Send a response"
-              },
-              "activity": "${bfdactivity-lxUk-1()}",
-              "disabled": true
+              "dialog": "ShowToDo",
+              "options": {
+                "fromType": "add",
+                "taskContent": "${dialog.taskContent}"
+              }
             }
           ]
         }

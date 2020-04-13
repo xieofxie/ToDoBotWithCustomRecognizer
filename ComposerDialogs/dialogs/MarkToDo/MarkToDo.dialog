@@ -267,20 +267,32 @@
               "options": "=setProperty({},\"tasks\",dialog.items)"
             },
             {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "4kVcWT"
+              },
+              "assignments": [
+                {
+                  "property": "dialog.result",
+                  "value": "=setProperty({} , \"fromType\" ,\"mark\")"
+                },
+                {
+                  "property": "dialog.result",
+                  "value": "=setProperty(dialog.result , \"taskContent\" ,dialog.items[0].Topic)"
+                },
+                {
+                  "property": "dialog.result",
+                  "value": "=setProperty(dialog.result , \"containsAll\" ,dialog.containsAll)"
+                }
+              ]
+            },
+            {
               "$kind": "Microsoft.ReplaceDialog",
               "$designer": {
                 "id": "SaTeku"
               },
-              "dialog": "ShowToDo"
-            },
-            {
-              "$kind": "Microsoft.SendActivity",
-              "$designer": {
-                "id": "d56H_l",
-                "name": "Send a response"
-              },
-              "activity": "${bfdactivity-d56H_l()}",
-              "disabled": true
+              "dialog": "ShowToDo",
+              "options": "=dialog.result"
             }
           ],
           "elseActions": [

@@ -24,7 +24,10 @@
         - groceries
         - grocer
 
-
+# AskForListType
+- todo
+- shopping
+- grocery
 
 # TextInput.response-841583
 - can you delete {TaskContent=todo1}

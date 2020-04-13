@@ -27,6 +27,10 @@
         - groceries
         - grocer
 
+# AskForListType
+- todo
+- shopping
+- grocery
 
 # MarkToDo
 > To learn more about the LU file format, read the documentation at

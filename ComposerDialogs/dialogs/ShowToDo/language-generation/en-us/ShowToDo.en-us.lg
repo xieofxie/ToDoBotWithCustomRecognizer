@@ -3,8 +3,6 @@
 # bfdprompt-807838()
 - What list would you like to see?
 
-# bfdactivity-ZEwh72()
-- ${ShowToDo(dialog.count,conversation.listType,dialog.todos)}
 
 # bfdactivity-yD5ABI()
 - ${NoTasksMessage(conversation.listType)}
@@ -72,5 +70,50 @@
     InputHint = ignoringInput
 ]
 
+> From AddToDo
+
+# AfterTaskAdded.Text(TaskContent, ListType)
+- I added ${TaskContent} to your ${ListType} list.
+
+# AfterTaskAdded(TaskContent, ListType, TotalNumber, ToDos)
+[Activity
+    Text = ${AfterTaskAdded.Text(TaskContent, ListType)}
+    Speak = ${AfterTaskAdded.Text(TaskContent, ListType)}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(TotalNumber), ToDos, False, CheckIconSource(), UncheckIconSource()))}
+    InputHint = ignoringInput
+]
+
+> From MarkToDo
+
+# TaskCompleted(IsCompleteAll,ListType,TaskContent,AllTasksCount,ToDos)
+[Activity
+    Text = ${TaskCompletedSpeak(IsCompleteAll, ListType, TaskContent)}
+    Speak = ${TaskCompletedSpeak(IsCompleteAll, ListType, TaskContent)}
+    Attachments = ${json(ShowToDoCard(CardTitle(ListType), CardNumber(AllTasksCount), ToDos, False, CheckIconSource(), UncheckIconSource()))}
+    InputHint = ignoringInput
+]
+
+# TaskCompletedSpeak(IsCompleteAll, ListType, TaskContent)
+- IF: ${IsCompleteAll != null}
+  - ${AfterAllTasksCompleted.Text(ListType)}
+- ELSE:
+  - ${AfterTaskCompleted.Text(TaskContent, ListType)}
+
+  # AfterAllTasksCompleted.Text(ListType)
+- I marked all items on your ${ListType} list as complete.
+
+# AfterTaskCompleted.Text(TaskContent, ListType)
+- OK, I marked ${TaskContent} on your ${ListType} list as complete.
+
 # bfdprompt-k63lez()
 - ${AskAddOrCompleteTaskMessage()}
+
+# bfdactivity-Wjt18C()
+- ${AfterTaskAdded(dialog.taskContent, conversation.listType, dialog.count, dialog.todos)}
+
+# bfdactivity-rYj5mA()
+- ${TaskCompleted(dialog.containsAll,conversation.listType,dialog.taskContent, dialog.count, dialog.todos)}
+
+# bfdactivity-6Dx7BT()
+- ${ShowToDo(dialog.count,conversation.listType,dialog.todos)}
+
