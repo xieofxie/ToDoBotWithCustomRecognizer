@@ -35,6 +35,10 @@
             {
               "property": "dialog.containsAll",
               "value": "=coalesce(@ContainsAll, $containsAll)"
+            },
+            {
+              "property": "dialog.ordinal",
+              "value": "=coalesce(@ordinal, $ordinal)"
             }
           ]
         },
@@ -130,46 +134,67 @@
                       "options": "=setProperty({},\"tasks\",dialog.tasks)"
                     },
                     {
-                      "$kind": "Microsoft.SendActivity",
-                      "$designer": {
-                        "id": "osbmhj",
-                        "name": "Send a response"
-                      },
-                      "activity": "${bfdactivity-osbmhj()}"
-                    },
-                    {
-                      "$kind": "Microsoft.TextInput",
-                      "$designer": {
-                        "id": "ZFdwqq",
-                        "name": "Text input"
-                      },
-                      "prompt": "${bfdprompt-ZFdwqq()}",
-                      "maxTurnCount": 3,
-                      "property": "dialog.taskContent",
-                      "value": "=@TaskContent",
-                      "alwaysPrompt": true,
-                      "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
-                    },
-                    {
-                      "$kind": "Microsoft.BeginDialog",
-                      "$designer": {
-                        "id": "_MKhgW"
-                      },
-                      "dialog": "ShowNextPrev",
-                      "resultProperty": "dialog.result"
-                    },
-                    {
                       "$kind": "Microsoft.IfCondition",
                       "$designer": {
-                        "id": "OWz47j"
+                        "id": "MFRczX"
                       },
-                      "condition": "=dialog.result",
+                      "condition": "=dialog.ordinal == null",
                       "actions": [
                         {
-                          "$kind": "Microsoft.RepeatDialog",
+                          "$kind": "Microsoft.SendActivity",
                           "$designer": {
-                            "id": "JQYlZQ"
-                          }
+                            "id": "1-SAfh",
+                            "name": "Send a response"
+                          },
+                          "activity": "${bfdactivity-1-SAfh()}"
+                        },
+                        {
+                          "$kind": "Microsoft.TextInput",
+                          "$designer": {
+                            "id": "Bc5uwg",
+                            "name": "Text input"
+                          },
+                          "prompt": "${bfdprompt-Bc5uwg()}",
+                          "maxTurnCount": 3,
+                          "property": "dialog.taskContent",
+                          "value": "=@TaskContent",
+                          "alwaysPrompt": true,
+                          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
+                        },
+                        {
+                          "$kind": "Microsoft.BeginDialog",
+                          "$designer": {
+                            "id": "rXYt5J"
+                          },
+                          "dialog": "ShowNextPrev",
+                          "resultProperty": "dialog.result"
+                        },
+                        {
+                          "$kind": "Microsoft.IfCondition",
+                          "$designer": {
+                            "id": "TPWTpF"
+                          },
+                          "condition": "=dialog.result",
+                          "actions": [
+                            {
+                              "$kind": "Microsoft.RepeatDialog",
+                              "$designer": {
+                                "id": "8XmBYC"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "$kind": "Microsoft.SetProperties",
+                          "$designer": {
+                            "id": "UBmRG2"
+                          },
+                          "assignments": [
+                            {
+                              "property": "dialog.ordinal",
+                              "value": "=@ordinal"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -179,7 +204,7 @@
                         "id": "YoCk7e"
                       },
                       "dialog": "GetOrdinal",
-                      "options": "=setProperty({},\"todos\",dialog.todos)",
+                      "options": "=setProperty(setProperty({},\"todos\",dialog.todos),\"ordinal\",dialog.ordinal)",
                       "resultProperty": "dialog.items"
                     }
                   ]

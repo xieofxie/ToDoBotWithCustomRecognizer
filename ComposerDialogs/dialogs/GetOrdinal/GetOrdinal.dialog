@@ -19,7 +19,7 @@
           "$designer": {
             "id": "j5gyd5"
           },
-          "condition": "=@ordinal != null",
+          "condition": "=dialog.ordinal != null",
           "elseActions": [
             {
               "$kind": "Microsoft.EndDialog",
@@ -38,7 +38,7 @@
               "assignments": [
                 {
                   "property": "dialog.ordinal",
-                  "value": "=int(@ordinal) - 1"
+                  "value": "=int(dialog.ordinal) - 1"
                 }
               ]
             },
