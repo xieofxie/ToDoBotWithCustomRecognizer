@@ -30,8 +30,8 @@
           },
           "assignments": [
             {
-              "property": "dialog.taskContent",
-              "value": "=coalesce(@TaskContent, $taskContent)"
+              "property": "conversation.taskContent",
+              "value": "=@TaskContent"
             }
           ]
         },
@@ -43,7 +43,7 @@
           },
           "prompt": "${bfdprompt-662396()}",
           "maxTurnCount": 3,
-          "property": "dialog.taskContent",
+          "property": "conversation.taskContent",
           "value": "=@TaskContent",
           "alwaysPrompt": false,
           "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
@@ -59,7 +59,7 @@
           "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
-          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)",
+          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore) || #ChangeTaskContent.score > float(settings.intentScore)",
           "outputFormat": "value",
           "choices": [
             {
@@ -103,7 +103,7 @@
           },
           "dialog": "MatchInList",
           "resultProperty": "dialog.items",
-          "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",dialog.taskContent)"
+          "options": "=setProperty(setProperty({},\"tasks\",dialog.tasks),\"taskContent\",conversation.taskContent)"
         },
         {
           "$kind": "Microsoft.IfCondition",
@@ -170,7 +170,7 @@
               },
               "dialog": "AddToListOutlook",
               "options": {
-                "taskContent": "${dialog.taskContent}"
+                "taskContent": "${conversation.taskContent}"
               }
             },
             {
@@ -181,8 +181,45 @@
               "dialog": "ShowToDo",
               "options": {
                 "fromType": "add",
-                "taskContent": "${dialog.taskContent}"
+                "taskContent": "${conversation.taskContent}"
               }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "AluUnW"
+      },
+      "intent": "ChangeTaskContent",
+      "actions": [
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "3mKloK"
+          },
+          "condition": "=@taskContent != null",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "CIxR1t"
+              },
+              "activity": "${bfdactivity-CIxR1t()}"
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "2ZZcmS"
+              },
+              "assignments": [
+                {
+                  "property": "conversation.taskContent",
+                  "value": "=@taskContent"
+                }
+              ]
             }
           ]
         }

@@ -4,10 +4,10 @@
 - ${AskTaskContentText()}
 
 # bfdprompt-456695()
-- Which list should I add **${dialog.taskContent}** to?
+- Which list should I add **${conversation.taskContent}** to?
 
 # bfdprompt-RCO61b()
-- ${AskAddDupTaskPrompt(dialog.taskContent)}
+- ${AskAddDupTaskPrompt(conversation.taskContent)}
 
 # bfdactivity-QRekYt()
 - ${CompletedMessage()}
@@ -33,3 +33,6 @@
     Speak = ${AskAddDupTaskPrompt.Text(TaskContent)}
     InputHint = expectingInput
 ]
+
+# bfdactivity-CIxR1t()
+- OK, I've updated the task content to ${@taskContent}

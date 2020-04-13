@@ -29,7 +29,9 @@ conversation.listType
 conversation.page
 - for interruption from show to del
 
-taskContent
+conversation.taskContent
+- for interruption in change task content
+
 containsAll
 ordinal
 
@@ -61,11 +63,11 @@ items
 
 # Flow
 
+## All
+
 all is handled wrongly when repeat like 'do nothing at all'
 
 support all in first show in mark
-
-test refill slot with utterances
 
 # Interruption Test
 
