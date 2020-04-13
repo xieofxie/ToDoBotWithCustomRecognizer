@@ -59,7 +59,7 @@
       "$designer": {
         "id": "722893"
       },
-      "condition": "#Help.Score > 0.8",
+      "condition": "#Help.Score > float(settings.intentScore)",
       "actions": [
         {
           "$kind": "Microsoft.SendActivity",
@@ -77,7 +77,7 @@
       "$designer": {
         "id": "463265"
       },
-      "condition": "#Cancel.Score > 0.8",
+      "condition": "#Cancel.Score > float(settings.intentScore)",
       "actions": [
         {
           "$kind": "Microsoft.ConfirmInput",
@@ -140,7 +140,7 @@
       "$designer": {
         "id": "723797"
       },
-      "condition": "#AddToDo.Score > 0.5",
+      "condition": "#AddToDo.Score > float(settings.intentScore)",
       "actions": [
         {
           "$kind": "Microsoft.BeginDialog",
@@ -159,7 +159,7 @@
       "$designer": {
         "id": "332735"
       },
-      "condition": "#DeleteToDo.Score > 0.5",
+      "condition": "#DeleteToDo.Score > float(settings.intentScore)",
       "actions": [
         {
           "$kind": "Microsoft.BeginDialog",
@@ -177,7 +177,7 @@
       "$designer": {
         "id": "877754"
       },
-      "condition": "#ShowToDo.Score > 0.5",
+      "condition": "#ShowToDo.Score > float(settings.intentScore)",
       "actions": [
         {
           "$kind": "Microsoft.BeginDialog",
@@ -204,7 +204,8 @@
           },
           "dialog": "MarkToDo"
         }
-      ]
+      ],
+      "condition": "#MarkToDo.Score > float(settings.intentScore)"
     }
   ],
   "$schema": "https://raw.githubusercontent.com/microsoft/BotFramework-Composer/stable/Composer/packages/server/schemas/sdk.schema",

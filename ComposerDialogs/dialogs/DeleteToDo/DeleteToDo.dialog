@@ -130,7 +130,7 @@
               "property": "dialog.taskContent",
               "value": "=@TaskContent",
               "alwaysPrompt": false,
-              "allowInterruptions": "!@taskContent && #_Interruption.Score >= 0.9"
+              "allowInterruptions": "!@taskContent && #_Interruption.Score >= float(settings.interruptScore)"
             },
             {
               "$kind": "Microsoft.BeginDialog",
