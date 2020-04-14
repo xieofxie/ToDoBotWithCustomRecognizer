@@ -131,3 +131,8 @@ help, cancel always included
 - show
     - V
 - mark in another list?
+
+# Bug
+## Repeat twice
+
+show in mark dialog -> interrupt to getinput -> repeat -> mark failed -> repeat X

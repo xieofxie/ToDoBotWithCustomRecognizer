@@ -53,7 +53,7 @@
           "property": "conversation.listType",
           "value": "=coalesce(@ListType, @roleListType)",
           "alwaysPrompt": false,
-          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)",
+          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore) || #GetInput.score > float(settings.intentScore)",
           "outputFormat": "value",
           "choices": [
             {
@@ -235,6 +235,24 @@
                   "condition": "=count(dialog.items) == 0",
                   "actions": [
                     {
+                      "$kind": "Microsoft.DeleteProperties",
+                      "$designer": {
+                        "id": "E4E61C"
+                      },
+                      "properties": [
+                        "@@ordinal",
+                        "@@TaskContent",
+                        "dialog.ordinal",
+                        "dialog.taskContent"
+                      ]
+                    },
+                    {
+                      "$kind": "Microsoft.TraceActivity",
+                      "$designer": {
+                        "id": "eFavDQ"
+                      }
+                    },
+                    {
                       "$kind": "Microsoft.RepeatDialog",
                       "$designer": {
                         "id": "PYdswx"
@@ -305,6 +323,66 @@
               "activity": "${bfdactivity-UTh7g6()}"
             }
           ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "LzWeSQ"
+      },
+      "intent": "GetInput",
+      "actions": [
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "keyHU0"
+          },
+          "condition": "=@taskContent != null",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "LHnB4C"
+              },
+              "activity": "${bfdactivity-LHnB4C()}"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "JJGk6u",
+            "name": "Set properties"
+          },
+          "assignments": [
+            {
+              "property": "dialog.listType",
+              "value": "=coalesce(@ListType, @roleListType)"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "aV1g7t"
+          },
+          "condition": "=dialog.listType != null",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "oA8xdG"
+              },
+              "activity": "${bfdactivity-oA8xdG()}"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.RepeatDialog",
+          "$designer": {
+            "id": "2QFlVy"
+          }
         }
       ]
     }
