@@ -209,3 +209,11 @@
 - change content to {TaskContent}
 - update task to {TaskContent}
 - change task to {TaskContent}
+
+# ChangeListType
+- add to {ListType: roleListType=todo} list
+- add to my {ListType: roleListType=shopping} list
+- change to {ListType: roleListType=to do} list
+- change to my {ListType: roleListType=grocery} list
+- update to {ListType: roleListType=to do} list
+- update to my {ListType: roleListType=todo} list

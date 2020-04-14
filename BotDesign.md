@@ -31,6 +31,8 @@ conversation.page
 
 conversation.taskContent
 - for interruption in change task content
+- move to dialog? it is not persist between dialogs
+- for local interruption, should always repeat to verify logic
 
 containsAll
 ordinal

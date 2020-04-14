@@ -31,7 +31,7 @@
           "assignments": [
             {
               "property": "conversation.taskContent",
-              "value": "=@TaskContent"
+              "value": "=coalesce(conversation.taskContent, @TaskContent)"
             }
           ]
         },
@@ -46,7 +46,7 @@
           "property": "conversation.taskContent",
           "value": "=@TaskContent",
           "alwaysPrompt": false,
-          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)"
+          "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore) || #ChangeListType.score > float(settings.intentScore)"
         },
         {
           "$kind": "Microsoft.ChoiceInput",
@@ -119,7 +119,7 @@
               },
               "maxTurnCount": 3,
               "alwaysPrompt": false,
-              "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore)",
+              "allowInterruptions": "=#_Interruption.score > float(settings.interruptScore) || #ChangeTaskContent.score > float(settings.intentScore) || #ChangeListType.score > float(settings.intentScore)",
               "defaultLocale": "en-us",
               "style": "Auto",
               "prompt": "${bfdprompt-RCO61b()}",
@@ -220,6 +220,56 @@
                   "value": "=@taskContent"
                 }
               ]
+            },
+            {
+              "$kind": "Microsoft.RepeatDialog",
+              "$designer": {
+                "id": "YKac3g"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "S3kGux"
+      },
+      "intent": "ChangeListType",
+      "actions": [
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "oj95Tt",
+            "name": "Set properties"
+          },
+          "assignments": [
+            {
+              "property": "dialog.listType",
+              "value": "=coalesce(@ListType, @roleListType)"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "4yjSI0"
+          },
+          "condition": "=dialog.listType != null",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "uvH7W6"
+              },
+              "activity": "${bfdactivity-uvH7W6()}"
+            },
+            {
+              "$kind": "Microsoft.RepeatDialog",
+              "$designer": {
+                "id": "IxkPAQ"
+              }
             }
           ]
         }
